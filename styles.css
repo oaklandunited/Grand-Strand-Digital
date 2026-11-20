@@ -23,6 +23,7 @@
   --accent-ink:var(--accent);
   --tertiary-ink:var(--tertiary);
   --secondary-ink:var(--secondary);
+  --accent-hover-ink:var(--accent-hover);
   --surface:#ffffff;
   --nav-bg:rgba(255,255,255,0.95);
   --nav-bg-solid:rgba(255,255,255,.98);
@@ -236,6 +237,7 @@ html[data-theme="dark"]{
   --accent-ink:#ff7268;      /*  6.1:1  red chair, lifted for text      */
   --tertiary-ink:#86d6ec;    /* 10.0:1  headings, cyan chair tint       */
   --secondary-ink:#5ccbe6;   /*  8.7:1 */
+  --accent-hover-ink:#ffa29a;  /* 8.2:1+ hover text */
   --border:rgba(255,255,255,0.1);
   --nav-bg:rgba(13,32,56,0.92);
   --nav-bg-solid:rgba(13,32,56,.98);
@@ -253,8 +255,11 @@ html[data-theme="dark"] .status-generating{color:#ffc35a}
 html[data-theme="dark"] .status-complete{color:#7ddc84;background:rgba(125,220,132,.12)}
 html[data-theme="dark"] .brief-toast{background:#183a5e}
 /* Smooth the switch itself, but only for color properties */
-html.theme-anim,html.theme-anim *,html.theme-anim *::before,html.theme-anim *::after{
-  transition:background-color .35s ease,color .35s ease,border-color .35s ease,fill .35s ease!important}
+/* Skipped entirely for visitors who ask the OS for reduced motion */
+@media (prefers-reduced-motion:no-preference){
+  html.theme-anim,html.theme-anim *,html.theme-anim *::before,html.theme-anim *::after{
+    transition:background-color .35s ease,color .35s ease,border-color .35s ease,fill .35s ease!important}
+}
 
 /* === THEME TOGGLE ===
    Square to match the brand's zero-radius buttons and cards; outlined

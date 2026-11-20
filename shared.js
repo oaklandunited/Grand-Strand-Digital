@@ -9,6 +9,7 @@
   var KEY = 'gsd-theme';
   var nav = document.getElementById('nav');
   if (!nav) return;
+  var chosen = false; // explicit click this page view, kept even if storage fails
 
   var btn = document.createElement('button');
   btn.type = 'button';
@@ -26,6 +27,7 @@
     btn.setAttribute('title', 'Switch to ' + next + ' theme');
   }
   function setTheme(t, persist) {
+    if (persist) chosen = true;
     root.classList.add('theme-anim');
     root.setAttribute('data-theme', t);
     sync();
@@ -38,8 +40,9 @@
   if (window.matchMedia) {
     var mq = window.matchMedia('(prefers-color-scheme: dark)');
     var onChange = function (e) {
+      if (chosen) return;
       var saved = null; try { saved = localStorage.getItem(KEY); } catch (err) {}
-      if (!saved) setTheme(e.matches ? 'dark' : 'light', false);
+      if (saved !== 'dark' && saved !== 'light') setTheme(e.matches ? 'dark' : 'light', false);
     };
     if (mq.addEventListener) mq.addEventListener('change', onChange); else if (mq.addListener) mq.addListener(onChange);
   }
