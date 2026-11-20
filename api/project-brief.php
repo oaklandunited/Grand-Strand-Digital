@@ -162,20 +162,24 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($requestData));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
-curl_setopt($ch, CURLOPT_WRITEFUNCTION, function($curl, $data) {
-    $lines = explode("\n", $data);
-    foreach ($lines as $line) {
-        $line = trim($line);
-        if (strpos($line, 'data: ') === 0) {
-            $payload = substr($line, 6);
-            if ($payload === '[DONE]') {
-                sendSseDone();
-                return strlen($data);
-            }
-            $json = json_decode($payload, true);
-            if (isset($json['choices'][0]['delta']['content'])) {
-                sendSseChunk($json['choices'][0]['delta']['content']);
-            }
+$sseBuffer = '';
+curl_setopt($ch, CURLOPT_WRITEFUNCTION, function($curl, $data) use (&$sseBuffer) {
+    // Buffer partial lines: a streamed line can be split across network packets.
+    $sseBuffer .= $data;
+    while (($pos = strpos($sseBuffer, "\n")) !== false) {
+        $line = trim(substr($sseBuffer, 0, $pos));
+        $sseBuffer = substr($sseBuffer, $pos + 1);
+        if (strpos($line, 'data: ') !== 0) {
+            continue;
+        }
+        $payload = substr($line, 6);
+        if ($payload === '[DONE]') {
+            sendSseDone();
+            continue;
+        }
+        $json = json_decode($payload, true);
+        if (isset($json['choices'][0]['delta']['content'])) {
+            sendSseChunk($json['choices'][0]['delta']['content']);
         }
     }
     return strlen($data);
