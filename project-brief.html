@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Project Brief Tool — Grand Strand Digital</title>
+<meta name="description" content="Generate a free, custom AI project brief grounded in Grand Strand Digital's services. Outline your goals, recommended scope, roadmap, and next steps in seconds.">
+<meta property="og:title" content="AI Project Brief Tool — Grand Strand Digital">
+<meta property="og:description" content="Turn your business goals and bottlenecks into an actionable AI project brief in seconds. Free planning tool from Grand Strand Digital.">
+<meta property="og:url" content="https://grandstranddigital.com/project-brief.html">
+<link rel="canonical" href="https://grandstranddigital.com/project-brief.html">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* === PROJECT BRIEF PAGE STYLES === */
+.brief-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 3rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.brief-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.brief-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+}
+
+.brief-card-title {
+  font-family: var(--heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--tertiary);
+  margin-bottom: .5rem;
+}
+
+.brief-card-desc {
+  font-size: .92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+/* Presets */
+.preset-section {
+  margin-bottom: 1.75rem;
+}
+.preset-label {
+  font-family: var(--heading);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: .6rem;
+  display: block;
+}
+.preset-group {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+.preset-pill {
+  background: var(--bg-ice);
+  border: 1px solid var(--border);
+  color: var(--tertiary);
+  font-family: var(--heading);
+  font-size: .72rem;
+  font-weight: 600;
+  padding: .5rem .85rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all .2s;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+}
+.preset-pill:hover {
+  background: var(--accent);
+  color: var(--text-light);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+.form-group label {
+  display: block;
+  font-family: var(--heading);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--tertiary);
+  margin-bottom: .4rem;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: .85rem 1rem;
+  border: 1px solid var(--border);
+  font-family: var(--body);
+  font-size: .95rem;
+  color: var(--text-primary);
+  background: var(--bg);
+  transition: all .3s;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(232,53,44,0.1);
+}
+.form-group textarea {
+  min-height: 180px;
+  resize: vertical;
+  line-height: 1.6;
+}
+.form-group.error input,
+.form-group.error textarea {
+  border-color: var(--accent);
+  background: rgba(232,53,44,0.02);
+}
+.char-counter {
+  display: flex;
+  justify-content: flex-end;
+  font-size: .75rem;
+  color: var(--text-muted);
+  margin-top: .3rem;
+  font-family: var(--heading);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+  padding: .75rem;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  cursor: pointer;
+  font-size: .82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  transition: border-color .3s;
+  margin-bottom: 1.5rem;
+}
+.checkbox-label input {
+  margin-top: .2rem;
+  accent-color: var(--accent);
+}
+
+.btn-stop {
+  display: none;
+  align-items: center;
+  gap: .5rem;
+  padding: 1rem 2rem;
+  background: #fff;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  font-family: var(--heading);
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .3s;
+}
+.btn-stop:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .35rem .85rem;
+  font-family: var(--heading);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  margin-bottom: 1.25rem;
+}
+.status-idle { background: var(--bg-ice); color: var(--tertiary); }
+.status-generating { background: rgba(245,166,35,0.15); color: #d68900; }
+.status-complete { background: rgba(46,125,50,0.12); color: #2e7d32; }
+.status-stopped { background: rgba(232,53,44,0.1); color: var(--accent); }
+.status-error { background: rgba(232,53,44,0.15); color: var(--accent); }
+
+.status-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 1.5s infinite;
+}
+
+/* Output Card & Idle Placeholder */
+.idle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.idle-item {
+  padding: 1.25rem;
+  background: var(--bg-ice);
+  border-left: 3px solid var(--secondary);
+}
+.idle-item h4 {
+  font-family: var(--heading);
+  font-size: .82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--tertiary);
+  margin-bottom: .3rem;
+}
+.idle-item p {
+  font-size: .8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Rendered Brief Content */
+.brief-output {
+  min-height: 480px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  padding: 2.25rem;
+  border-radius: 2px;
+  overflow-y: auto;
+  max-height: 750px;
+}
+.brief-prose {
+  font-family: var(--body);
+  font-size: .95rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+}
+.brief-prose h2.brief-main-title {
+  font-family: var(--heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--tertiary);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: .75rem;
+  margin-bottom: 1.5rem;
+}
+.brief-prose h3.brief-heading {
+  font-family: var(--heading);
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--tertiary);
+  letter-spacing: .04em;
+  margin-top: 2rem;
+  margin-bottom: .75rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.brief-prose h3.brief-heading::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 3px;
+  background: var(--accent);
+}
+.brief-prose h4 {
+  font-family: var(--heading);
+  font-size: .9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--tertiary);
+  margin-top: 1.25rem;
+  margin-bottom: .5rem;
+}
+.brief-prose p {
+  margin-bottom: 1rem;
+}
+.brief-prose strong {
+  color: var(--tertiary);
+  font-weight: 700;
+}
+.brief-prose hr.brief-divider {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 1.5rem 0;
+}
+.brief-prose blockquote.brief-quote {
+  border-left: 3px solid var(--gold);
+  background: rgba(245,166,35,0.06);
+  padding: .75rem 1.25rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+.brief-prose ul.brief-ul,
+.brief-prose ol.brief-ol {
+  margin: .75rem 0 1.25rem 1.5rem;
+}
+.brief-prose li {
+  margin-bottom: .4rem;
+}
+.brief-prose a.brief-link {
+  color: var(--accent);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Action Toolbar */
+.action-toolbar {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .7rem 1.25rem;
+  font-family: var(--heading);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--tertiary);
+  cursor: pointer;
+  transition: all .2s;
+}
+.btn-action:hover {
+  background: var(--tertiary);
+  color: var(--text-light);
+  border-color: var(--tertiary);
+}
+.btn-action.btn-accent {
+  background: var(--accent);
+  color: var(--text-light);
+  border-color: var(--accent);
+}
+.btn-action.btn-accent:hover {
+  background: var(--accent-hover);
+}
+
+/* Next Step CTA Box */
+.next-step-box {
+  margin-top: 1.75rem;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--tertiary) 100%);
+  color: var(--text-light);
+  padding: 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.next-step-box h4 {
+  font-family: var(--heading);
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--gold);
+  margin-bottom: .25rem;
+}
+.next-step-box p {
+  font-size: .88rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.4;
+}
+
+/* Toast */
+.brief-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--bg-dark);
+  color: #fff;
+  padding: .9rem 1.5rem;
+  font-family: var(--heading);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  border-left: 4px solid var(--gold);
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all .3s ease;
+  pointer-events: none;
+}
+.brief-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+  .brief-layout { grid-template-columns: 1fr; }
+  .next-step-box { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.svg" alt="Grand Strand Digital">
+  </a>
+  <div class="nav-links">
+    <a href="services.html">Services</a>
+    <a href="solutions.html">AI Solutions</a>
+    <a href="process.html">Process</a>
+    <a href="clients.html">Clients</a>
+    <a href="project-brief.html" class="active">AI Project Brief</a>
+    <a href="tel:8439002032" class="nav-phone">843-900-2032</a>
+    <a href="contact.html" class="nav-cta">Book a Strategy Call</a>
+  </div>
+  <button class="mobile-toggle" aria-label="Menu">&#9776;</button>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&q=80')">
+  <div class="page-hero-overlay"></div>
+  <div class="container">
+    <div class="breadcrumb reveal"><a href="index.html">Home</a> / <span>AI Project Brief Tool</span></div>
+    <h1 class="reveal stagger-1">Turn Your Challenge Into an <em>Actionable Brief</em></h1>
+    <p class="reveal stagger-2">Describe what's slowing down your business. Get a starting scope, recommended Grand Strand Digital services, and discovery questions generated in seconds.</p>
+  </div>
+</section>
+
+<!-- Main Tool Section -->
+<section>
+  <div class="container">
+    <div class="brief-layout">
+
+      <!-- Left: Intake Card -->
+      <div class="brief-card reveal-left">
+        <h2 class="brief-card-title">1. Your Business & Goals</h2>
+        <p class="brief-card-desc">Provide a high-level summary of what you are aiming to solve. Choose an example template below or type your custom requirements.</p>
+
+        <!-- Presets -->
+        <div class="preset-section">
+          <span class="preset-label">Quick Starter Templates:</span>
+          <div class="preset-group">
+            <button type="button" class="preset-pill" data-preset="hospitality">&#127796; Hospitality / Rentals</button>
+            <button type="button" class="preset-pill" data-preset="contractor">&#128296; Contractors & Services</button>
+            <button type="button" class="preset-pill" data-preset="professional">&#127973; Healthcare / Clinic</button>
+          </div>
+        </div>
+
+        <form id="briefForm" novalidate>
+          <!-- Honeypot -->
+          <div style="display:none;" aria-hidden="true">
+            <input type="text" name="website_hp" id="website_hp" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label for="businessName">Business Name (Optional)</label>
+            <input type="text" id="businessName" name="businessName" placeholder="e.g. Palmetto Shores Resort or Coastal HVAC">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Work Email *</label>
+            <input type="email" id="email" name="email" placeholder="you@company.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="goals">What is your biggest operational challenge or AI goal? *</label>
+            <textarea id="goals" name="goals" placeholder="Describe the friction you want to eliminate (e.g. after-hours inquiry loss, repetitive booking calls, manual CRM data entry, slow customer quote response)..." required></textarea>
+            <div class="char-counter" id="charCount">0 / 6,000 characters (min. 20)</div>
+          </div>
+
+          <label class="checkbox-label">
+            <input type="checkbox" id="consent" name="consent" required>
+            <span>I agree to have my requirements analyzed and to receive follow-up regarding this project brief from Grand Strand Digital.</span>
+          </label>
+
+          <div style="display:flex; gap:1rem; align-items:center;">
+            <button type="submit" class="btn-primary" id="submitBtn">
+              Generate My Project Brief
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <button type="button" class="btn-stop" id="stopBtn">
+              &#9208; Stop
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Right: Output Card -->
+      <div class="brief-card reveal-right">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <h2 class="brief-card-title" style="margin-bottom:0;">2. Structured Brief</h2>
+          <div class="status-badge status-idle" id="statusBadge">Awaiting Inputs</div>
+        </div>
+
+        <!-- Idle State View -->
+        <div id="idleView">
+          <p class="brief-card-desc">Your customized, 7-section planning brief will stream here in real time. Grounded strictly in Grand Strand Digital's capabilities:</p>
+          <div class="idle-grid">
+            <div class="idle-item">
+              <h4>1. Project Summary</h4>
+              <p>Problem context, bottlenecks, and target operational outcomes.</p>
+            </div>
+            <div class="idle-item">
+              <h4>2. Proposed KPIs</h4>
+              <p>Measurable response speed and lead capture conversion targets.</p>
+            </div>
+            <div class="idle-item">
+              <h4>3. Recommended Scope</h4>
+              <p>Must-have sprint deliverables vs. follow-on opportunities.</p>
+            </div>
+            <div class="idle-item">
+              <h4>4. Grand Strand Services</h4>
+              <p>Targeted selection from our AI Agents, Automation, and Web practices.</p>
+            </div>
+            <div class="idle-item">
+              <h4>5. Phased Roadmap</h4>
+              <p>Clear 3-phase journey from discovery audit to live deployment.</p>
+            </div>
+            <div class="idle-item">
+              <h4>6. Discovery Questions</h4>
+              <p>Critical unknown factors to uncover during your strategy session.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Output Container (shown on stream/done) -->
+        <div id="outputContainer" style="display:none;">
+          <div class="brief-output" id="briefContent"></div>
+
+          <!-- Action Toolbar -->
+          <div class="action-toolbar" id="actionBar" style="display:none;">
+            <button type="button" class="btn-action" id="copyBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Markdown
+            </button>
+            <button type="button" class="btn-action" id="downloadBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download .md
+            </button>
+            <button type="button" class="btn-action" id="reviseBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              Revise
+            </button>
+            <button type="button" class="btn-action" id="resetBtn" style="color:var(--text-muted);">
+              Start Over
+            </button>
+          </div>
+
+          <!-- Next Step Callout -->
+          <div class="next-step-box">
+            <div>
+              <h4>Ready to review this brief together?</h4>
+              <p>Schedule a focused 30-minute strategy call with our Grand Strand team.</p>
+            </div>
+            <a href="contact.html" class="btn-primary" style="background:var(--gold); color:var(--bg-dark);">
+              Book Strategy Call
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Location Section -->
+<section class="bg-alt">
+  <div class="container">
+    <div class="section-center" style="margin-bottom:2rem">
+      <div class="section-label reveal">Based In the Carolinas</div>
+      <h2 class="section-title reveal stagger-1">Local Focus, Scalable Technology</h2>
+      <p class="section-desc reveal stagger-2">We build intelligent agents and automation for businesses throughout Myrtle Beach, Conway, Pawleys Island, and across the Carolinas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><img src="logo.svg" alt="Grand Strand Digital"></a>
+        <p>AI consulting, custom agents, and workflow automation for Grand Strand businesses ready to lead with technology.</p>
+        <a href="tel:8439002032" class="footer-phone">843-900-2032</a>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Services</h5>
+          <a href="services.html">AI Agent Development</a>
+          <a href="services.html">Workflow Automation</a>
+          <a href="services.html">AI Strategy Consulting</a>
+          <a href="services.html">Web Design</a>
+          <a href="services.html">SEO & Content</a>
+        </div>
+        <div class="footer-col">
+          <h5>Tools & Solutions</h5>
+          <a href="project-brief.html">AI Project Brief Tool</a>
+          <a href="solutions.html">Industry Solutions</a>
+          <a href="process.html">Our Process</a>
+          <a href="clients.html">Client Stories</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Grand Strand Digital. All rights reserved.</span>
+      <span>The Grand Strand, South Carolina</span>
+    </div>
+  </div>
+</footer>
+
+<div class="brief-toast" id="briefToast"></div>
+
+<script src="shared.js"></script>
+<script src="project-brief.js"></script>
+</body>
+</html>
