@@ -273,3 +273,30 @@ nav .nav-links{margin-left:auto}
   .theme-btn{margin-left:auto;margin-right:.75rem;width:38px;height:38px}
 }
 @media print{.theme-btn{display:none}}
+
+/* === HEADER WORDMARK ===
+   Montserrat, the site's heading face, in two weights: the name heavy and
+   tight in deep teal, "Digital" light and widely tracked in chair red,
+   echoing the uppercase, letter-spaced section labels. */
+.nav-wordmark{display:flex;flex-direction:column;justify-content:center;font-family:var(--heading);text-transform:uppercase;line-height:1;white-space:nowrap}
+.wm-name{font-size:1.05rem;font-weight:800;letter-spacing:.05em;color:var(--tertiary-ink)}
+.wm-sub{font-size:.62rem;font-weight:600;letter-spacing:.56em;color:var(--accent-ink);margin-top:.32rem}
+.nav-logo:hover .wm-name{color:var(--accent-ink);transition:color .3s}
+.nav-logo{margin-right:2rem}
+.nav-links a{white-space:nowrap}
+@media(max-width:1400px){
+  nav{padding-left:1.5rem;padding-right:1.5rem}
+  .nav-logo{margin-right:1.25rem}
+  .nav-links{gap:1.1rem}
+  .nav-links a{letter-spacing:.08em}
+  .theme-btn{margin-left:1rem}
+}
+/* With the wordmark the full menu needs ~1220px; below that use the
+   hamburger menu (same rules as the 768px mobile menu). */
+@media(max-width:1219px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--nav-bg-solid);flex-direction:column;align-items:flex-start;padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid var(--border);z-index:99}
+  .nav-links.show{display:flex}
+  .mobile-toggle{display:block}
+  .theme-btn{margin-left:auto;margin-right:.75rem}
+}
+@media(max-width:380px){.wm-name{font-size:.92rem}.wm-sub{font-size:.56rem;letter-spacing:.5em}}
