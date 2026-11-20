@@ -94,9 +94,9 @@ if ($currentCount >= $maxPerHour) {
 file_put_contents($rateFile, (string)($currentCount + 1));
 
 // Load system prompt
-$systemPromptFile = __DIR__ . '/system-prompt.txt';
+$systemPromptFile = __DIR__ . '/system-prompt.php';
 $systemPrompt = file_exists($systemPromptFile) 
-    ? file_get_contents($systemPromptFile) 
+    ? (require $systemPromptFile) 
     : 'You are the Grand Strand Digital AI Project Brief Specialist. Ground your advice strictly in Grand Strand Digital services.';
 
 // Check API Key
