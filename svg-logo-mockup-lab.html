@@ -1,0 +1,1822 @@
+<!doctype html>
+<html lang="en" data-ui="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo Recolor Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LOGO RECOLOR LAB
+   Drop a 3–6 color SVG. Edit any color. Save palettes.
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+:root {
+  --serif: "Instrument Serif", "Times New Roman", serif;
+  --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --r-xs: 4px; --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-pill: 999px;
+}
+html[data-ui="light"] {
+  --ui-bg: #F6F3ED; --ui-panel: #FFFFFF; --ui-panel-soft: #FAF8F4;
+  --ui-ink: #14130F; --ui-ink-soft: #6B675F; --ui-ink-faint: #A29E94;
+  --ui-line: #E6E1D6; --ui-line-soft: #EFEBE2; --ui-hover: #F0EDE5;
+  --ui-active: #14130F; --ui-on-active: #FAF8F4; --ui-focus: #14130F;
+  --shadow-sm: 0 1px 0 rgba(20,19,15,.04), 0 1px 2px rgba(20,19,15,.04);
+  --shadow-md: 0 2px 6px rgba(20,19,15,.06), 0 8px 24px rgba(20,19,15,.06);
+}
+html[data-ui="dark"] {
+  --ui-bg: #0E0E10; --ui-panel: #161618; --ui-panel-soft: #1B1B1E;
+  --ui-ink: #ECEAE3; --ui-ink-soft: #9C9A92; --ui-ink-faint: #66645E;
+  --ui-line: #26262A; --ui-line-soft: #1F1F22; --ui-hover: #1F1F23;
+  --ui-active: #ECEAE3; --ui-on-active: #0E0E10; --ui-focus: #ECEAE3;
+  --shadow-sm: 0 1px 0 rgba(0,0,0,.4), 0 1px 2px rgba(0,0,0,.3);
+  --shadow-md: 0 2px 6px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+}
+
+body {
+  font-family: var(--sans); background: var(--ui-bg); color: var(--ui-ink);
+  font-size: 14px; line-height: 1.45; min-height: 100vh; overflow-x: hidden;
+}
+button {
+  font-family: inherit; font-size: inherit; color: inherit;
+  background: none; border: none; cursor: pointer; padding: 0;
+}
+input { font-family: inherit; color: inherit; }
+::selection { background: var(--ui-ink); color: var(--ui-on-active); }
+
+.eyebrow { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ui-ink-soft); font-weight: 500; }
+.num { font-variant-numeric: tabular-nums; font-family: var(--mono); }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.app { display: grid; grid-template-rows: auto 1fr; min-height: 100vh; }
+header.topbar {
+  display: flex; align-items: center; gap: 24px;
+  padding: 14px 22px; border-bottom: 1px solid var(--ui-line);
+  background: var(--ui-panel); position: sticky; top: 0; z-index: 10;
+}
+.brand { display: flex; align-items: baseline; gap: 10px; }
+.brand .mark { width: 14px; height: 14px; background: var(--ui-ink); border-radius: 3px; position: relative; top: 2px; }
+.brand h1 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 22px; letter-spacing: -.01em; }
+.brand .sub { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ui-ink-soft); }
+.topbar .spacer { flex: 1; }
+.toolset { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+
+.icon-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  height: 32px; padding: 0 11px;
+  border: 1px solid var(--ui-line); border-radius: var(--r-sm);
+  background: var(--ui-panel); color: var(--ui-ink);
+  font-family: var(--mono); font-size: 11px; letter-spacing: .04em;
+  transition: background .12s, border-color .12s, transform .08s;
+}
+.icon-btn:hover { background: var(--ui-hover); }
+.icon-btn:active { transform: translateY(1px); }
+.icon-btn.primary { background: var(--ui-active); color: var(--ui-on-active); border-color: var(--ui-active); }
+.icon-btn.primary:hover { opacity: .9; }
+.icon-btn svg { width: 13px; height: 13px; }
+.icon-btn.icon-only { width: 32px; padding: 0; }
+
+.seg {
+  display: inline-flex; border: 1px solid var(--ui-line); border-radius: var(--r-sm);
+  background: var(--ui-panel); overflow: hidden; height: 32px;
+}
+.seg button {
+  height: 100%; padding: 0 11px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .04em;
+  color: var(--ui-ink-soft); border-right: 1px solid var(--ui-line);
+  transition: background .12s, color .12s;
+}
+.seg button:last-child { border-right: none; }
+.seg button:hover { background: var(--ui-hover); color: var(--ui-ink); }
+.seg button[aria-pressed="true"] { background: var(--ui-active); color: var(--ui-on-active); }
+
+/* ============================================================
+   MAIN GRID
+   ============================================================ */
+main.workspace { display: grid; grid-template-columns: 320px 1fr; min-height: calc(100vh - 61px); }
+
+/* ---------- SIDEBAR ---------- */
+aside.sidebar {
+  border-right: 1px solid var(--ui-line); background: var(--ui-panel);
+  overflow-y: auto; max-height: calc(100vh - 61px);
+  position: sticky; top: 61px;
+}
+
+/* ---- Section: Colors editor ---- */
+.section { border-bottom: 1px solid var(--ui-line); }
+.section-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 16px 18px 10px;
+}
+.section-header .actions { display: flex; gap: 6px; }
+.section-header .tiny-btn {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .08em;
+  color: var(--ui-ink-soft); padding: 3px 7px;
+  border-radius: 4px; transition: background .1s, color .1s;
+}
+.section-header .tiny-btn:hover { background: var(--ui-hover); color: var(--ui-ink); }
+
+#color-slots { padding: 4px 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+.slot {
+  display: grid; grid-template-columns: 36px 1fr auto; gap: 10px; align-items: center;
+  padding: 7px 8px; border-radius: var(--r-sm);
+  transition: background .1s;
+  position: relative;
+}
+.slot:hover { background: var(--ui-hover); }
+.slot .swatch {
+  width: 36px; height: 36px; border-radius: 6px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.12);
+  cursor: pointer; position: relative; overflow: hidden;
+}
+.slot .swatch input[type="color"] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer; border: none; padding: 0; background: none;
+}
+.slot .meta { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.slot .meta .label-row {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ui-ink-faint);
+}
+.slot .meta .label-row .kind {
+  display: inline-block; padding: 1px 5px; border-radius: 3px;
+  background: var(--ui-line-soft); color: var(--ui-ink-soft);
+  font-size: 8.5px; letter-spacing: .08em;
+}
+.slot .meta .label-row .kind.stroke { background: color-mix(in oklab, #B45309 18%, transparent); color: #B45309; }
+html[data-ui="dark"] .slot .meta .label-row .kind.stroke { background: color-mix(in oklab, #F5B265 18%, transparent); color: #F5B265; }
+.slot .hex-input {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .03em;
+  background: transparent; border: none; padding: 1px 0;
+  color: var(--ui-ink); width: 100%; outline: none;
+  border-bottom: 1px solid transparent;
+}
+.slot .hex-input:focus { border-bottom-color: var(--ui-ink); }
+.slot .reset-one {
+  width: 22px; height: 22px; border-radius: 4px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--ui-ink-faint); opacity: 0; transition: opacity .12s, background .12s;
+}
+.slot:hover .reset-one { opacity: 1; }
+.slot .reset-one:hover { background: var(--ui-hover); color: var(--ui-ink); }
+.slot .reset-one svg { width: 12px; height: 12px; }
+.slot.edited .reset-one { opacity: 1; color: #B45309; }
+
+.no-slots {
+  padding: 14px 18px 20px;
+  font-family: var(--mono); font-size: 11px;
+  color: var(--ui-ink-faint); letter-spacing: .04em;
+  line-height: 1.6;
+}
+
+.save-palette-row {
+  padding: 0 14px 16px;
+  display: grid; grid-template-columns: 1fr auto; gap: 6px;
+}
+.save-palette-row input {
+  height: 32px; padding: 0 10px;
+  border: 1px solid var(--ui-line); border-radius: var(--r-sm);
+  background: var(--ui-panel-soft); font-size: 12px;
+  outline: none; transition: border-color .12s;
+}
+.save-palette-row input:focus { border-color: var(--ui-ink); }
+.save-palette-row button {
+  height: 32px; padding: 0 14px;
+  background: var(--ui-active); color: var(--ui-on-active);
+  border-radius: var(--r-sm); font-family: var(--mono);
+  font-size: 11px; letter-spacing: .06em;
+}
+.save-palette-row button:hover { opacity: .9; }
+
+/* ---- Palette list ---- */
+.category { padding: 12px 14px 4px; }
+.category-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ui-ink-faint);
+  padding: 0 4px 8px; display: flex; justify-content: space-between; align-items: baseline;
+}
+.category-label::after {
+  content: ""; display: block; flex: 1; height: 1px;
+  background: var(--ui-line-soft); margin-left: 10px; align-self: center;
+}
+.palette-row {
+  display: grid; grid-template-columns: 60px 1fr auto; align-items: center;
+  gap: 10px; padding: 8px 10px; border-radius: var(--r-sm);
+  cursor: pointer; width: 100%; text-align: left;
+  transition: background .1s; position: relative;
+}
+.palette-row:hover { background: var(--ui-hover); }
+.palette-row.active { background: var(--ui-active); color: var(--ui-on-active); }
+.palette-row.active .palette-name { color: var(--ui-on-active); }
+.palette-row.active .palette-meta { color: var(--ui-on-active); opacity: .65; }
+.palette-row .swatches {
+  display: flex; height: 22px; border-radius: var(--r-xs); overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+}
+.palette-row .swatches div { flex: 1; }
+.palette-name { font-size: 13px; font-weight: 500; line-height: 1.2; color: var(--ui-ink); }
+.palette-meta {
+  font-family: var(--mono); font-size: 9.5px; color: var(--ui-ink-faint);
+  margin-top: 2px; letter-spacing: .04em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;
+}
+.palette-row .row-actions {
+  display: flex; gap: 4px; opacity: 0; transition: opacity .12s;
+}
+.palette-row:hover .row-actions, .palette-row.active .row-actions { opacity: 1; }
+.palette-row .row-actions button {
+  width: 20px; height: 20px; border-radius: 4px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: inherit; opacity: .6;
+}
+.palette-row .row-actions button:hover { opacity: 1; background: rgba(0,0,0,.08); }
+.palette-row.active .row-actions button:hover { background: rgba(255,255,255,.15); }
+.palette-row .row-actions svg { width: 11px; height: 11px; }
+.palette-row.is-fav .row-actions .fav-marker { opacity: 1; color: #D89E2A; }
+.palette-row.active.is-fav .row-actions .fav-marker { color: #F5C45B; opacity: 1; }
+.palette-row.is-empty {
+  padding: 10px 14px; color: var(--ui-ink-faint);
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em;
+  cursor: default; grid-template-columns: 1fr;
+}
+.palette-row.is-empty:hover { background: transparent; }
+
+/* ============================================================
+   STAGE AREA
+   ============================================================ */
+section.stage-area { display: grid; grid-template-rows: auto 1fr auto; min-height: 100%; }
+.stage-toolbar {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 22px; border-bottom: 1px solid var(--ui-line);
+  background: var(--ui-panel-soft); flex-wrap: wrap;
+}
+.stage-toolbar .group { display: flex; align-items: center; gap: 8px; }
+.stage-toolbar .group-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ui-ink-faint); margin-right: 2px;
+}
+.stage-toolbar .divider { width: 1px; height: 24px; background: var(--ui-line); }
+
+.stage {
+  padding: 32px 32px 24px;
+  display: grid; grid-template-rows: 1fr auto; gap: 20px;
+  position: relative; min-height: 540px;
+}
+.stage.dropping::after {
+  content: "Drop SVG to load mark";
+  position: absolute; inset: 14px;
+  border: 2px dashed var(--ui-ink); border-radius: var(--r-lg);
+  background: color-mix(in oklab, var(--ui-bg) 92%, transparent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 12px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ui-ink);
+  z-index: 5; pointer-events: none;
+}
+
+.stage-canvas {
+  border-radius: var(--r-lg); border: 1px solid var(--ui-line);
+  background: var(--stage-bg, #FFFFFF); box-shadow: var(--shadow-sm);
+  display: flex; align-items: center; justify-content: center;
+  padding: 36px; position: relative; overflow: hidden;
+  min-height: 380px; transition: background .25s;
+}
+.stage-canvas[data-bg="dark"]  { --stage-bg: #141416; }
+.stage-canvas[data-bg="gray"]  { --stage-bg: #B5B2AB; }
+.stage-canvas[data-bg="light"] { --stage-bg: #FFFFFF; }
+
+.stage-meta {
+  display: grid; grid-template-columns: auto 1fr auto auto;
+  gap: 18px; align-items: center;
+  padding: 14px 18px; background: var(--ui-panel);
+  border: 1px solid var(--ui-line); border-radius: var(--r-md);
+}
+.stage-meta .nav { display: flex; gap: 6px; }
+.stage-meta .nav button {
+  width: 32px; height: 32px; border-radius: var(--r-sm);
+  border: 1px solid var(--ui-line); background: var(--ui-panel);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.stage-meta .nav button:hover { background: var(--ui-hover); }
+.current-info { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
+.current-info .swatches-lg { display: flex; gap: 4px; }
+.current-info .swatches-lg div {
+  width: 22px; height: 22px; border-radius: var(--r-xs);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+}
+.current-info h2 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 26px; line-height: 1.05; letter-spacing: -.01em; }
+.current-info .hexes {
+  margin-top: 2px; display: flex; gap: 12px; flex-wrap: wrap;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .04em; color: var(--ui-ink-soft);
+}
+.current-info .hexes span::before {
+  content: ""; display: inline-block; width: 7px; height: 7px;
+  border-radius: 50%; background: currentColor;
+  margin-right: 5px; transform: translateY(-1px);
+}
+.contrast-tag {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .12em;
+  text-transform: uppercase; padding: 5px 9px; border-radius: var(--r-pill);
+  border: 1px solid var(--ui-line); color: var(--ui-ink-soft); white-space: nowrap;
+}
+.contrast-tag[data-level="AAA"] { color: #0F7B3D; border-color: color-mix(in oklab, #0F7B3D 50%, transparent); }
+.contrast-tag[data-level="AA"]  { color: #826200; border-color: color-mix(in oklab, #826200 50%, transparent); }
+.contrast-tag[data-level="low"] { color: #A53030; border-color: color-mix(in oklab, #A53030 40%, transparent); }
+
+.fav-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 32px; padding: 0 12px;
+  border-radius: var(--r-sm); border: 1px solid var(--ui-line);
+  background: var(--ui-panel);
+  font-family: var(--mono); font-size: 11px; letter-spacing: .04em;
+}
+.fav-btn:hover { background: var(--ui-hover); }
+.fav-btn[aria-pressed="true"] {
+  background: #FFF4D6; border-color: #E8C75A; color: #7A5A00;
+}
+html[data-ui="dark"] .fav-btn[aria-pressed="true"] {
+  background: #3A2E0B; border-color: #8A6E1F; color: #F0D27A;
+}
+
+/* ============================================================
+   MOCKUPS — use --p-primary/--p-secondary/--p-accent
+   These map to the FIRST 3 detected slots (largest by area).
+   ============================================================ */
+.mockup { width: 100%; max-width: 920px; }
+.mockup-plain { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; min-height: 320px; }
+.mockup-plain .logo-wrap { width: clamp(180px, 28vw, 280px); aspect-ratio: 1/1; }
+
+.mockup-navbar {
+  width: 100%; background: #FFFFFF; border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.06); box-shadow: 0 10px 30px rgba(0,0,0,.07);
+  overflow: hidden; font-family: "IBM Plex Sans", system-ui, sans-serif;
+}
+.mockup-navbar .browser-bar {
+  height: 28px; background: #F3F1EC;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  display: flex; align-items: center; gap: 5px; padding: 0 12px;
+}
+.mockup-navbar .browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(0,0,0,.18); display: inline-block; }
+.mockup-navbar .browser-bar .url {
+  margin-left: 14px; background: rgba(0,0,0,.06);
+  height: 16px; flex: 1; border-radius: 8px; max-width: 320px;
+  padding: 0 10px; font-size: 10px; color: #888;
+  font-family: var(--mono); display: inline-flex; align-items: center;
+}
+.mockup-navbar .nav {
+  display: grid; grid-template-columns: auto 1fr auto;
+  align-items: center; padding: 18px 26px; gap: 24px;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.mockup-navbar .nav .logo-wrap { width: 38px; height: 38px; flex-shrink: 0; }
+.mockup-navbar .nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 28px; justify-content: center; }
+.mockup-navbar .nav ul li { font-size: 13px; font-weight: 500; color: #2A2A2A; letter-spacing: -.005em; }
+.mockup-navbar .nav .cta {
+  font-size: 13px; font-weight: 500; padding: 9px 16px; border-radius: 999px;
+  color: white; background: var(--p-primary); letter-spacing: -.005em;
+}
+.mockup-navbar .hero {
+  padding: 50px 26px 60px; display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 30px;
+  background: linear-gradient(180deg, #FAF8F4 0%, #FFFFFF 100%);
+}
+.mockup-navbar .hero h3 {
+  font-family: var(--serif); font-weight: 400; font-size: 38px;
+  line-height: 1.05; letter-spacing: -.015em; color: #14130F; margin: 0 0 12px;
+}
+.mockup-navbar .hero h3 em { font-style: italic; color: var(--p-primary); }
+.mockup-navbar .hero p { color: #6B675F; font-size: 13px; margin: 0 0 18px; max-width: 320px; line-height: 1.5; }
+.mockup-navbar .hero .pill {
+  display: inline-block; font-family: var(--mono); font-size: 10px;
+  letter-spacing: .14em; text-transform: uppercase;
+  padding: 5px 11px; border-radius: 999px;
+  background: color-mix(in oklab, var(--p-accent) 18%, transparent);
+  color: color-mix(in oklab, var(--p-accent) 70%, #14130F);
+  margin-bottom: 16px;
+}
+.mockup-navbar .hero-art {
+  aspect-ratio: 1/1; border-radius: 14px; background: var(--p-secondary);
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.mockup-navbar .hero-art .ring {
+  position: absolute; inset: -20%; border-radius: 50%;
+  border: 26px solid color-mix(in oklab, var(--p-primary) 40%, transparent);
+}
+.mockup-navbar .hero-art .logo-wrap {
+  width: 38%; aspect-ratio: 1/1; position: relative; z-index: 1;
+  filter: drop-shadow(0 4px 18px rgba(0,0,0,.18));
+}
+
+.mockup-appicons {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end;
+  gap: 28px; padding: 30px 20px;
+}
+.mockup-appicons .ic { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.mockup-appicons .tile {
+  background: var(--p-primary);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 22px rgba(0,0,0,.18); position: relative;
+}
+.mockup-appicons .tile .logo-wrap { width: 62%; aspect-ratio: 1/1; }
+.mockup-appicons .ic.s1 .tile { width: 56px;  height: 56px;  border-radius: 13px; }
+.mockup-appicons .ic.s2 .tile { width: 88px;  height: 88px;  border-radius: 20px; }
+.mockup-appicons .ic.s3 .tile { width: 120px; height: 120px; border-radius: 28px; }
+.mockup-appicons .ic.s4 .tile { width: 160px; height: 160px; border-radius: 36px; }
+.mockup-appicons .ic .lbl { font-family: var(--mono); font-size: 10px; color: var(--ui-ink-soft); letter-spacing: .1em; text-transform: uppercase; }
+
+.mockup-card-wrap { display: flex; gap: 28px; flex-wrap: wrap; justify-content: center; perspective: 1200px; }
+.mockup-card {
+  width: 360px; height: 216px; border-radius: 12px;
+  padding: 22px 24px; box-shadow: 0 18px 36px rgba(0,0,0,.18);
+  position: relative; display: flex; flex-direction: column;
+  justify-content: space-between; transform: rotate(-2deg); transition: transform .25s;
+}
+.mockup-card:hover { transform: rotate(0deg) translateY(-2px); }
+.mockup-card.front { background: #FFFFFF; }
+.mockup-card.front .logo-wrap { width: 44px; height: 44px; }
+.mockup-card.front .name { font-family: var(--serif); font-size: 22px; line-height: 1.1; color: #14130F; margin: 0; font-weight: 400; }
+.mockup-card.front .title { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #888; margin: 4px 0 0; }
+.mockup-card.front .contact { font-size: 11px; line-height: 1.5; color: #444; font-family: var(--mono); letter-spacing: .02em; }
+.mockup-card.front .bar { height: 2px; width: 36px; background: var(--p-accent); margin: 6px 0 2px; }
+.mockup-card.back {
+  background: var(--p-primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transform: rotate(2deg);
+}
+.mockup-card.back:hover { transform: rotate(0deg) translateY(-2px); }
+.mockup-card.back .logo-wrap { width: 60%; aspect-ratio: 1/1; }
+.mockup-card.back::after {
+  content: ""; position: absolute; right: 24px; bottom: 22px;
+  width: 28px; height: 4px; background: var(--p-accent); border-radius: 2px;
+}
+
+.mockup-social { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; max-width: 760px; }
+.mockup-social .card { background: #FFFFFF; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+.mockup-social .banner { height: 76px; background: linear-gradient(135deg, var(--p-secondary) 0%, var(--p-primary) 100%); }
+.mockup-social .body { padding: 0 18px 18px; margin-top: -28px; }
+.mockup-social .avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--p-primary); border: 3px solid #fff;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px; overflow: hidden;
+}
+.mockup-social .avatar .logo-wrap { width: 68%; aspect-ratio: 1/1; }
+.mockup-social .handle { font-family: var(--serif); font-size: 18px; color: #14130F; margin: 0; line-height: 1; }
+.mockup-social .at { font-family: var(--mono); font-size: 10.5px; color: #888; letter-spacing: .04em; margin-top: 3px; }
+.mockup-social .bio { font-size: 11.5px; color: #444; line-height: 1.5; margin: 8px 0 12px; }
+.mockup-social .stats { display: flex; gap: 14px; font-family: var(--mono); font-size: 10px; color: #888; letter-spacing: .04em; text-transform: uppercase; }
+.mockup-social .stats b { color: #14130F; font-weight: 600; }
+.mockup-social .follow {
+  margin-top: 12px; display: inline-block; padding: 7px 14px;
+  border-radius: 999px; background: var(--p-primary); color: #fff;
+  font-size: 11px; font-weight: 500;
+}
+.mockup-social .chat {
+  background: var(--p-primary); border-radius: 16px; padding: 20px;
+  color: #fff; display: flex; flex-direction: column; gap: 12px;
+  min-height: 230px; justify-content: space-between;
+}
+.mockup-social .chat-head { display: flex; align-items: center; gap: 12px; }
+.mockup-social .chat-head .pfp {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,.18);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.mockup-social .chat-head .pfp .logo-wrap { width: 68%; aspect-ratio: 1/1; }
+.mockup-social .chat-head h4 { margin: 0; font-family: var(--serif); font-size: 16px; font-weight: 400; }
+.mockup-social .chat-head .live { font-family: var(--mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; opacity: .8; }
+.mockup-social .bubbles { display: flex; flex-direction: column; gap: 8px; }
+.mockup-social .bubble {
+  font-size: 12px; background: rgba(255,255,255,.14);
+  padding: 8px 12px; border-radius: 10px 10px 10px 2px;
+  max-width: 82%; line-height: 1.4;
+}
+.mockup-social .bubble.me {
+  align-self: flex-end; background: var(--p-accent);
+  color: #14130F; border-radius: 10px 10px 2px 10px;
+}
+
+.mockup-footer { width: 100%; background: var(--p-primary); color: #fff; border-radius: 14px; padding: 36px 32px 26px; }
+.mockup-footer .row { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,.16); }
+.mockup-footer .brand-lockup { display: flex; align-items: center; gap: 14px; }
+.mockup-footer .brand-lockup .logo-wrap { width: 48px; height: 48px; }
+.mockup-footer .brand-lockup .name { font-family: var(--serif); font-size: 24px; line-height: 1; }
+.mockup-footer .brand-lockup .tag { font-family: var(--mono); font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; opacity: .7; margin-top: 4px; }
+.mockup-footer h5 { margin: 0 0 12px; font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; opacity: .55; font-weight: 500; }
+.mockup-footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+.mockup-footer ul li { font-size: 12.5px; opacity: .9; }
+.mockup-footer .bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 18px; }
+.mockup-footer .bottom .copy { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; opacity: .6; text-transform: uppercase; }
+.mockup-footer .bottom .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--p-accent); }
+.mockup-footer .bottom .socials { display: flex; gap: 10px; }
+.mockup-footer .bottom .socials span {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 10px;
+}
+
+/* ============================================================
+   COMPARE ALL
+   ============================================================ */
+.compare-all {
+  padding: 24px 32px 32px; display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px;
+}
+.compare-all .tile {
+  background: var(--ui-panel); border: 1px solid var(--ui-line);
+  border-radius: var(--r-md); overflow: hidden; cursor: pointer;
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+.compare-all .tile:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--ui-ink-soft); }
+.compare-all .tile.active { border-color: var(--ui-ink); box-shadow: 0 0 0 1px var(--ui-ink); }
+.compare-all .tile .preview { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; padding: 18px; }
+.compare-all .tile .preview .logo-wrap { width: 58%; aspect-ratio: 1/1; }
+.compare-all .tile .meta {
+  padding: 9px 12px 11px; border-top: 1px solid var(--ui-line-soft);
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px;
+}
+.compare-all .tile .meta .nm { font-size: 12px; font-weight: 500; line-height: 1.2; }
+.compare-all .tile .meta .cat { font-family: var(--mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--ui-ink-faint); margin-top: 2px; }
+.compare-all .tile .meta .strip { display: flex; height: 12px; width: 36px; border-radius: 3px; overflow: hidden; }
+.compare-all .tile .meta .strip div { flex: 1; }
+
+/* ============================================================
+   FAVORITES STRIP
+   ============================================================ */
+.favorites-strip {
+  border-top: 1px solid var(--ui-line); background: var(--ui-panel-soft);
+  padding: 18px 22px 22px;
+}
+.favorites-strip .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+.favorites-strip .head h3 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 18px; }
+.favorites-strip .head .hint { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ui-ink-faint); }
+.fav-list { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
+.fav-list .item {
+  background: var(--ui-panel); border: 1px solid var(--ui-line);
+  border-radius: var(--r-sm); aspect-ratio: 4/3;
+  display: flex; flex-direction: column; cursor: pointer;
+  overflow: hidden; position: relative; transition: border-color .12s;
+}
+.fav-list .item:hover { border-color: var(--ui-ink-soft); }
+.fav-list .item.empty {
+  border-style: dashed; cursor: default;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--ui-ink-faint);
+}
+.fav-list .item .prev { flex: 1; display: flex; align-items: center; justify-content: center; padding: 12px; }
+.fav-list .item .prev .logo-wrap { width: 60%; aspect-ratio: 1/1; }
+.fav-list .item .lbl {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .06em;
+  padding: 5px 8px; border-top: 1px solid var(--ui-line-soft);
+  color: var(--ui-ink-soft); text-transform: uppercase;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.fav-list .item.is-original { background: repeating-linear-gradient(45deg, var(--ui-panel) 0 6px, var(--ui-panel-soft) 6px 12px); }
+.fav-list .item .badge {
+  position: absolute; top: 6px; left: 6px;
+  font-family: var(--mono); font-size: 8px; letter-spacing: .12em; text-transform: uppercase;
+  padding: 2px 6px; background: var(--ui-ink); color: var(--ui-on-active);
+  border-radius: 3px;
+}
+
+#toast {
+  position: fixed; bottom: 24px; left: 50%;
+  transform: translateX(-50%) translateY(20px); opacity: 0;
+  background: var(--ui-ink); color: var(--ui-on-active);
+  padding: 9px 16px; border-radius: var(--r-sm);
+  font-family: var(--mono); font-size: 11px; letter-spacing: .04em;
+  pointer-events: none; transition: opacity .18s, transform .18s;
+  z-index: 100; box-shadow: var(--shadow-md);
+}
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 1100px) {
+  main.workspace { grid-template-columns: 280px 1fr; }
+  .fav-list { grid-template-columns: repeat(4, 1fr); }
+  .mockup-navbar .hero { grid-template-columns: 1fr; }
+  .mockup-navbar .hero-art { max-width: 280px; margin: 0 auto; }
+  .mockup-social { grid-template-columns: 1fr; }
+}
+@media (max-width: 820px) {
+  main.workspace { grid-template-columns: 1fr; }
+  aside.sidebar { position: static; max-height: 360px; }
+  .stage { padding: 20px; }
+  .stage-toolbar { padding: 12px; gap: 10px; }
+  .fav-list { grid-template-columns: repeat(2, 1fr); }
+  .stage-meta { grid-template-columns: 1fr; gap: 12px; }
+  .mockup-footer .row { grid-template-columns: 1fr 1fr; gap: 18px; }
+}
+
+aside.sidebar::-webkit-scrollbar { width: 8px; }
+aside.sidebar::-webkit-scrollbar-thumb { background: var(--ui-line); border-radius: 4px; }
+aside.sidebar::-webkit-scrollbar-thumb:hover { background: var(--ui-ink-faint); }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     PLACEHOLDER LOGO
+     ============================================================
+     5-color placeholder. Drag any .svg onto the stage to replace.
+     The app auto-detects every unique fill + stroke color and
+     turns each one into an editable slot.
+============================================================ -->
+<template id="logo-template">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240"
+       preserveAspectRatio="xMidYMid meet"
+       shape-rendering="geometricPrecision"
+       style="display:block;width:100%;height:100%;">
+    <rect x="40" y="40" width="160" height="160" rx="10" fill="#1A1A1A"/>
+    <circle cx="170" cy="80" r="58" fill="#D14F3C"/>
+    <polygon points="62,170 122,170 92,128" fill="#F5C45B"/>
+    <circle cx="80" cy="80" r="14" fill="#3B82F6"/>
+    <rect x="140" y="160" width="40" height="14" rx="3" fill="#10B981"/>
+  </svg>
+</template>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark"></span>
+      <h1>Recolor Lab</h1>
+      <span class="sub">·&nbsp;&nbsp;svg color studio</span>
+    </div>
+    <div class="spacer"></div>
+    <div class="toolset">
+      <div class="seg" role="group" aria-label="Stage view">
+        <button data-stage-mode="single"  aria-pressed="true">Single</button>
+        <button data-stage-mode="compare" aria-pressed="false">Compare All</button>
+      </div>
+      <button class="icon-btn" id="btn-upload" title="Upload SVG">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 11V2m0 0L5 5m3-3l3 3M2 11v3h12v-3"/></svg>
+        Upload SVG
+      </button>
+      <input type="file" id="file-input" accept=".svg,image/svg+xml" style="display:none">
+      <button class="icon-btn" id="btn-random" title="Randomize all colors (R)">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h3l8 8h3M2 12h3l3-3M11 7l2-2-2-2M11 13l2-2-2-2"/></svg>
+        Random
+      </button>
+      <button class="icon-btn" id="btn-share" title="Copy share link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="4" cy="8" r="2"/><circle cx="12" cy="3.5" r="2"/><circle cx="12" cy="12.5" r="2"/><path d="M5.7 7.1l4.6-2.7M5.7 8.9l4.6 2.7"/></svg>
+        Share
+      </button>
+      <button class="icon-btn" id="btn-export-svg" title="Export SVG">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1v9m0 0L5 7m3 3l3-3M2 12v2h12v-2"/></svg>
+        SVG
+      </button>
+      <button class="icon-btn" id="btn-export-png" title="Export PNG">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1v9m0 0L5 7m3 3l3-3M2 12v2h12v-2"/></svg>
+        PNG
+      </button>
+      <button class="icon-btn icon-only" id="btn-ui-theme" title="Toggle interface theme">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 3.2A5 5 0 1 0 12.8 11 6 6 0 0 1 11 3.2z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="workspace">
+
+    <aside class="sidebar">
+
+      <!-- Editable color slots -->
+      <div class="section">
+        <div class="section-header">
+          <span class="eyebrow">Colors · <span id="slot-count" class="num">0</span></span>
+          <div class="actions">
+            <button class="tiny-btn" id="btn-reset-all" title="Reset all colors to original">Reset all</button>
+          </div>
+        </div>
+        <div id="color-slots"></div>
+        <div class="save-palette-row">
+          <input id="palette-name-input" type="text" placeholder="Name this palette…" maxlength="40">
+          <button id="btn-save-palette">Save</button>
+        </div>
+      </div>
+
+      <!-- Saved palettes (user) -->
+      <div class="section" id="saved-section">
+        <div class="section-header"><span class="eyebrow">Saved · <span id="saved-count" class="num">0</span></span></div>
+        <div id="saved-list" class="category" style="padding-top:0;"></div>
+      </div>
+
+      <!-- Preset palette library -->
+      <div class="section">
+        <div class="section-header"><span class="eyebrow">Presets · <span id="palette-count" class="num">18</span></span></div>
+        <div id="palette-list"></div>
+      </div>
+    </aside>
+
+    <section class="stage-area">
+
+      <div class="stage-toolbar">
+        <div class="group">
+          <span class="group-label">Mockup</span>
+          <div class="seg" id="mockup-tabs" role="group" aria-label="Mockup view">
+            <button data-mockup="plain"    aria-pressed="true">Plain</button>
+            <button data-mockup="navbar"   aria-pressed="false">Web</button>
+            <button data-mockup="appicons" aria-pressed="false">App&nbsp;Icon</button>
+            <button data-mockup="card"     aria-pressed="false">Card</button>
+            <button data-mockup="social"   aria-pressed="false">Social</button>
+            <button data-mockup="footer"   aria-pressed="false">Footer</button>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="group">
+          <span class="group-label">Stage&nbsp;BG</span>
+          <div class="seg" id="bg-tabs" role="group" aria-label="Stage background">
+            <button data-bg="light" aria-pressed="true">Light</button>
+            <button data-bg="gray"  aria-pressed="false">Gray</button>
+            <button data-bg="dark"  aria-pressed="false">Dark</button>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="group">
+          <button class="icon-btn" id="btn-copy-hex" title="Copy hex values">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="9" height="9" rx="1.5"/><path d="M3 11V3a1 1 0 0 1 1-1h7"/></svg>
+            Copy Hex
+          </button>
+        </div>
+      </div>
+
+      <div class="stage" id="stage">
+        <div class="stage-canvas" id="stage-canvas" data-bg="light">
+          <div id="mockup-host"></div>
+        </div>
+
+        <div class="stage-meta" id="stage-meta">
+          <div class="nav">
+            <button id="btn-prev" title="Previous palette (←)" aria-label="Previous">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+            </button>
+            <button id="btn-next" title="Next palette (→)" aria-label="Next">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l5 5-5 5"/></svg>
+            </button>
+          </div>
+          <div class="current-info">
+            <div class="swatches-lg" id="current-swatches"></div>
+            <div>
+              <h2 id="current-name">Custom</h2>
+              <div class="hexes" id="current-hexes"></div>
+            </div>
+          </div>
+          <span class="contrast-tag" id="contrast-light" data-level="">—</span>
+          <button class="fav-btn" id="btn-fav" aria-pressed="false" title="Favorite (F)">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" id="fav-icon"><path d="M8 2l1.8 4 4.2.4-3.2 3 1 4.2L8 11.4 4.2 13.6l1-4.2L2 6.4l4.2-.4z"/></svg>
+            <span id="fav-label">Favorite</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="compare-all" id="compare-all" hidden></div>
+
+      <div class="favorites-strip">
+        <div class="head">
+          <h3>Compare</h3>
+          <span class="hint" id="fav-counter">Original + current + 6 favorites</span>
+        </div>
+        <div class="fav-list" id="fav-list"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+
+  /* ============================================================
+     PRESET PALETTES — always 3 colors. Applied to the 3 largest
+     detected slots in the loaded SVG; other slots stay as-is.
+  ============================================================ */
+  const PRESETS = [
+    { name: 'Electric Indigo', cat: 'Modern Tech', colors: ['#4F46E5', '#06B6D4', '#F59E0B'] },
+    { name: 'Vapor',           cat: 'Modern Tech', colors: ['#7C3AED', '#EC4899', '#14B8A6'] },
+    { name: 'Carbon Lime',     cat: 'Modern Tech', colors: ['#18181B', '#84CC16', '#E4E4E7'] },
+    { name: 'Champagne Noir',  cat: 'Luxury',      colors: ['#16140F', '#C9A961', '#F2EADC'] },
+    { name: 'Bordeaux',        cat: 'Luxury',      colors: ['#2E1A2B', '#8B1A3A', '#D4A574'] },
+    { name: 'Emerald Salon',   cat: 'Luxury',      colors: ['#0F3D2E', '#C9A961', '#F2EADC'] },
+    { name: 'Trust Blue',      cat: 'Corporate',   colors: ['#003B7A', '#5A8CC9', '#E8EEF5'] },
+    { name: 'Slate Pro',       cat: 'Corporate',   colors: ['#1E293B', '#475569', '#CBD5E1'] },
+    { name: 'Heritage',        cat: 'Corporate',   colors: ['#2C3E50', '#C0392B', '#ECF0F1'] },
+    { name: 'Bubblegum',       cat: 'Playful',     colors: ['#FF6B9D', '#FFC857', '#4ECDC4'] },
+    { name: 'Citrus Pop',      cat: 'Playful',     colors: ['#E63946', '#FFB703', '#06D6A0'] },
+    { name: 'Tropic',          cat: 'Playful',     colors: ['#118AB2', '#FFD166', '#EF476F'] },
+    { name: 'Pure Mono',       cat: 'Mono / Contrast', colors: ['#000000', '#FFFFFF', '#A0A0A0'] },
+    { name: 'Newsprint',       cat: 'Mono / Contrast', colors: ['#111111', '#F5F0E8', '#D60000'] },
+    { name: 'Carbon White',    cat: 'Mono / Contrast', colors: ['#0A0A0A', '#E0E0E0', '#4A4A4A'] },
+    { name: 'Terracotta',      cat: 'Earthy',      colors: ['#A0522D', '#DEB887', '#4A5D23'] },
+    { name: 'Forest Floor',    cat: 'Earthy',      colors: ['#3D5A40', '#A68A64', '#E8DDB5'] },
+    { name: 'Desert Clay',     cat: 'Earthy',      colors: ['#C97D5D', '#E8C9A0', '#5A4A3F'] },
+  ];
+  const CATS = ['Modern Tech', 'Luxury', 'Corporate', 'Playful', 'Mono / Contrast', 'Earthy'];
+
+  /* ============================================================
+     STATE
+  ============================================================ */
+  const state = {
+    // SVG document the user is editing. Contains data-slot-id="N" markers.
+    svgDoc: null,            // parsed Document (live mutated)
+    originalSvgString: null, // pristine string for "Original" tile
+    // Slots discovered in the SVG
+    slots: [],
+    /*
+      Each slot = {
+        id: number,            // 0..N-1
+        kind: 'fill'|'stroke', // attribute we control
+        originalColor: '#hex', // value at load time
+        currentColor: '#hex',  // current value
+        area: number,          // approx total area (for sort order)
+      }
+    */
+    // UI state
+    mockup: 'plain', bg: 'light', stageMode: 'single', uiTheme: 'light',
+    // Library
+    savedPalettes: [],       // array of { id, name, colors: [hex,...] }
+    favorites: [],           // array of palette ids/names (strings)
+    activePaletteRef: null,  // 'preset:Name' | 'saved:id' | null (custom)
+  };
+
+  const LS_KEY = 'logo-recolor-lab/v2';
+
+  /* ============================================================
+     COLOR / CONTRAST UTILITIES
+  ============================================================ */
+  function normalizeHex(input) {
+    if (!input) return null;
+    let s = String(input).trim().toLowerCase();
+    if (s === 'none' || s === 'transparent' || s === 'currentcolor') return null;
+    if (s.startsWith('url(') || s.startsWith('var(')) return null;
+    // named colors → use canvas trick
+    if (!s.startsWith('#') && !s.startsWith('rgb')) {
+      const probe = document.createElement('canvas').getContext('2d');
+      try { probe.fillStyle = '#000'; probe.fillStyle = s; s = probe.fillStyle; }
+      catch (e) { return null; }
+    }
+    if (s.startsWith('rgb')) {
+      const m = s.match(/rgba?\(([^)]+)\)/);
+      if (!m) return null;
+      const parts = m[1].split(',').map(p => parseFloat(p.trim()));
+      const [r,g,b,a] = parts;
+      if (a === 0) return null;
+      return rgbToHex(Math.round(r), Math.round(g), Math.round(b));
+    }
+    if (s.startsWith('#')) {
+      let h = s.slice(1);
+      if (h.length === 3) h = h.split('').map(c => c+c).join('');
+      if (h.length === 8) h = h.slice(0,6); // drop alpha
+      if (!/^[0-9a-f]{6}$/.test(h)) return null;
+      return '#' + h.toUpperCase();
+    }
+    return null;
+  }
+  function hexToRgb(h) {
+    h = h.replace('#','');
+    if (h.length === 3) h = h.split('').map(c => c+c).join('');
+    return { r: parseInt(h.slice(0,2),16), g: parseInt(h.slice(2,4),16), b: parseInt(h.slice(4,6),16) };
+  }
+  function rgbToHex(r,g,b) {
+    const f = n => Math.max(0,Math.min(255, n|0)).toString(16).padStart(2,'0');
+    return ('#' + f(r) + f(g) + f(b)).toUpperCase();
+  }
+  function relLuminance(hex) {
+    const {r,g,b} = hexToRgb(hex);
+    const f = v => { v/=255; return v <= 0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055, 2.4); };
+    return 0.2126*f(r) + 0.7152*f(g) + 0.0722*f(b);
+  }
+  function contrastRatio(a, b) {
+    const la = relLuminance(a), lb = relLuminance(b);
+    const [hi, lo] = la > lb ? [la, lb] : [lb, la];
+    return (hi + 0.05) / (lo + 0.05);
+  }
+  function contrastLevel(r) { return r >= 7 ? 'AAA' : r >= 4.5 ? 'AA' : 'low'; }
+  function hslToHex(h, s, l) {
+    s /= 100; l /= 100;
+    const k = n => (n + h / 30) % 12;
+    const a = s * Math.min(l, 1 - l);
+    const f = n => Math.round(255 * (l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)))));
+    return rgbToHex(f(0), f(8), f(4));
+  }
+  function slugify(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+
+  /* ============================================================
+     SVG PARSING — detect every editable color slot
+     Each unique (kind, color) becomes a slot; matching elements
+     get data-slot-id="N" + data-slot-kind="fill|stroke".
+  ============================================================ */
+  // Parse "rgb(r,g,b)" / "rgba(r,g,b,a)" / "#hex" / named to "#HHHHHH" or null
+  function normalizeComputed(val) {
+    if (!val) return null;
+    const v = String(val).trim().toLowerCase();
+    if (!v || v === 'none' || v === 'transparent' || v === 'currentcolor') return null;
+    if (v.startsWith('url(') || v.startsWith('var(')) return null;
+    const m = v.match(/rgba?\(([^)]+)\)/);
+    if (m) {
+      const parts = m[1].split(/[,\s/]+/).map(p => parseFloat(p));
+      if (parts[3] === 0) return null;
+      return rgbToHex(parts[0]|0, parts[1]|0, parts[2]|0);
+    }
+    return normalizeHex(v);
+  }
+
+  // Robust slot detection: mount SVG in real HTML DOM, use getComputedStyle
+  // (resolves inline style, <style> classes, and parent inheritance).
+  function parseAndDetectSlots(svgString) {
+    const parser = new DOMParser();
+    const probeDoc = parser.parseFromString(svgString, 'image/svg+xml');
+    if (probeDoc.querySelector('parsererror')) throw new Error('SVG parse error');
+    if (!probeDoc.querySelector('svg')) throw new Error('No <svg>');
+
+    // Mount in HTML so computed styles + getBBox work
+    const host = document.createElement('div');
+    host.setAttribute('aria-hidden', 'true');
+    host.style.cssText = 'position:absolute;left:-99999px;top:-99999px;width:800px;height:800px;opacity:0;pointer-events:none;';
+    host.innerHTML = svgString;
+    document.body.appendChild(host);
+    const liveSvg = host.querySelector('svg');
+    if (!liveSvg) { document.body.removeChild(host); throw new Error('No <svg>'); }
+
+    const SEL = 'path,rect,circle,ellipse,polygon,polyline,line,text,tspan';
+    const liveNodes = Array.from(liveSvg.querySelectorAll(SEL));
+
+    const buckets = new Map(); // key 'fill|#HEX' -> {kind, hex, indices, area}
+    liveNodes.forEach((el, i) => {
+      const cs = getComputedStyle(el);
+      let area = 1;
+      try { const bb = el.getBBox(); area = Math.max(1, bb.width * bb.height); } catch(e){}
+
+      const fill = normalizeComputed(cs.fill);
+      if (fill) {
+        const key = 'fill|' + fill;
+        const r = buckets.get(key) || { kind: 'fill', hex: fill, indices: [], area: 0 };
+        r.indices.push(i); r.area += area; buckets.set(key, r);
+      }
+      const stroke = normalizeComputed(cs.stroke);
+      const sw = parseFloat(cs.strokeWidth) || 0;
+      if (stroke && sw > 0) {
+        const key = 'stroke|' + stroke;
+        const r = buckets.get(key) || { kind: 'stroke', hex: stroke, indices: [], area: 0 };
+        r.indices.push(i); r.area += area; buckets.set(key, r);
+      }
+    });
+    document.body.removeChild(host);
+
+    // Build a fresh doc to tag — keep pristine source for "Original"
+    const doc = parser.parseFromString(svgString, 'image/svg+xml');
+    const svgEl = doc.querySelector('svg');
+    const finalNodes = Array.from(svgEl.querySelectorAll(SEL));
+
+    const sorted = [...buckets.values()].sort((a,b) => b.area - a.area).slice(0, 12);
+    const slots = sorted.map((rec, slotId) => {
+      rec.indices.forEach(idx => {
+        const el = finalNodes[idx]; if (!el) return;
+        // An element can carry BOTH a fill slot and stroke slot — store list
+        const cur = el.getAttribute('data-slots') || '';
+        const tok = slotId + ':' + rec.kind;
+        el.setAttribute('data-slots', (cur ? cur + ' ' : '') + tok);
+      });
+      return { id: slotId, kind: rec.kind, originalColor: rec.hex, currentColor: rec.hex, area: rec.area };
+    });
+
+    svgEl.setAttribute('preserveAspectRatio','xMidYMid meet');
+    svgEl.setAttribute('shape-rendering','geometricPrecision');
+    if (!svgEl.getAttribute('viewBox') && svgEl.getAttribute('width') && svgEl.getAttribute('height')) {
+      svgEl.setAttribute('viewBox', `0 0 ${svgEl.getAttribute('width')} ${svgEl.getAttribute('height')}`);
+    }
+    // Force responsive size via inline style (highest specificity)
+    const baseStyle = (svgEl.getAttribute('style') || '').replace(/(?:^|;)\s*(width|height)\s*:[^;]+/gi, '');
+    svgEl.setAttribute('style', (baseStyle ? baseStyle + ';' : '') + 'display:block;width:100%;height:100%;');
+
+    return { doc, slots };
+  }
+
+  // Merge an inline-style declaration (overrides class/inherited CSS).
+  function setInlineStyle(el, prop, value) {
+    const cur = (el.getAttribute('style') || '').split(';').map(s => s.trim()).filter(Boolean);
+    const filtered = cur.filter(d => d.split(':')[0].trim().toLowerCase() !== prop.toLowerCase());
+    filtered.push(`${prop}:${value}`);
+    el.setAttribute('style', filtered.join(';'));
+  }
+
+  // Apply current slot colors. Uses inline style so we beat any embedded
+  // <style> class rules; also sets the matching attribute for safety.
+  function applySlotsToSvg(svgEl, slots) {
+    const tagged = svgEl.querySelectorAll('[data-slots]');
+    tagged.forEach(el => {
+      el.getAttribute('data-slots').split(/\s+/).forEach(tok => {
+        const [idStr, kind] = tok.split(':');
+        const slot = slots[+idStr]; if (!slot || !kind) return;
+        setInlineStyle(el, kind, slot.currentColor);
+        el.setAttribute(kind, slot.currentColor);
+      });
+    });
+  }
+  function applySlotsToDoc(slots) {
+    if (!state.svgDoc) return;
+    applySlotsToSvg(state.svgDoc.querySelector('svg'), slots);
+  }
+
+  function serializeSvg() {
+    if (!state.svgDoc) return '';
+    return new XMLSerializer().serializeToString(state.svgDoc.querySelector('svg'));
+  }
+
+  // Preview an arbitrary palette WITHOUT mutating state.svgDoc.
+  function renderWithPalette(colorsOrNull) {
+    if (!state.svgDoc) return '';
+    const clone = state.svgDoc.cloneNode(true);
+    const svg = clone.querySelector('svg');
+    if (colorsOrNull && colorsOrNull.length) {
+      const tempSlots = state.slots.map((s, i) => ({
+        ...s,
+        currentColor: colorsOrNull[i] != null ? colorsOrNull[i] : s.currentColor,
+      }));
+      applySlotsToSvg(svg, tempSlots);
+    }
+    return new XMLSerializer().serializeToString(svg);
+  }
+  // Render the ORIGINAL pristine svg (untagged source) — for the "Original" tile
+  function renderOriginal() {
+    if (!state.originalSvgString) return '';
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(state.originalSvgString, 'image/svg+xml');
+    const svg = doc.querySelector('svg');
+    if (!svg) return state.originalSvgString;
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    svg.setAttribute('shape-rendering', 'geometricPrecision');
+    svg.setAttribute('style','display:block;width:100%;height:100%;');
+    return new XMLSerializer().serializeToString(svg);
+  }
+
+  function logoSlot() { return `<div class="logo-wrap">${serializeSvg()}</div>`; }
+  function logoSlotPreview(colors) { return `<div class="logo-wrap">${renderWithPalette(colors)}</div>`; }
+
+  /* ============================================================
+     MOCKUPS
+  ============================================================ */
+  function mockupHTML(kind) {
+    switch (kind) {
+      case 'plain':
+        return `<div class="mockup mockup-plain">${logoSlot()}</div>`;
+      case 'navbar':
+        return `
+          <div class="mockup mockup-navbar">
+            <div class="browser-bar"><i></i><i></i><i></i><span class="url">studio.example.com</span></div>
+            <div class="nav">
+              ${logoSlot()}
+              <ul><li>Work</li><li>Studio</li><li>Journal</li><li>Contact</li></ul>
+              <a class="cta">Get in touch</a>
+            </div>
+            <div class="hero">
+              <div>
+                <span class="pill">New · Spring Release</span>
+                <h3>A studio for <em>quiet</em> brands.</h3>
+                <p>We help thoughtful companies show up with clarity, warmth, and a mark you'll keep.</p>
+                <a class="cta" style="display:inline-block;text-decoration:none;">Start a project</a>
+              </div>
+              <div class="hero-art"><div class="ring"></div>${logoSlot()}</div>
+            </div>
+          </div>`;
+      case 'appicons':
+        return `
+          <div class="mockup mockup-appicons">
+            <div class="ic s1"><div class="tile">${logoSlot()}</div><span class="lbl">@1x · 56</span></div>
+            <div class="ic s2"><div class="tile">${logoSlot()}</div><span class="lbl">@2x · 88</span></div>
+            <div class="ic s3"><div class="tile">${logoSlot()}</div><span class="lbl">@3x · 120</span></div>
+            <div class="ic s4"><div class="tile">${logoSlot()}</div><span class="lbl">marketing · 160</span></div>
+          </div>`;
+      case 'card':
+        return `
+          <div class="mockup mockup-card-wrap">
+            <div class="mockup-card front">
+              <div>${logoSlot()}</div>
+              <div>
+                <p class="name">Alma Wren</p>
+                <p class="title">Founder · Studio</p>
+                <div class="bar"></div>
+              </div>
+              <div class="contact">alma@studio.example<br>+1 (415) 555&nbsp;0188</div>
+            </div>
+            <div class="mockup-card back">${logoSlot()}</div>
+          </div>`;
+      case 'social':
+        return `
+          <div class="mockup mockup-social">
+            <div class="card">
+              <div class="banner"></div>
+              <div class="body">
+                <div class="avatar">${logoSlot()}</div>
+                <h4 class="handle">Studio Wren</h4>
+                <div class="at">@studiowren</div>
+                <p class="bio">Identity & interface design for quiet brands. New work twice a season.</p>
+                <div class="stats"><span><b>248</b> Posts</span><span><b>14.2k</b> Followers</span></div>
+                <span class="follow">Follow</span>
+              </div>
+            </div>
+            <div class="chat">
+              <div class="chat-head">
+                <div class="pfp">${logoSlot()}</div>
+                <div><h4>Studio Wren</h4><div class="live">● Online</div></div>
+              </div>
+              <div class="bubbles">
+                <div class="bubble">Hey — we just shipped the new mark. Want a preview?</div>
+                <div class="bubble me">Yes please, send it over.</div>
+                <div class="bubble">Sending now.</div>
+              </div>
+            </div>
+          </div>`;
+      case 'footer':
+        return `
+          <div class="mockup mockup-footer">
+            <div class="row">
+              <div class="brand-lockup">
+                ${logoSlot()}
+                <div><div class="name">Studio Wren</div><div class="tag">Est. 2019 · San Francisco</div></div>
+              </div>
+              <div><h5>Studio</h5><ul><li>About</li><li>Approach</li><li>Team</li><li>Careers</li></ul></div>
+              <div><h5>Work</h5><ul><li>Identity</li><li>Web</li><li>Editorial</li><li>Archive</li></ul></div>
+              <div><h5>Contact</h5><ul><li>hello@studio.ex</li><li>+1 415 555 0188</li><li>Newsletter</li></ul></div>
+            </div>
+            <div class="bottom">
+              <span class="copy">© 2026 Studio Wren · All rights reserved</span>
+              <div class="socials"><span>IG</span><span>X</span><span>·</span><span class="dot" aria-hidden="true"></span></div>
+            </div>
+          </div>`;
+    }
+    return '';
+  }
+
+  function setMockupCSSVars(host) {
+    // Map slot 0/1/2 to --p-primary/secondary/accent for mockup chrome
+    const s = state.slots;
+    host.style.setProperty('--p-primary',   (s[0] && s[0].currentColor) || '#14130F');
+    host.style.setProperty('--p-secondary', (s[1] && s[1].currentColor) || '#6B675F');
+    host.style.setProperty('--p-accent',    (s[2] && s[2].currentColor) || '#D89E2A');
+  }
+
+  /* ============================================================
+     RENDERERS
+  ============================================================ */
+  function renderColorSlots() {
+    const host = document.getElementById('color-slots');
+    document.getElementById('slot-count').textContent = state.slots.length;
+
+    if (state.slots.length === 0) {
+      host.innerHTML = `<div class="no-slots">No colors detected.<br>Drop or upload an SVG to begin.</div>`;
+      return;
+    }
+
+    host.innerHTML = '';
+    state.slots.forEach(slot => {
+      const edited = slot.currentColor.toLowerCase() !== slot.originalColor.toLowerCase();
+      const row = document.createElement('div');
+      row.className = 'slot' + (edited ? ' edited' : '');
+      row.dataset.slot = slot.id;
+      row.innerHTML = `
+        <label class="swatch" style="background:${slot.currentColor}" title="Pick color">
+          <input type="color" value="${slot.currentColor}" data-slot="${slot.id}">
+        </label>
+        <div class="meta">
+          <div class="label-row">
+            <span>Slot ${slot.id + 1}</span>
+            <span class="kind ${slot.kind}">${slot.kind}</span>
+          </div>
+          <input class="hex-input" type="text" spellcheck="false" maxlength="9"
+                 value="${slot.currentColor}" data-slot="${slot.id}">
+        </div>
+        <button class="reset-one" data-slot="${slot.id}" title="Reset to ${slot.originalColor}">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8a5 5 0 1 0 5-5M3 3v5h5"/></svg>
+        </button>`;
+      host.appendChild(row);
+    });
+
+    // Wire events
+    host.querySelectorAll('input[type="color"]').forEach(inp => {
+      inp.addEventListener('input', e => {
+        const id = +e.target.dataset.slot;
+        setSlotColor(id, e.target.value.toUpperCase(), { fromPicker: true });
+      });
+    });
+    host.querySelectorAll('.hex-input').forEach(inp => {
+      inp.addEventListener('change', e => {
+        const id = +e.target.dataset.slot;
+        const hex = normalizeHex(e.target.value);
+        if (hex) setSlotColor(id, hex);
+        else { e.target.value = state.slots[id].currentColor; toast('Invalid hex'); }
+      });
+      inp.addEventListener('keydown', e => { if (e.key === 'Enter') e.target.blur(); });
+    });
+    host.querySelectorAll('.reset-one').forEach(b => {
+      b.addEventListener('click', () => {
+        const id = +b.dataset.slot;
+        setSlotColor(id, state.slots[id].originalColor);
+      });
+    });
+  }
+
+  function updateSlotUIInPlace(id) {
+    const slot = state.slots[id]; if (!slot) return;
+    const row = document.querySelector(`.slot[data-slot="${id}"]`);
+    if (!row) return;
+    const edited = slot.currentColor.toLowerCase() !== slot.originalColor.toLowerCase();
+    row.classList.toggle('edited', edited);
+    const sw = row.querySelector('.swatch');
+    if (sw) sw.style.background = slot.currentColor;
+    const cp = row.querySelector('input[type="color"]');
+    if (cp && cp.value.toUpperCase() !== slot.currentColor.toUpperCase()) cp.value = slot.currentColor;
+    const hx = row.querySelector('.hex-input');
+    if (hx && document.activeElement !== hx) hx.value = slot.currentColor;
+  }
+  function setSlotColor(id, hex, opts = {}) {
+    const slot = state.slots[id];
+    if (!slot) return;
+    slot.currentColor = hex;
+    state.activePaletteRef = null; // user manually edited → custom
+    applySlotsToDoc(state.slots);
+    renderStage();
+    // Update this slot in place so an open color picker stays open
+    updateSlotUIInPlace(id);
+    if (opts.fullRedraw) renderColorSlots();
+  }
+
+  function resetAllSlots() {
+    state.slots.forEach(s => { s.currentColor = s.originalColor; });
+    applySlotsToDoc(state.slots);
+    state.activePaletteRef = null;
+    renderColorSlots(); renderStage(); renderFavStrip(); renderPaletteList(); renderSavedList();
+    toast('Reset all colors');
+  }
+
+  function renderStage() {
+    const canvas = document.getElementById('stage-canvas');
+    canvas.dataset.bg = state.bg;
+
+    document.querySelectorAll('#mockup-tabs button').forEach(b =>
+      b.setAttribute('aria-pressed', b.dataset.mockup === state.mockup ? 'true' : 'false'));
+    document.querySelectorAll('#bg-tabs button').forEach(b =>
+      b.setAttribute('aria-pressed', b.dataset.bg === state.bg ? 'true' : 'false'));
+    document.querySelectorAll('[data-stage-mode]').forEach(b =>
+      b.setAttribute('aria-pressed', b.dataset.stageMode === state.stageMode ? 'true' : 'false'));
+
+    const stage = document.getElementById('stage');
+    const compare = document.getElementById('compare-all');
+    if (state.stageMode === 'compare') {
+      stage.hidden = true; compare.hidden = false; renderCompareAll();
+    } else {
+      stage.hidden = false; compare.hidden = true;
+      const target = document.getElementById('mockup-host');
+      target.outerHTML = `<div id="mockup-host">${mockupHTML(state.mockup)}</div>`;
+      const newHost = document.getElementById('mockup-host');
+      setMockupCSSVars(newHost);
+    }
+    renderStageMeta();
+  }
+
+  function currentColors() { return state.slots.map(s => s.currentColor); }
+  function currentName() {
+    if (!state.activePaletteRef) return 'Custom';
+    const [kind, key] = state.activePaletteRef.split(':');
+    if (kind === 'preset') return key;
+    const saved = state.savedPalettes.find(p => p.id === key);
+    return saved ? saved.name : 'Custom';
+  }
+  function currentIsFav() {
+    if (!state.activePaletteRef) return false;
+    return state.favorites.includes(state.activePaletteRef);
+  }
+
+  function renderStageMeta() {
+    document.getElementById('current-name').textContent = currentName();
+    const cols = currentColors();
+
+    const sw = document.getElementById('current-swatches');
+    sw.innerHTML = cols.map(c => `<div style="background:${c}"></div>`).join('');
+
+    const hexes = document.getElementById('current-hexes');
+    hexes.innerHTML = cols.map(c => `<span style="color:${c}">${c}</span>`).join('');
+
+    const primary = cols[0] || '#14130F';
+    const onLight = contrastRatio(primary, '#FFFFFF');
+    const onDark  = contrastRatio(primary, '#141416');
+    const best = Math.max(onLight, onDark);
+    const surface = onLight > onDark ? 'light' : 'dark';
+    const lvl = contrastLevel(best);
+    const tag = document.getElementById('contrast-light');
+    tag.dataset.level = lvl;
+    tag.textContent = `${lvl === 'low' ? 'LOW' : lvl} · ${best.toFixed(1)}:1 on ${surface}`;
+
+    const favBtn = document.getElementById('btn-fav');
+    const isFav = currentIsFav();
+    favBtn.setAttribute('aria-pressed', String(isFav));
+    favBtn.disabled = !state.activePaletteRef;
+    favBtn.style.opacity = state.activePaletteRef ? 1 : .4;
+    document.getElementById('fav-label').textContent = isFav ? 'Favorited' : 'Favorite';
+    document.getElementById('fav-icon').setAttribute('fill', isFav ? 'currentColor' : 'none');
+  }
+
+  function applyPaletteRef(ref) {
+    state.activePaletteRef = ref;
+    if (!ref) return;
+    const [kind, key] = ref.split(':');
+    let colors = null;
+    if (kind === 'preset') {
+      const p = PRESETS.find(p => p.name === key);
+      if (p) colors = p.colors.slice();
+    } else if (kind === 'saved') {
+      const p = state.savedPalettes.find(p => p.id === key);
+      if (p) colors = p.colors.slice();
+    }
+    if (!colors) return;
+    // Apply to first N slots (largest by area first)
+    colors.slice(0, state.slots.length).forEach((c, i) => { state.slots[i].currentColor = c; });
+    applySlotsToDoc(state.slots);
+  }
+
+  /* ---------- Palette list (presets) ---------- */
+  function renderPaletteList() {
+    const list = document.getElementById('palette-list');
+    list.innerHTML = '';
+    CATS.forEach(cat => {
+      const block = document.createElement('div');
+      block.className = 'category';
+      block.innerHTML = `<div class="category-label"><span>${cat}</span></div>`;
+      PRESETS.forEach((p) => {
+        if (p.cat !== cat) return;
+        const ref = 'preset:' + p.name;
+        const row = document.createElement('button');
+        row.className = 'palette-row';
+        if (state.activePaletteRef === ref) row.classList.add('active');
+        if (state.favorites.includes(ref)) row.classList.add('is-fav');
+        row.innerHTML = `
+          <div class="swatches">
+            <div style="background:${p.colors[0]}"></div>
+            <div style="background:${p.colors[1]}"></div>
+            <div style="background:${p.colors[2]}"></div>
+          </div>
+          <div>
+            <div class="palette-name">${p.name}</div>
+            <div class="palette-meta num">${p.colors.map(c => c.replace('#','')).join(' · ')}</div>
+          </div>
+          <div class="row-actions">
+            <button title="Toggle favorite" class="fav-toggle" data-ref="${ref}">
+              <svg class="fav-marker" viewBox="0 0 16 16" fill="${state.favorites.includes(ref) ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.5"><path d="M8 2l1.8 4 4.2.4-3.2 3 1 4.2L8 11.4 4.2 13.6l1-4.2L2 6.4l4.2-.4z"/></svg>
+            </button>
+          </div>`;
+        row.addEventListener('click', e => {
+          if (e.target.closest('.fav-toggle')) return;
+          applyPaletteRef(ref);
+          renderColorSlots(); renderStage(); renderPaletteList(); renderSavedList(); renderFavStrip(); updateURL();
+        });
+        row.querySelector('.fav-toggle').addEventListener('click', e => {
+          e.stopPropagation();
+          toggleFavoriteRef(ref);
+        });
+        block.appendChild(row);
+      });
+      list.appendChild(block);
+    });
+  }
+
+  /* ---------- Saved palettes (user) ---------- */
+  function renderSavedList() {
+    const list = document.getElementById('saved-list');
+    document.getElementById('saved-count').textContent = state.savedPalettes.length;
+    list.innerHTML = '';
+    if (state.savedPalettes.length === 0) {
+      list.innerHTML = `<div class="palette-row is-empty">No saved palettes yet. Edit colors and hit Save.</div>`;
+      return;
+    }
+    state.savedPalettes.forEach(p => {
+      const ref = 'saved:' + p.id;
+      const row = document.createElement('div');
+      row.className = 'palette-row';
+      if (state.activePaletteRef === ref) row.classList.add('active');
+      if (state.favorites.includes(ref)) row.classList.add('is-fav');
+      const swatches = p.colors.slice(0, 6).map(c => `<div style="background:${c}"></div>`).join('');
+      row.innerHTML = `
+        <div class="swatches">${swatches}</div>
+        <div>
+          <div class="palette-name">${p.name}</div>
+          <div class="palette-meta num">${p.colors.length} colors · ${p.colors.slice(0,3).map(c => c.replace('#','')).join(' · ')}</div>
+        </div>
+        <div class="row-actions">
+          <button class="fav-toggle" title="Toggle favorite" data-ref="${ref}">
+            <svg class="fav-marker" viewBox="0 0 16 16" fill="${state.favorites.includes(ref) ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.5"><path d="M8 2l1.8 4 4.2.4-3.2 3 1 4.2L8 11.4 4.2 13.6l1-4.2L2 6.4l4.2-.4z"/></svg>
+          </button>
+          <button class="del-toggle" title="Delete saved palette" data-id="${p.id}">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h10M6.5 5V3.5h3V5M5 5l.6 8.5h4.8L11 5"/></svg>
+          </button>
+        </div>`;
+      row.addEventListener('click', e => {
+        if (e.target.closest('.fav-toggle') || e.target.closest('.del-toggle')) return;
+        applyPaletteRef(ref);
+        renderColorSlots(); renderStage(); renderPaletteList(); renderSavedList(); renderFavStrip(); updateURL();
+      });
+      row.querySelector('.fav-toggle').addEventListener('click', e => {
+        e.stopPropagation();
+        toggleFavoriteRef(ref);
+      });
+      row.querySelector('.del-toggle').addEventListener('click', e => {
+        e.stopPropagation();
+        deleteSaved(p.id);
+      });
+      list.appendChild(row);
+    });
+  }
+
+  function savePalette() {
+    const input = document.getElementById('palette-name-input');
+    const rawName = input.value.trim();
+    if (state.slots.length === 0) { toast('No colors to save'); return; }
+    const colors = currentColors();
+    const name = rawName || `Palette ${state.savedPalettes.length + 1}`;
+    const id = 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+    state.savedPalettes.unshift({ id, name, colors });
+    input.value = '';
+    state.activePaletteRef = 'saved:' + id;
+    persist();
+    renderSavedList(); renderPaletteList(); renderStageMeta(); renderFavStrip();
+    toast('Saved "' + name + '"');
+  }
+
+  function deleteSaved(id) {
+    state.savedPalettes = state.savedPalettes.filter(p => p.id !== id);
+    // Drop favorite ref if present
+    state.favorites = state.favorites.filter(r => r !== 'saved:' + id);
+    if (state.activePaletteRef === 'saved:' + id) state.activePaletteRef = null;
+    persist();
+    renderSavedList(); renderStageMeta(); renderFavStrip();
+    toast('Deleted palette');
+  }
+
+  function toggleFavoriteRef(ref) {
+    const i = state.favorites.indexOf(ref);
+    if (i >= 0) { state.favorites.splice(i,1); toast('Removed from favorites'); }
+    else { state.favorites.unshift(ref); toast('Added to favorites'); }
+    persist();
+    renderStageMeta(); renderPaletteList(); renderSavedList(); renderFavStrip();
+  }
+  function toggleCurrentFavorite() {
+    if (!state.activePaletteRef) { toast('Save palette to favorite it'); return; }
+    toggleFavoriteRef(state.activePaletteRef);
+  }
+
+  /* ---------- Compare-all grid ---------- */
+  function allPaletteRefs() {
+    return [
+      ...state.savedPalettes.map(p => ({ ref: 'saved:' + p.id, name: p.name, cat: 'Saved', colors: p.colors })),
+      ...PRESETS.map(p => ({ ref: 'preset:' + p.name, name: p.name, cat: p.cat, colors: p.colors })),
+    ];
+  }
+  function renderCompareAll() {
+    const c = document.getElementById('compare-all');
+    c.innerHTML = '';
+    const bg = state.bg === 'dark' ? '#141416' : state.bg === 'gray' ? '#B5B2AB' : '#FFFFFF';
+    allPaletteRefs().forEach(p => {
+      const tile = document.createElement('div');
+      tile.className = 'tile' + (state.activePaletteRef === p.ref ? ' active' : '');
+      tile.innerHTML = `
+        <div class="preview" style="background:${bg}">
+          <div class="logo-wrap">${renderWithPalette(p.colors)}</div>
+        </div>
+        <div class="meta">
+          <div><div class="nm">${p.name}</div><div class="cat">${p.cat}</div></div>
+          <div class="strip">${p.colors.slice(0,4).map(c => `<div style="background:${c}"></div>`).join('')}</div>
+        </div>`;
+      tile.addEventListener('click', () => {
+        applyPaletteRef(p.ref);
+        state.stageMode = 'single';
+        renderColorSlots(); renderStage(); renderPaletteList(); renderSavedList(); renderFavStrip(); updateURL();
+      });
+      c.appendChild(tile);
+    });
+  }
+
+  /* ---------- Favorites strip ---------- */
+  function renderFavStrip() {
+    const list = document.getElementById('fav-list');
+    list.innerHTML = '';
+
+    // Original
+    const orig = document.createElement('div');
+    orig.className = 'item is-original';
+    orig.innerHTML = `
+      <span class="badge">Original</span>
+      <div class="prev"><div class="logo-wrap">${renderOriginal()}</div></div>
+      <div class="lbl">Source mark</div>`;
+    list.appendChild(orig);
+
+    // Current
+    const cur = document.createElement('div');
+    cur.className = 'item';
+    const primary = currentColors()[0] || '#14130F';
+    cur.innerHTML = `
+      <span class="badge" style="background:${primary};color:#fff">Current</span>
+      <div class="prev"><div class="logo-wrap">${serializeSvg()}</div></div>
+      <div class="lbl">${currentName()}</div>`;
+    list.appendChild(cur);
+
+    // Up to 6 favorites
+    const refs = allPaletteRefs();
+    const favItems = state.favorites
+      .map(r => refs.find(x => x.ref === r))
+      .filter(Boolean)
+      .slice(0, 6);
+
+    favItems.forEach(p => {
+      const it = document.createElement('div');
+      it.className = 'item';
+      it.innerHTML = `
+        <div class="prev"><div class="logo-wrap">${renderWithPalette(p.colors)}</div></div>
+        <div class="lbl">${p.name}</div>`;
+      it.addEventListener('click', () => {
+        applyPaletteRef(p.ref);
+        renderColorSlots(); renderStage(); renderPaletteList(); renderSavedList(); renderFavStrip(); updateURL();
+      });
+      list.appendChild(it);
+    });
+
+    for (let i = 0; i < 6 - favItems.length; i++) {
+      const empty = document.createElement('div');
+      empty.className = 'item empty';
+      empty.textContent = `Slot ${favItems.length + i + 1}`;
+      list.appendChild(empty);
+    }
+    document.getElementById('fav-counter').textContent = `${favItems.length} of 6 favorited`;
+  }
+
+  /* ============================================================
+     ACTIONS — next/prev navigates through preset+saved combined
+  ============================================================ */
+  function nextPalette() { stepPalette(1); }
+  function prevPalette() { stepPalette(-1); }
+  function stepPalette(delta) {
+    const list = allPaletteRefs();
+    if (list.length === 0) return;
+    let idx = list.findIndex(p => p.ref === state.activePaletteRef);
+    if (idx < 0) idx = -1;
+    idx = (idx + delta + list.length) % list.length;
+    applyPaletteRef(list[idx].ref);
+    renderColorSlots(); renderStage(); renderPaletteList(); renderSavedList(); renderFavStrip(); updateURL();
+  }
+
+  function randomize() {
+    if (state.slots.length === 0) { toast('Load an SVG first'); return; }
+    const baseHue = Math.floor(Math.random() * 360);
+    state.slots.forEach((slot, i) => {
+      const h = (baseHue + i * (360 / Math.max(state.slots.length, 3))) % 360;
+      const s = 50 + Math.random() * 35;
+      const l = i === 0 ? 25 + Math.random() * 20
+              : i === state.slots.length - 1 ? 65 + Math.random() * 15
+              : 45 + Math.random() * 25;
+      slot.currentColor = hslToHex(h, s, l);
+    });
+    state.activePaletteRef = null;
+    applySlotsToDoc(state.slots);
+    renderColorSlots(); renderStage(); renderFavStrip(); renderPaletteList(); renderSavedList();
+    toast('Randomized');
+  }
+
+  function copyHex() {
+    const text = currentColors().join(', ');
+    if (!text) { toast('No colors'); return; }
+    navigator.clipboard.writeText(text).then(() => toast('Copied ' + text), () => toast('Copy failed'));
+  }
+
+  function exportSVG() {
+    const svg = serializeSvg();
+    if (!svg) { toast('No SVG'); return; }
+    const blob = new Blob([svg], { type: 'image/svg+xml' });
+    downloadBlob(blob, `logo-${slugify(currentName())}.svg`);
+    toast('Downloaded SVG');
+  }
+  async function exportPNG() {
+    const svg = serializeSvg();
+    if (!svg) { toast('No SVG'); return; }
+    const size = 1024;
+    const img = new Image();
+    const svg64 = btoa(unescape(encodeURIComponent(svg)));
+    img.src = 'data:image/svg+xml;base64,' + svg64;
+    try { await img.decode(); } catch (e) { toast('PNG export failed'); return; }
+    const canvas = document.createElement('canvas');
+    canvas.width = size; canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = state.bg === 'dark' ? '#141416' : state.bg === 'gray' ? '#B5B2AB' : '#FFFFFF';
+    ctx.fillRect(0,0,size,size);
+    const pad = size * 0.12;
+    ctx.drawImage(img, pad, pad, size - 2*pad, size - 2*pad);
+    canvas.toBlob(b => { downloadBlob(b, `logo-${slugify(currentName())}.png`); toast('Downloaded PNG'); }, 'image/png');
+  }
+  function downloadBlob(blob, name) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function shareLink() {
+    updateURL();
+    navigator.clipboard.writeText(location.href).then(() => toast('Share link copied'), () => toast('Copy failed'));
+  }
+
+  function updateURL() {
+    const params = new URLSearchParams();
+    // Encode current slot colors as compact hex string
+    if (state.slots.length) params.set('c', state.slots.map(s => s.currentColor.replace('#','')).join('-'));
+    params.set('m', state.mockup);
+    params.set('bg', state.bg);
+    if (state.uiTheme === 'dark') params.set('ui', 'dark');
+    history.replaceState(null, '', '?' + params.toString());
+  }
+  function readURL() {
+    const params = new URLSearchParams(location.search);
+    const m = params.get('m');
+    if (m && ['plain','navbar','appicons','card','social','footer'].includes(m)) state.mockup = m;
+    const bg = params.get('bg');
+    if (bg && ['light','dark','gray'].includes(bg)) state.bg = bg;
+    if (params.get('ui') === 'dark') state.uiTheme = 'dark';
+    return params.get('c'); // colors string, applied after slots detected
+  }
+  function applyURLColors(cStr) {
+    if (!cStr) return;
+    const parts = cStr.split('-').filter(Boolean).map(p => '#' + p.toUpperCase());
+    parts.slice(0, state.slots.length).forEach((c, i) => {
+      if (/^#[0-9A-F]{6}$/.test(c)) state.slots[i].currentColor = c;
+    });
+    state.activePaletteRef = null;
+    applySlotsToDoc(state.slots);
+  }
+
+  function persist() {
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify({
+        savedPalettes: state.savedPalettes,
+        favorites: state.favorites,
+        uiTheme: state.uiTheme,
+      }));
+    } catch (e) {}
+  }
+  function restore() {
+    try {
+      const raw = localStorage.getItem(LS_KEY); if (!raw) return;
+      const d = JSON.parse(raw);
+      if (Array.isArray(d.savedPalettes)) state.savedPalettes = d.savedPalettes;
+      if (Array.isArray(d.favorites))     state.favorites = d.favorites;
+      if (d.uiTheme) state.uiTheme = d.uiTheme;
+    } catch (e) {}
+  }
+
+  function setUITheme(t) {
+    state.uiTheme = t;
+    document.documentElement.dataset.ui = t;
+    persist(); updateURL();
+  }
+
+  let toastTimer = null;
+  function toast(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('show'), 1600);
+  }
+
+  /* ============================================================
+     SVG LOADING
+  ============================================================ */
+  function loadSVGString(svgString, filename) {
+    let result;
+    try { result = parseAndDetectSlots(svgString); }
+    catch (e) { toast('Could not parse SVG'); return; }
+
+    state.originalSvgString = svgString;
+    state.svgDoc = result.doc;
+    state.slots = result.slots;
+    state.activePaletteRef = null;
+
+    if (state.slots.length === 0) {
+      toast('No editable colors found in SVG');
+    } else {
+      toast(`Loaded ${filename || 'SVG'} · ${state.slots.length} color${state.slots.length === 1 ? '' : 's'}`);
+    }
+
+    renderColorSlots(); renderStage(); renderPaletteList(); renderSavedList(); renderFavStrip();
+  }
+
+  function setupDropZone() {
+    const stage = document.getElementById('stage');
+    const prevent = e => { e.preventDefault(); e.stopPropagation(); };
+    ['dragenter','dragover'].forEach(t => stage.addEventListener(t, e => {
+      prevent(e);
+      if (e.dataTransfer.types.includes('Files')) stage.classList.add('dropping');
+    }));
+    ['dragleave','drop'].forEach(t => stage.addEventListener(t, e => { prevent(e); stage.classList.remove('dropping'); }));
+    stage.addEventListener('drop', async e => {
+      prevent(e); stage.classList.remove('dropping');
+      const file = e.dataTransfer.files[0]; if (!file) return;
+      if (!/svg/i.test(file.type) && !/\.svg$/i.test(file.name)) { toast('Drop an SVG file'); return; }
+      const txt = await file.text();
+      loadSVGString(txt, file.name);
+    });
+  }
+  function setupFileInput() {
+    const input = document.getElementById('file-input');
+    document.getElementById('btn-upload').addEventListener('click', () => input.click());
+    input.addEventListener('change', async () => {
+      const file = input.files[0]; if (!file) return;
+      const txt = await file.text();
+      loadSVGString(txt, file.name);
+      input.value = '';
+    });
+  }
+
+  /* ============================================================
+     EVENT WIRING
+  ============================================================ */
+  function wire() {
+    document.querySelectorAll('#mockup-tabs button').forEach(b =>
+      b.addEventListener('click', () => { state.mockup = b.dataset.mockup; renderStage(); updateURL(); }));
+    document.querySelectorAll('#bg-tabs button').forEach(b =>
+      b.addEventListener('click', () => { state.bg = b.dataset.bg; renderStage(); updateURL(); }));
+    document.querySelectorAll('[data-stage-mode]').forEach(b =>
+      b.addEventListener('click', () => { state.stageMode = b.dataset.stageMode; renderStage(); }));
+    document.getElementById('btn-prev').addEventListener('click', prevPalette);
+    document.getElementById('btn-next').addEventListener('click', nextPalette);
+    document.getElementById('btn-fav').addEventListener('click', toggleCurrentFavorite);
+    document.getElementById('btn-random').addEventListener('click', randomize);
+    document.getElementById('btn-copy-hex').addEventListener('click', copyHex);
+    document.getElementById('btn-export-svg').addEventListener('click', exportSVG);
+    document.getElementById('btn-export-png').addEventListener('click', exportPNG);
+    document.getElementById('btn-share').addEventListener('click', shareLink);
+    document.getElementById('btn-ui-theme').addEventListener('click', () =>
+      setUITheme(state.uiTheme === 'light' ? 'dark' : 'light'));
+    document.getElementById('btn-save-palette').addEventListener('click', savePalette);
+    document.getElementById('btn-reset-all').addEventListener('click', resetAllSlots);
+    document.getElementById('palette-name-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') savePalette();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.target.matches('input,textarea')) return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      switch (e.key) {
+        case 'ArrowRight': e.preventDefault(); nextPalette(); break;
+        case 'ArrowLeft':  e.preventDefault(); prevPalette(); break;
+        case 'f': case 'F': e.preventDefault(); toggleCurrentFavorite(); break;
+        case 'r': case 'R': e.preventDefault(); randomize(); break;
+        case 'c': case 'C':
+          e.preventDefault();
+          state.stageMode = state.stageMode === 'compare' ? 'single' : 'compare';
+          renderStage(); break;
+        case 's': case 'S':
+          if (state.slots.length) { e.preventDefault(); document.getElementById('palette-name-input').focus(); }
+          break;
+      }
+    });
+  }
+
+  /* ============================================================
+     INIT
+  ============================================================ */
+  function init() {
+    restore();
+    const urlColors = readURL();
+
+    document.documentElement.dataset.ui = state.uiTheme;
+    document.getElementById('palette-count').textContent = PRESETS.length;
+
+    // Load placeholder
+    const tpl = document.getElementById('logo-template');
+    const wrap = document.createElement('div');
+    wrap.appendChild(tpl.content.firstElementChild.cloneNode(true));
+    loadSVGString(wrap.innerHTML, 'placeholder.svg');
+
+    if (urlColors) { applyURLColors(urlColors); renderColorSlots(); renderStage(); renderFavStrip(); }
+
+    setupDropZone();
+    setupFileInput();
+    wire();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>
