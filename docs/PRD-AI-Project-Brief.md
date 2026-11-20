@@ -23,7 +23,7 @@ The tool demonstrates Grand Strand Digital's AI capabilities in real time, quali
 - **Intake**: Visitor email, optional business name, project goals/challenges, and explicit inquiry consent.
 - **Generation**: Real-time streaming output (Server-Sent Events) generating a 7-section structured brief.
 - **Visitor Actions**: Stop mid-stream, revise inputs, copy formatted Markdown, download `.md` file, or immediately proceed to book a Strategy Call.
-- **Handoff**: Directly connects the generated brief to Grand Strand Digital's strategy consultation booking (`contact.html`) and phone (`843-900-2032`).
+- **Handoff**: Directly connects the generated brief to Grand Strand Digital's strategy consultation booking (`contact.html`) and phone (`843-900-1976`).
 
 ---
 
@@ -59,7 +59,7 @@ The tool demonstrates Grand Strand Digital's AI capabilities in real time, quali
 
 ### Canonical Contact Details
 - **Website**: `https://grandstranddigital.com`
-- **Phone**: `843-900-2032`
+- **Phone**: `843-900-1976`
 - **Email**: `hello@grandstranddigital.com`
 - **Primary Next Step**: Book a Strategy Call via `/contact.html`
 
@@ -89,7 +89,7 @@ The tool demonstrates Grand Strand Digital's AI capabilities in real time, quali
    - Visitor can Download `project-brief.md` file.
    - Visitor can click "Revise" to edit inputs or "Start Over".
 6. **Handoff**:
-   - Clear call to action: "Ready to discuss this brief? Book Your Free Strategy Call" linking to `/contact.html` with pre-filled context, or call `843-900-2032`.
+   - Clear call to action: "Ready to discuss this brief? Book Your Free Strategy Call" linking to `/contact.html` with pre-filled context, or call `843-900-1976`.
 
 ---
 
@@ -113,7 +113,7 @@ The brief generation must adhere to concise Markdown (target 550–850 words) wi
    - *System Integration*
 5. **Phased Implementation Roadmap**: Discovery & Architecture Audit, Build & System Integration, Testing & Enablement Launch.
 6. **Discovery Questions**: 4–6 specific diagnostic questions to explore during the strategy call.
-7. **Next Step**: Actionable prompt to book the 30-minute strategy call via `/contact.html` or call `843-900-2032`.
+7. **Next Step**: Actionable prompt to book the 30-minute strategy call via `/contact.html` or call `843-900-1976`.
 
 ---
 
@@ -156,8 +156,8 @@ The brief generation must adhere to concise Markdown (target 550–850 words) wi
 ## 8. Acceptance Criteria & Release Gates
 
 - **AT-01**: `/project-brief.html` renders with correct brand styles, responsive layout (360px–1440px), and working navigation links.
-- **AT-02**: All 7 required sections stream properly and contain Grand Strand Digital services, Myrtle Beach context, and phone `843-900-2032`. No Capitol CoDesign, Sacramento, or Web Palm Beaches references appear.
+- **AT-02**: All 7 required sections stream properly and contain Grand Strand Digital services, Myrtle Beach context, and phone `843-900-1976`. No Capitol CoDesign, Sacramento, or Web Palm Beaches references appear.
 - **AT-03**: Form validation blocks empty inputs, invalid emails, unchecked consent, and triggers honeypot rejection without making LLM API calls.
 - **AT-04**: Copy to clipboard, Download Markdown (`project-brief.md`), Stop Generation, and Revise buttons operate smoothly.
-- **AT-05**: Error states (network timeout, rate limit, provider outage) display user-friendly fallback messaging offering direct phone booking at `843-900-2032`.
+- **AT-05**: Error states (network timeout, rate limit, provider outage) display user-friendly fallback messaging offering direct phone booking at `843-900-1976`.
 - **AT-06**: Navigation and footer links on all existing site pages (`index.html`, `services.html`, `solutions.html`, `process.html`, `clients.html`, `contact.html`) link to the new brief tool.

@@ -338,8 +338,8 @@
       if (!msg || /^Server responded with status|Failed to fetch|NetworkError|Load failed|Unexpected response/i.test(msg)) {
         msg = 'We could not generate your brief right now. Please try again in a moment.';
       }
-      if (msg.indexOf('843-900-2032') === -1) {
-        msg += ' If it keeps happening, call us at 843-900-2032.';
+      if (msg.indexOf('843-900-1976') === -1) {
+        msg += ' If it keeps happening, call us at 843-900-1976.';
       }
       setState('error', 'Could not generate brief');
       actionToolbar.style.display = 'none';
@@ -397,7 +397,7 @@
       `4. What is your preferred target launch date for having this live?\n\n`,
       `## 7. Next Step\n`,
       `Ready to discuss this brief and get an exact implementation plan?\n\n`,
-      `👉 **[Book Your Free 30-Minute Strategy Call](contact.html)** or call us directly at **843-900-2032**.\n`
+      `👉 **[Book Your Free 30-Minute Strategy Call](contact.html)** or call us directly at **843-900-1976**.\n`
     ];
 
     let i = 0;

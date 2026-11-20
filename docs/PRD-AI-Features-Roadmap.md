@@ -88,7 +88,7 @@ A real-time, streaming AI project brief generator (modeled on the Capitol CoDesi
 - Semantic search across all service pages, case studies, and resources powered by vector embeddings.
 
 #### 3.9 After-Hours AI Voice Assistant
-- Voice agent answering the Grand Strand Digital line (`843-900-2032`) after business hours, taking messages, answering basic FAQs, and texting booking links.
+- Voice agent answering the Grand Strand Digital line (`843-900-1976`) after business hours, taking messages, answering basic FAQs, and texting booking links.
 
 ---
 
@@ -113,4 +113,4 @@ The following analytics events are instrumented across the roadmap:
 - `brief_download`: Visitor downloads `.md` brief file.
 - `brief_cta_book`: Visitor clicks to book a strategy call from the brief page.
 - `contact_step_change`: Visitor advances steps in `contact.html`.
-- `phone_click`: Visitor clicks `tel:8439002032`.
+- `phone_click`: Visitor clicks `tel:8439001976`.

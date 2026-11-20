@@ -53,12 +53,12 @@ if (!filter_var($lead['email'], FILTER_VALIDATE_EMAIL)) {
 }
 
 if (!$quick && !gsd_verify_turnstile(gsd_line($data['turnstileToken'] ?? $data['cf-turnstile-response'] ?? '', 4096))) {
-    gsd_fail(400, 'Spam check failed. Please refresh the page and try again, or call 843-900-2032.');
+    gsd_fail(400, 'Spam check failed. Please refresh the page and try again, or call 843-900-1976.');
 }
 
 $limit = $quick ? 3 : (int)($config['contact_rate_limit_per_hour'] ?? 5);
 if (!gsd_rate_limit($quick ? 'contact-quick' : 'contact', $limit)) {
-    gsd_fail(429, 'Too many submissions from your connection. Please call us at 843-900-2032.');
+    gsd_fail(429, 'Too many submissions from your connection. Please call us at 843-900-1976.');
 }
 
 $received = date('Y-m-d H:i:s T');
@@ -100,7 +100,7 @@ $to     = $config['notification_email'] ?? 'hello@grandstranddigital.com';
 $mailed = gsd_mail($to, 'New strategy call request: ' . $lead['company'] . ' (' . $name . ')', $body, $lead['email']);
 
 if (!$mailed && !$stored) {
-    gsd_fail(500, 'We could not send your message. Please call us at 843-900-2032 or email hello@grandstranddigital.com.');
+    gsd_fail(500, 'We could not send your message. Please call us at 843-900-1976 or email hello@grandstranddigital.com.');
 }
 
 gsd_json(200, ['ok' => true]);

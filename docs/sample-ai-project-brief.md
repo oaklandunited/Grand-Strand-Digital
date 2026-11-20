@@ -65,4 +65,4 @@
 ## 7. Next Step
 Ready to bring this project to life? 
 
-Schedule a focused 30-minute strategy call with Grand Strand Digital at **[grandstranddigital.com/contact.html](https://grandstranddigital.com/contact.html)** or call us directly at **843-900-2032**.
+Schedule a focused 30-minute strategy call with Grand Strand Digital at **[grandstranddigital.com/contact.html](https://grandstranddigital.com/contact.html)** or call us directly at **843-900-1976**.

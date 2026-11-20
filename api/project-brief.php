@@ -15,7 +15,7 @@ gsd_cors(['POST']);
 $config = gsd_config();
 
 if (empty($config['enabled'])) {
-    gsd_fail(503, 'The AI Project Brief tool is currently unavailable. Please contact us directly at 843-900-2032.');
+    gsd_fail(503, 'The AI Project Brief tool is currently unavailable. Please contact us directly at 843-900-1976.');
 }
 
 $data = gsd_input();
@@ -42,10 +42,10 @@ if (!$consent) {
     gsd_fail(400, 'Consent is required to generate a project brief and receive follow-up.');
 }
 if (!gsd_verify_turnstile($turnstile)) {
-    gsd_fail(400, 'Spam verification failed. Please refresh the page and try again, or call 843-900-2032.');
+    gsd_fail(400, 'Spam verification failed. Please refresh the page and try again, or call 843-900-1976.');
 }
 if (!gsd_rate_limit('brief', (int)($config['rate_limit_per_hour'] ?? 6))) {
-    gsd_fail(429, 'Rate limit exceeded. Please try again later or call 843-900-2032.');
+    gsd_fail(429, 'Rate limit exceeded. Please try again later or call 843-900-1976.');
 }
 
 // Load system prompt
@@ -89,7 +89,7 @@ if ($apiKey === '' || $apiKey === 'YOUR_OPENAI_API_KEY_HERE') {
         "3. Who on your team should receive immediate SMS/email alerts for high-value inquiries?\n",
         "4. What is your preferred timeline for having this capability live in production?\n\n",
         "## 7. Next Step\n\n",
-        "Schedule a 30-minute Strategy Call with Grand Strand Digital at **[grandstranddigital.com/contact.html](contact.html)** or call us directly at **843-900-2032**.\n",
+        "Schedule a 30-minute Strategy Call with Grand Strand Digital at **[grandstranddigital.com/contact.html](contact.html)** or call us directly at **843-900-1976**.\n",
     ];
     foreach ($demo as $chunk) {
         sendSseChunk($chunk);
@@ -173,7 +173,7 @@ curl_exec($ch);
 $curlErr = curl_errno($ch) ? curl_error($ch) : '';
 curl_close($ch);
 
-$genericError = 'We could not generate your brief right now. Please try again in a moment or call 843-900-2032.';
+$genericError = 'We could not generate your brief right now. Please try again in a moment or call 843-900-1976.';
 if ($curlErr !== '') {
     error_log('[gsd] OpenAI request failed: ' . $curlErr);
     sendSseError('upstream_unavailable', $genericError);
