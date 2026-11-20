@@ -17,14 +17,31 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Deploy via SSH/rsync to SiteGround
-        uses: easingthemes/ssh-deploy@v5.1.0
-        with:
-          SSH_PRIVATE_KEY: ${{ secrets.SITEGROUND_SSH_KEY }}
-          ARGS: "-rlgoDzvc -i"
-          SOURCE: "/"
-          REMOTE_HOST: ${{ secrets.SITEGROUND_HOST }}
-          REMOTE_USER: ${{ secrets.SITEGROUND_USERNAME }}
-          REMOTE_PORT: ${{ secrets.SITEGROUND_PORT || '18765' }}
+      - name: Prepare SSH key
+        env:
+          SSH_KEY: ${{ secrets.SITEGROUND_SSH_KEY }}
+          SSH_PASSPHRASE: ${{ secrets.SITEGROUND_SSH_PASSPHRASE }}
+          SSH_HOST: ${{ secrets.SITEGROUND_HOST }}
+          SSH_PORT: ${{ secrets.SITEGROUND_PORT || '18765' }}
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          # Remove the passphrase (SiteGround keys are always passphrase-protected)
+          ssh-keygen -p -P "$SSH_PASSPHRASE" -N "" -f ~/.ssh/id_deploy
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
+
+      - name: Deploy via rsync to SiteGround
+        env:
+          SSH_HOST: ${{ secrets.SITEGROUND_HOST }}
+          SSH_USER: ${{ secrets.SITEGROUND_USERNAME }}
+          SSH_PORT: ${{ secrets.SITEGROUND_PORT || '18765' }}
           TARGET: ${{ secrets.SITEGROUND_TARGET_PATH || '/home/customer/www/grandstranddigital.com/public_html/' }}
-          EXCLUDE: "/.git/, /.github/, /docs/, /php_errorlog, /api/config.php, /Default.html, /svg-logo-mockup-lab.html"
+        run: |
+          rsync -rlzvc \
+            --exclude '/.git/' --exclude '/.github/' --exclude '/docs/' \
+            --exclude '/php_errorlog' --exclude '/api/config.php' \
+            --exclude '/Default.html' --exclude '/svg-logo-mockup-lab.html' \
+            -e "ssh -i ~/.ssh/id_deploy -p $SSH_PORT" \
+            ./ "$SSH_USER@$SSH_HOST:$TARGET"
