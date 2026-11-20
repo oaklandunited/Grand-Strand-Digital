@@ -18,9 +18,10 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#0a1f3c">
 <script>document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="styles.css?v=20261120b">
+<script>/* theme: saved choice > OS preference > light. Runs before paint so there is no flash. */(function(){var t;try{t=localStorage.getItem('gsd-theme')}catch(e){}if(t!=='dark'&&t!=='light')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})();</script>
+<link rel="stylesheet" href="styles.css?v=20261120-theme">
 <style>
-.counter{font-family:var(--heading);font-size:2.8rem;font-weight:800;color:var(--accent);line-height:1}
+.counter{font-family:var(--heading);font-size:2.8rem;font-weight:800;color:var(--accent-ink);line-height:1}
 .counter-label{font-family:var(--heading);font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-top:.4rem}
 </style>
 <script type="application/ld+json">
@@ -114,7 +115,7 @@
 <!-- Nav -->
 <nav id="nav">
   <a href="index.html" class="nav-logo">
-    <img src="logo.png" alt="Grand Strand Digital" width="42" height="44" decoding="async">
+    <img src="logo.png" alt="" width="42" height="44" decoding="async"><span class="nav-wordmark"><span class="wm-name">Grand Strand</span><span class="wm-sub">Digital</span></span>
   </a>
   <div class="nav-links">
     <a href="services.html" class="active">Services</a>
@@ -158,11 +159,11 @@
           <h2 class="section-title">AI agents for Myrtle Beach businesses</h2>
           <p class="section-desc" style="margin-bottom:1.5rem">We build AI agents that handle the questions your staff answers fifty times a day: rates, hours, availability, pricing, directions. They work on your website, by text, and by phone, and hand anything complex to a person.</p>
           <ul style="list-style:none;margin-bottom:2rem">
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Guest and customer chat trained on your own policies</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Lead qualification that sends ready buyers straight to your phone</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Booking, rescheduling, and reminder automation</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Internal assistants that help seasonal hires get up to speed</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Web, SMS, email, and voice deployment</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Guest and customer chat trained on your own policies</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Lead qualification that sends ready buyers straight to your phone</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Booking, rescheduling, and reminder automation</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Internal assistants that help seasonal hires get up to speed</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Web, SMS, email, and voice deployment</li>
           </ul>
           <a href="contact.html" class="btn-primary">Discuss Your AI Agent</a>
         </div>
@@ -183,16 +184,16 @@
           <h2 class="section-title">Workflow automation that flexes with the season</h2>
           <p class="section-desc" style="margin-bottom:1.5rem">Peak season doubles the paperwork without doubling your office staff. We connect your tools so confirmations, follow-ups, invoices, and data entry happen automatically, then scale back down when things slow.</p>
           <ul style="list-style:none;margin-bottom:2rem">
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Booking confirmations and follow-up emails</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Document and form processing</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Invoicing and payment reminders</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> CRM updates and lead routing</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Custom integrations and webhooks</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Booking confirmations and follow-up emails</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Document and form processing</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Invoicing and payment reminders</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> CRM updates and lead routing</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Custom integrations and webhooks</li>
           </ul>
           <a href="contact.html" class="btn-primary">Automate Your Workflows</a>
         </div>
         <div style="background:var(--bg-alt);padding:2.5rem;border:1px solid var(--border)">
-          <h3 style="font-family:var(--heading);font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--tertiary);margin-bottom:1.5rem">What to Expect</h3>
+          <h3 style="font-family:var(--heading);font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--tertiary-ink);margin-bottom:1.5rem">What to Expect</h3>
           <p style="font-size:1rem;line-height:1.8;color:var(--text-secondary)">We measure hours spent and response times on your own processes before and after launch, so you see results in your numbers, not an industry average.</p>
         </div>
       </div>
@@ -241,11 +242,11 @@
           <h2 class="section-title">Web design in Myrtle Beach, built to rank and convert</h2>
           <p class="section-desc" style="margin-bottom:1.5rem">Your website is often the last stop before someone books, calls, or drives over. We build fast, mobile-first sites with online booking, chat, and local SEO built into the structure from day one.</p>
           <ul style="list-style:none;margin-bottom:2rem">
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> WordPress and custom development</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Online booking and reservation integrations</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Built-in AI chat</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Local SEO structure and schema markup</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Core Web Vitals and accessibility</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> WordPress and custom development</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Online booking and reservation integrations</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Built-in AI chat</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Local SEO structure and schema markup</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Core Web Vitals and accessibility</li>
           </ul>
           <a href="contact.html" class="btn-primary">Start Your Web Project</a>
         </div>
@@ -265,12 +266,12 @@
           <h2 class="section-title">Myrtle Beach SEO and local search</h2>
           <p class="section-desc" style="margin-bottom:1.5rem">Most Grand Strand customers find a business through Google Maps or a &ldquo;near me&rdquo; search. We focus on the local signals that decide those results, then add content that answers what your customers ask.</p>
           <ul style="list-style:none;margin-bottom:2rem">
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Keyword research for Grand Strand searches</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Google Business Profile setup and optimization</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Local citations and a review strategy</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Technical SEO: speed, schema, site structure</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Service and service-area pages</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Monthly reporting tied to calls and leads</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Keyword research for Grand Strand searches</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Google Business Profile setup and optimization</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Local citations and a review strategy</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Technical SEO: speed, schema, site structure</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Service and service-area pages</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Monthly reporting tied to calls and leads</li>
           </ul>
           <a href="contact.html" class="btn-primary">Get Your Free SEO Audit</a>
         </div>
@@ -290,11 +291,11 @@
           <h2 class="section-title">System integration for the tools you already use</h2>
           <p class="section-desc" style="margin-bottom:1.5rem">Your property management system, POS, CRM, and email platform should share data, not make you retype it. We connect them so information moves on its own.</p>
           <ul style="list-style:none;margin-bottom:2rem">
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> CRM integrations (HubSpot, Salesforce, and others)</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Payment and invoicing connections</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Email marketing sync</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Custom API work and webhooks</li>
-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Real-time data sync</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> CRM integrations (HubSpot, Salesforce, and others)</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Payment and invoicing connections</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Email marketing sync</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Custom API work and webhooks</li>
+            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent-ink);font-weight:700">&#10003;</span> Real-time data sync</li>
           </ul>
           <a href="contact.html" class="btn-primary">Connect Your Systems</a>
         </div>
@@ -356,6 +357,6 @@
   </div>
 </footer>
 
-<script src="shared.js?v=20261120c"></script>
+<script src="shared.js?v=20261120-theme"></script>
 </body>
 </html>

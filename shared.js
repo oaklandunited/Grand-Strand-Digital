@@ -1,4 +1,54 @@
 /* === GRAND STRAND DIGITAL — SHARED JS === */
+
+// --- Light / dark theme toggle ---
+// The <head> snippet has already set data-theme before first paint; this
+// adds the button, keeps aria-label in sync, and remembers the choice.
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  var KEY = 'gsd-theme';
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  var chosen = false; // explicit click this page view, kept even if storage fails
+
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'theme-btn';
+  btn.innerHTML =
+    '<svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>' +
+    '<svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+  var mobileToggle = nav.querySelector('.mobile-toggle');
+  nav.insertBefore(btn, mobileToggle || null);
+
+  function current() { return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'; }
+  function sync() {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    btn.setAttribute('aria-label', 'Switch to ' + next + ' theme');
+    btn.setAttribute('title', 'Switch to ' + next + ' theme');
+  }
+  function setTheme(t, persist) {
+    if (persist) chosen = true;
+    root.classList.add('theme-anim');
+    root.setAttribute('data-theme', t);
+    sync();
+    if (persist) { try { localStorage.setItem(KEY, t); } catch (e) {} }
+    setTimeout(function () { root.classList.remove('theme-anim'); }, 400);
+  }
+  btn.addEventListener('click', function () { setTheme(current() === 'dark' ? 'light' : 'dark', true); });
+
+  // Follow OS changes live, but only until the visitor picks a theme themselves
+  if (window.matchMedia) {
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    var onChange = function (e) {
+      if (chosen) return;
+      var saved = null; try { saved = localStorage.getItem(KEY); } catch (err) {}
+      if (saved !== 'dark' && saved !== 'light') setTheme(e.matches ? 'dark' : 'light', false);
+    };
+    if (mq.addEventListener) mq.addEventListener('change', onChange); else if (mq.addListener) mq.addListener(onChange);
+  }
+  sync();
+})();
+
 (function () {
   'use strict';
 

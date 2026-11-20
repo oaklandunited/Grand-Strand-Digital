@@ -17,6 +17,17 @@
   --tertiary:#1a5c7a;      /* Deeper cyan for headings/dark text */
   --border:rgba(0,0,0,0.08);
   --border-light:rgba(255,255,255,0.1);
+  /* Text-only variants of the brand colors. Fills (buttons, bars, gradients)
+     keep the raw brand values in both themes; text uses these so dark mode
+     can lift them to legible tints without repainting a single button. */
+  --accent-ink:var(--accent);
+  --tertiary-ink:var(--tertiary);
+  --secondary-ink:var(--secondary);
+  --accent-hover-ink:var(--accent-hover);
+  --surface:#ffffff;
+  --nav-bg:rgba(255,255,255,0.95);
+  --nav-bg-solid:rgba(255,255,255,.98);
+  --form-error:#8a1c16;
   --heading:'Montserrat',system-ui,sans-serif;
   --body:'Lato',system-ui,sans-serif;
 }
@@ -40,16 +51,16 @@ a{color:inherit;text-decoration:none}
 .bg-alt{background:var(--bg-alt)}
 
 /* === NAV === */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);transition:all .4s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);backdrop-filter:blur(12px);transition:all .4s}
 nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.08)}
 .nav-logo{display:flex;align-items:center;gap:.6rem}
 .nav-logo img{height:44px;width:auto}
 .nav-links{display:flex;gap:2rem;align-items:center}
 .nav-links a{font-family:var(--heading);font-size:.8rem;font-weight:600;color:var(--text-secondary);letter-spacing:.1em;text-transform:uppercase;transition:color .3s;position:relative}
-.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+.nav-links a:hover,.nav-links a.active{color:var(--accent-ink)}
 .nav-links a.active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--accent)}
-.nav-phone{font-family:var(--heading);font-size:.8rem;font-weight:700;color:var(--tertiary);letter-spacing:.05em;transition:color .3s}
-.nav-phone:hover{color:var(--accent)}
+.nav-phone{font-family:var(--heading);font-size:.8rem;font-weight:700;color:var(--tertiary-ink);letter-spacing:.05em;transition:color .3s}
+.nav-phone:hover{color:var(--accent-ink)}
 .nav-cta{background:var(--accent);color:var(--text-light)!important;padding:.7rem 1.5rem;font-family:var(--heading);font-weight:700;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;transition:all .3s;border:none}
 .nav-cta:hover{background:var(--accent-hover)!important;box-shadow:0 4px 15px rgba(232,53,44,.3)}
 .nav-cta.active::after{display:none}
@@ -65,9 +76,9 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.08)}
 
 /* === SECTION COMMON === */
 section{padding:6rem 0}
-.section-label{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--heading);font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.section-label{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--heading);font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:1rem}
 .section-label::before{content:'';width:24px;height:2px;background:var(--accent)}
-.section-title{font-family:var(--heading);font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.2;letter-spacing:.02em;text-transform:uppercase;font-weight:800;margin-bottom:1rem;color:var(--tertiary)}
+.section-title{font-family:var(--heading);font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.2;letter-spacing:.02em;text-transform:uppercase;font-weight:800;margin-bottom:1rem;color:var(--tertiary-ink)}
 .section-desc{color:var(--text-secondary);font-family:var(--body);font-size:1.05rem;line-height:1.8;max-width:560px}
 
 /* === PAGE HERO (inner pages) === */
@@ -93,16 +104,16 @@ section{padding:6rem 0}
 /* === TABS === */
 .tabs{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:3rem;overflow-x:auto}
 .tab-btn{padding:.85rem 1.5rem;font-family:var(--heading);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);background:none;border:none;cursor:pointer;transition:all .3s;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-2px}
-.tab-btn:hover{color:var(--accent)}
-.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-btn:hover{color:var(--accent-ink)}
+.tab-btn.active{color:var(--accent-ink);border-bottom-color:var(--accent)}
 .tab-panel{display:none;animation:tabFadeIn .4s ease;padding-top:2rem}
 .tab-panel.active{display:block}
 @keyframes tabFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 /* === ACCORDION === */
 .accordion-item{border-bottom:1px solid var(--border);margin-bottom:0}
-.accordion-header{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;font-family:var(--heading);font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--tertiary);cursor:pointer;transition:color .3s}
-.accordion-header:hover{color:var(--accent)}
+.accordion-header{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;font-family:var(--heading);font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--tertiary-ink);cursor:pointer;transition:color .3s}
+.accordion-header:hover{color:var(--accent-ink)}
 .accordion-icon{width:20px;height:20px;flex-shrink:0;position:relative}
 .accordion-icon::before,.accordion-icon::after{content:'';position:absolute;background:var(--text-muted);border-radius:2px;transition:all .3s}
 .accordion-icon::before{width:12px;height:2px;top:50%;left:50%;transform:translate(-50%,-50%)}
@@ -116,7 +127,7 @@ section{padding:6rem 0}
 .detail-card{padding:1.75rem;border:1px solid var(--border);background:var(--bg);transition:all .35s}
 .detail-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(0,0,0,.06)}
 .card-icon{font-size:1.6rem;margin-bottom:.75rem}
-.detail-card h3{font-family:var(--heading);font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--tertiary);margin-bottom:.4rem}
+.detail-card h3{font-family:var(--heading);font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--tertiary-ink);margin-bottom:.4rem}
 .detail-card p{font-size:.875rem;color:var(--text-secondary);line-height:1.7;font-family:var(--body)}
 
 /* === TIMELINE === */
@@ -126,12 +137,12 @@ section{padding:6rem 0}
 .timeline-dot{position:absolute;left:-3.35rem;top:.3rem;width:14px;height:14px;border-radius:0;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 3px var(--accent)}
 .timeline-content{padding:2rem;border:1px solid var(--border);background:var(--bg);transition:all .35s}
 .timeline-content:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(0,0,0,.06)}
-.timeline-step{font-family:var(--heading);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:.4rem}
-.timeline-content h3{font-family:var(--heading);font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--tertiary);margin-bottom:.6rem}
+.timeline-step{font-family:var(--heading);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent-ink);margin-bottom:.4rem}
+.timeline-content h3{font-family:var(--heading);font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--tertiary-ink);margin-bottom:.6rem}
 .timeline-content p{font-size:.95rem;color:var(--text-secondary);line-height:1.8;font-family:var(--body)}
 
 /* === COUNTERS === */
-.counter{font-family:var(--heading);font-size:2.8rem;font-weight:800;color:var(--accent);line-height:1}
+.counter{font-family:var(--heading);font-size:2.8rem;font-weight:800;color:var(--accent-ink);line-height:1}
 .counter-label{font-family:var(--heading);font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-top:.4rem}
 
 /* === TESTIMONIAL CARDS (masonry / clients page) === */
@@ -141,14 +152,14 @@ section{padding:6rem 0}
 .testimonial-card blockquote{font-family:var(--body);font-size:.95rem;line-height:1.8;color:var(--text-secondary);font-style:italic;margin-bottom:1rem}
 .testimonial-card .author{display:flex;align-items:center;gap:.75rem}
 .testimonial-card .avatar{width:38px;height:38px;background:var(--secondary);display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:700;font-size:.8rem;color:var(--text-light);flex-shrink:0}
-.testimonial-card .name{font-family:var(--heading);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tertiary)}
+.testimonial-card .name{font-family:var(--heading);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tertiary-ink)}
 .testimonial-card .role{font-size:.75rem;color:var(--text-muted);font-family:var(--body)}
 
 /* === FORM ELEMENTS === */
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
 .form-group{display:flex;flex-direction:column;gap:.5rem}
 .form-group.full-width{grid-column:1/-1}
-.form-group label{font-family:var(--heading);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tertiary)}
+.form-group label{font-family:var(--heading);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tertiary-ink)}
 .form-group input,.form-group textarea,.form-group select{padding:.8rem 1rem;border:2px solid var(--border);background:var(--bg);font-family:var(--body);font-size:.95rem;color:var(--text-primary);outline:none;transition:all .3s;width:100%;-webkit-appearance:none}
 .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--accent)}
 .form-group textarea{min-height:120px;resize:vertical}
@@ -177,7 +188,7 @@ footer{background:var(--bg-dark);padding:3.5rem 0 2rem;color:rgba(255,255,255,.6
 }
 @media(max-width:768px){
   .container{padding:0 1.25rem}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(255,255,255,.98);flex-direction:column;padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid var(--border);z-index:99}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--nav-bg-solid);flex-direction:column;padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid var(--border);z-index:99}
   .nav-links.show{display:flex}
   .mobile-toggle{display:block}
   .page-hero .container{padding-top:7rem;padding-bottom:3rem}
@@ -204,3 +215,93 @@ footer{background:var(--bg-dark);padding:3.5rem 0 2rem;color:rgba(255,255,255,.6
 /* Visible keyboard focus */
 a:focus-visible,button:focus-visible,[role="button"]:focus-visible,[role="tab"]:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .accordion-header{cursor:pointer}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIGHT / DARK THEME
+   Light is the original design and stays untouched: every token above
+   is the light value. Dark overrides the same tokens, so components
+   never need to know which theme is active. Ratios measured against
+   WCAG 2.1 on the dark page background (#0d2038). Body text AA+,
+   most pairs AAA.
+   ═══════════════════════════════════════════════════════════════ */
+html[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0d2038;              /* page, sampled toward the logo navy     */
+  --bg-alt:#11294a;          /* alternating bands                      */
+  --bg-ice:#183a5e;          /* icon tiles, tinted panels              */
+  --bg-dark:#06121f;         /* footer / deepest layer                 */
+  --surface:#11294a;
+  --text-primary:#e8eef4;    /* 14.1:1 */
+  --text-secondary:#b8c6d4;  /*  9.4:1 */
+  --text-muted:#94a6b8;      /*  6.6:1 */
+  --accent-ink:#ff7268;      /*  6.1:1  red chair, lifted for text      */
+  --tertiary-ink:#86d6ec;    /* 10.0:1  headings, cyan chair tint       */
+  --secondary-ink:#5ccbe6;   /*  8.7:1 */
+  --accent-hover-ink:#ffa29a;  /* 8.2:1+ hover text */
+  --border:rgba(255,255,255,0.1);
+  --nav-bg:rgba(13,32,56,0.92);
+  --nav-bg-solid:rgba(13,32,56,.98);
+  --form-error:#ffb3ad;
+}
+html[data-theme="dark"] nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.45)}
+html[data-theme="dark"] footer{border-top:1px solid var(--border)}
+html[data-theme="dark"] .btn-secondary:not(.light){color:var(--text-primary);border-color:rgba(255,255,255,.25)}
+html[data-theme="dark"] .btn-secondary:not(.light):hover{border-color:var(--text-primary)}
+html[data-theme="dark"] .service-card:hover,
+html[data-theme="dark"] .value-card:hover,
+html[data-theme="dark"] .industry-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.35)}
+/* Project brief status chips: the light-mode greens/ambers are too dark on navy */
+html[data-theme="dark"] .status-generating{color:#ffc35a}
+html[data-theme="dark"] .status-complete{color:#7ddc84;background:rgba(125,220,132,.12)}
+html[data-theme="dark"] .brief-toast{background:#183a5e}
+/* Smooth the switch itself, but only for color properties */
+/* Skipped entirely for visitors who ask the OS for reduced motion */
+@media (prefers-reduced-motion:no-preference){
+  html.theme-anim,html.theme-anim *,html.theme-anim *::before,html.theme-anim *::after{
+    transition:background-color .35s ease,color .35s ease,border-color .35s ease,fill .35s ease!important}
+}
+
+/* === THEME TOGGLE ===
+   Square to match the brand's zero-radius buttons and cards; outlined
+   like .btn-secondary; red on hover like every other GSD control. */
+.theme-btn{display:inline-grid;place-items:center;width:40px;height:40px;flex:none;margin-left:1.5rem;
+  background:transparent;border:2px solid var(--border);color:var(--tertiary-ink);cursor:pointer;
+  transition:border-color .3s,color .3s,transform .35s cubic-bezier(.22,.61,.36,1)}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent-ink);transform:rotate(-12deg)}
+.theme-btn svg{width:18px;height:18px}
+.theme-btn .i-sun{display:none}
+html[data-theme="dark"] .theme-btn{border-color:rgba(255,255,255,.22)}
+html[data-theme="dark"] .theme-btn .i-sun{display:block}
+html[data-theme="dark"] .theme-btn .i-moon{display:none}
+nav .nav-links{margin-left:auto}
+@media(max-width:768px){
+  .theme-btn{margin-left:auto;margin-right:.75rem;width:38px;height:38px}
+}
+@media print{.theme-btn{display:none}}
+
+/* === HEADER WORDMARK ===
+   Montserrat, the site's heading face, in two weights: the name heavy and
+   tight in deep teal, "Digital" light and widely tracked in chair red,
+   echoing the uppercase, letter-spaced section labels. */
+.nav-wordmark{display:flex;flex-direction:column;justify-content:center;font-family:var(--heading);text-transform:uppercase;line-height:1;white-space:nowrap}
+.wm-name{font-size:1.05rem;font-weight:800;letter-spacing:.05em;color:var(--tertiary-ink)}
+.wm-sub{font-size:.62rem;font-weight:600;letter-spacing:.56em;color:var(--accent-ink);margin-top:.32rem}
+.nav-logo:hover .wm-name{color:var(--accent-ink);transition:color .3s}
+.nav-logo{margin-right:2rem}
+.nav-links a{white-space:nowrap}
+@media(max-width:1400px){
+  nav{padding-left:1.5rem;padding-right:1.5rem}
+  .nav-logo{margin-right:1.25rem}
+  .nav-links{gap:1.1rem}
+  .nav-links a{letter-spacing:.08em}
+  .theme-btn{margin-left:1rem}
+}
+/* With the wordmark the full menu needs ~1220px; below that use the
+   hamburger menu (same rules as the 768px mobile menu). */
+@media(max-width:1219px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--nav-bg-solid);flex-direction:column;align-items:flex-start;padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid var(--border);z-index:99}
+  .nav-links.show{display:flex}
+  .mobile-toggle{display:block}
+  .theme-btn{margin-left:auto;margin-right:.75rem}
+}
+@media(max-width:380px){.wm-name{font-size:.92rem}.wm-sub{font-size:.56rem;letter-spacing:.5em}}
