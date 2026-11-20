@@ -1,0 +1,5 @@
+# Block direct web access to the AI prompt and config files.
+# PHP can still read them from disk.
+<FilesMatch "^(system-prompt\.txt|config\.php|config\.example\.php)$">
+    Require all denied
+</FilesMatch>
