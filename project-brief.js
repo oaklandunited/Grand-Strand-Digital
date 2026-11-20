@@ -238,7 +238,8 @@
       email: emailInput.value.trim(),
       goals: goalsInput.value.trim(),
       consent: consentInput.checked,
-      website_hp: honeypotInput ? honeypotInput.value : ''
+      website_hp: honeypotInput ? honeypotInput.value : '',
+      turnstileToken: (form.querySelector('[name="cf-turnstile-response"]') || {}).value || ''
     };
 
     try {
@@ -248,6 +249,8 @@
         body: JSON.stringify(payload),
         signal: abortController.signal
       });
+      // Turnstile tokens are single-use: request a fresh one for the next submit
+      if (window.turnstile) { try { window.turnstile.reset(); } catch (_) {} }
 
       if (!response.ok) {
         let errMessage = 'Server responded with status ' + response.status;
