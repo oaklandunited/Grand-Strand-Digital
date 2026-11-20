@@ -78,6 +78,33 @@ if (!$consent) {
     exit;
 }
 
+// Cloudflare Turnstile verification (enforced only when a secret key is configured)
+$turnstileSecret = $config['turnstile_secret_key'] ?? '';
+if (!empty($turnstileSecret)) {
+    $verified = false;
+    if (!empty($turnstile)) {
+        $vc = curl_init('https://challenges.cloudflare.com/turnstile/v0/siteverify');
+        curl_setopt($vc, CURLOPT_POST, true);
+        curl_setopt($vc, CURLOPT_POSTFIELDS, http_build_query([
+            'secret'   => $turnstileSecret,
+            'response' => $turnstile,
+            'remoteip' => $_SERVER['REMOTE_ADDR'] ?? ''
+        ]));
+        curl_setopt($vc, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($vc, CURLOPT_TIMEOUT, 10);
+        $vr = curl_exec($vc);
+        curl_close($vc);
+        $vj = $vr ? json_decode($vr, true) : null;
+        $verified = is_array($vj) && !empty($vj['success']);
+    }
+    if (!$verified) {
+        http_response_code(400);
+        header('Content-Type: application/json');
+        echo json_encode(['error' => true, 'message' => 'Spam verification failed. Please refresh the page and try again, or call 843-900-2032.']);
+        exit;
+    }
+}
+
 // Basic IP rate limiting
 $ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
 $ipHash = md5($ip . date('Y-m-d-H'));
