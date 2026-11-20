@@ -1,0 +1,1284 @@
+diff --git a/clients.html b/clients.html
+index 0a9a7c0..f47c3ad 100644
+--- a/clients.html
++++ b/clients.html
+@@ -298,7 +298,7 @@
+     <div class="footer-inner">
+       <div class="footer-brand">
+         <a href="index.html" class="nav-logo"><img src="logo.png" alt="Grand Strand Digital" width="42" height="44" decoding="async"></a>
+-        <p>AI consulting and web innovation for Grand Strand businesses. Based in the Grand Strand, serving clients who are ready to lead with technology.</p>
++        <p>AI consulting, automation, and web design for businesses from Wilmington to Pawleys Island. Serving the Grand Strand and clients nationwide.</p>
+         <a href="tel:8439001976" class="footer-phone">843-900-1976</a>
+       </div>
+       <div class="footer-links">
+diff --git a/contact.html b/contact.html
+index bade3eb..f1916bf 100644
+--- a/contact.html
++++ b/contact.html
+@@ -3,9 +3,10 @@
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-<title>Contact — Grand Strand Digital</title>
+-<meta name="description" content="Book a free AI strategy call with Grand Strand Digital. We'll identify the biggest AI opportunities for your Grand Strand business. No pressure, no jargon.">
+-<meta property="og:title" content="Contact — Grand Strand Digital">
++<title>Contact Us: Free AI Strategy Call | Grand Strand Digital</title>
++<meta name="description" content="Book a free 30-minute AI and web strategy call. Serving Myrtle Beach, Conway, North Myrtle Beach, and Wilmington. Call 843-900-1976.">
++<meta property="og:title" content="Contact Us: Free AI Strategy Call | Grand Strand Digital">
++<meta property="og:description" content="Book a free 30-minute AI and web strategy call. Serving Myrtle Beach, Conway, North Myrtle Beach, and Wilmington. Call 843-900-1976.">
+ <meta property="og:url" content="https://grandstranddigital.com/contact.html">
+ <link rel="canonical" href="https://grandstranddigital.com/contact.html">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+@@ -103,8 +104,8 @@
+   <div class="page-hero-overlay"></div>
+   <div class="container">
+     <div class="breadcrumb reveal"><a href="index.html">Home</a> / <span>Contact</span></div>
+-    <h1 class="reveal stagger-1">Let's Build Something <em>Extraordinary</em></h1>
+-    <p class="reveal stagger-2">Ready to explore what AI can do for your business? Fill out the form below or give Grand Strand Digital a call. We respond to every inquiry within 24 hours.</p>
++    <h1 class="reveal stagger-1">Book a free strategy call with <em>Grand Strand Digital</em></h1>
++    <p class="reveal stagger-2">Tell us about your business and we'll come to the call with ideas. Fill out the form or call 843-900-1976. We reply to every inquiry within one business day.</p>
+   </div>
+ </section>
+ 
+@@ -115,16 +116,16 @@
+ 
+       <!-- Sidebar -->
+       <div class="contact-info reveal-left">
+-        <div class="section-label">Get In Touch</div>
+-        <h2 class="section-title" style="font-size:1.4rem">We'd love to hear from you</h2>
+-        <p class="section-desc" style="margin-bottom:1.5rem;font-size:.95rem">Whether you have a specific project in mind or just want to explore possibilities, Grand Strand Digital is here to help.</p>
++        <div class="section-label">Contact Details</div>
++        <h2 class="section-title" style="font-size:1.4rem">Get in touch</h2>
++        <p class="section-desc" style="margin-bottom:1.5rem;font-size:.95rem">Have a project in mind, or just a question about AI? Either is a fine place to start.</p>
+ 
+         <div class="contact-method">
+           <div class="cm-icon">&#128222;</div>
+           <div>
+             <h4>Phone</h4>
+             <p><a href="tel:8439001976">843-900-1976</a></p>
+-            <p style="font-size:.8rem;color:var(--text-muted);margin-top:.15rem">Mon-Fri 9am-6pm ET</p>
++            <p style="font-size:.8rem;color:var(--text-muted);margin-top:.15rem">Mon to Fri, 9am to 6pm ET</p>
+           </div>
+         </div>
+         <div class="contact-method">
+@@ -132,15 +133,15 @@
+           <div>
+             <h4>Email</h4>
+             <p><a href="mailto:hello@grandstranddigital.com">hello@grandstranddigital.com</a></p>
+-            <p style="font-size:.8rem;color:var(--text-muted);margin-top:.15rem">We respond within 24 hours</p>
++            <p style="font-size:.8rem;color:var(--text-muted);margin-top:.15rem">We reply within one business day</p>
+           </div>
+         </div>
+         <div class="contact-method">
+           <div class="cm-icon">&#128205;</div>
+           <div>
+-            <h4>Location</h4>
+-            <p>The Grand Strand, South Carolina</p>
+-            <p style="font-size:.8rem;color:var(--text-muted);margin-top:.15rem">Serving clients locally and nationwide</p>
++            <h4>Service Area</h4>
++            <p>Myrtle Beach and the Grand Strand</p>
++            <p style="font-size:.8rem;color:var(--text-muted);margin-top:.15rem">Wilmington to Pawleys Island, plus clients nationwide</p>
+           </div>
+         </div>
+         <div class="contact-method">
+@@ -148,7 +149,7 @@
+           <div>
+             <h4>Free Strategy Call</h4>
+             <p>30 minutes, no obligation</p>
+-            <p style="font-size:.8rem;color:var(--text-muted);margin-top:.15rem">We'll identify your biggest AI opportunities</p>
++            <p style="font-size:.8rem;color:var(--text-muted);margin-top:.15rem">Specific ideas for your business</p>
+           </div>
+         </div>
+       </div>
+@@ -156,7 +157,7 @@
+       <!-- Form -->
+       <div class="form-card reveal-right" id="contactFormCard">
+         <h2>Book Your Free Strategy Session</h2>
+-        <p class="form-subtitle">Tell us about your business and goals. The more detail you provide, the more prepared we'll be for your strategy call.</p>
++        <p class="form-subtitle">A few details about your business help us prepare. It takes about two minutes.</p>
+ 
+         <div class="form-progress">
+           <div class="fp-step active" data-step="1"><span class="fp-num">01</span>About You</div>
+@@ -245,7 +246,7 @@
+               <div class="form-group full-width">
+                 <label for="challenge">What's your biggest challenge right now? *</label>
+                 <textarea id="challenge" name="challenge" placeholder="Tell us about the problem you're trying to solve, the goal you want to achieve, or the process you'd like to automate..." required></textarea>
+-                <div class="input-hint">Be as specific as you can — it helps us prepare for your strategy call.</div>
++                <div class="input-hint">Be as specific as you can. It helps us prepare for your strategy call.</div>
+               </div>
+               <div class="form-group full-width">
+                 <label for="timeline">Ideal Timeline</label>
+@@ -293,7 +294,7 @@
+         <div class="success-message" id="successMessage" tabindex="-1" role="status">
+           <div class="success-icon">&#9989;</div>
+           <h3>Thank You!</h3>
+-          <p>Your inquiry has been received. Grand Strand Digital will get back to you within 24 hours to schedule your free strategy session.</p>
++          <p>Thanks! We'll be in touch within one business day to schedule your call.</p>
+           <p style="margin-top:1rem;font-size:.9rem">Can't wait? Call us now at <a href="tel:8439001976" style="color:var(--accent);font-weight:700">843-900-1976</a></p>
+         </div>
+       </div>
+@@ -306,9 +307,9 @@
+ <section class="bg-alt">
+   <div class="container">
+     <div class="section-center" style="margin-bottom:2rem">
+-      <div class="section-label reveal">Based In the Carolinas</div>
+-      <h2 class="section-title reveal stagger-1">Proudly serving the Grand Strand and beyond</h2>
+-      <p class="section-desc reveal stagger-2">Grand Strand Digital is based along the Grand Strand — but we work with clients across the Carolinas and nationwide. All services can be delivered remotely with the same quality and attention to detail.</p>
++      <div class="section-label reveal">Our Service Area</div>
++      <h2 class="section-title reveal stagger-1">Serving the Grand Strand and the Carolinas coast</h2>
++      <p class="section-desc reveal stagger-2">We work with businesses in Myrtle Beach, North Myrtle Beach, Surfside Beach, Murrells Inlet, Pawleys Island, Conway, and Little River, north through Brunswick County to Wilmington, and with clients nationwide by video call.</p>
+     </div>
+     <div class="reveal stagger-3" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem;text-align:center">
+       <div style="padding:1.5rem;border:1px solid var(--border);background:var(--bg)">
+@@ -337,7 +338,7 @@
+     <div class="footer-inner">
+       <div class="footer-brand">
+         <a href="index.html" class="nav-logo"><img src="logo.png" alt="Grand Strand Digital" width="42" height="44" decoding="async"></a>
+-        <p>AI consulting and web innovation for Grand Strand businesses. Based in the Grand Strand, serving clients who are ready to lead with technology.</p>
++        <p>AI consulting, automation, and web design for businesses from Wilmington to Pawleys Island. Serving the Grand Strand and clients nationwide.</p>
+         <a href="tel:8439001976" class="footer-phone">843-900-1976</a>
+       </div>
+       <div class="footer-links">
+diff --git a/index.html b/index.html
+index 28dab43..1b82007 100644
+--- a/index.html
++++ b/index.html
+@@ -3,10 +3,10 @@
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-<title>Grand Strand Digital — AI Consulting & Digital Innovation</title>
+-<meta name="description" content="Grand Strand Digital provides AI consulting, custom AI agents, workflow automation, and web design for Grand Strand businesses. Based in Myrtle Beach, SC. Call 843-900-1976.">
+-<meta property="og:title" content="Grand Strand Digital — AI Consulting & Digital Innovation">
+-<meta property="og:description" content="Custom AI agents, workflow automation, and AI-powered websites for Grand Strand businesses ready to lead with technology.">
++<title>Myrtle Beach AI Consulting &amp; Web Design | Grand Strand Digital</title>
++<meta name="description" content="AI consulting, automation, and web design for Myrtle Beach and Grand Strand businesses, from hotels and rentals to home services. Free strategy call.">
++<meta property="og:title" content="AI Consulting &amp; Web Design for Grand Strand Businesses">
++<meta property="og:description" content="AI consulting, automation, and web design for Myrtle Beach and Grand Strand businesses, from hotels and rentals to home services. Free strategy call.">
+ <meta property="og:url" content="https://grandstranddigital.com">
+ <meta property="og:type" content="website">
+ <link rel="canonical" href="https://grandstranddigital.com/">
+@@ -126,7 +126,7 @@
+   "url": "https://grandstranddigital.com/",
+   "logo": "https://grandstranddigital.com/logo.png",
+   "image": "https://grandstranddigital.com/logo.png",
+-  "description": "AI consulting, custom AI agents, workflow automation, and AI-powered web design for Grand Strand businesses.",
++  "description": "AI consulting, AI agents, workflow automation, web design, and local SEO for businesses in Myrtle Beach and along the Grand Strand, from Wilmington to Pawleys Island.",
+   "telephone": "+1-843-900-1976",
+   "email": "hello@grandstranddigital.com",
+   "address": {
+@@ -136,12 +136,68 @@
+     "addressCountry": "US"
+   },
+   "areaServed": [
+-    {"@type": "City", "name": "Myrtle Beach"},
+-    {"@type": "AdministrativeArea", "name": "Grand Strand"},
+-    {"@type": "State", "name": "South Carolina"},
+-    {"@type": "State", "name": "North Carolina"}
++    {
++      "@type": "City",
++      "name": "Myrtle Beach"
++    },
++    {
++      "@type": "City",
++      "name": "North Myrtle Beach"
++    },
++    {
++      "@type": "City",
++      "name": "Surfside Beach"
++    },
++    {
++      "@type": "City",
++      "name": "Murrells Inlet"
++    },
++    {
++      "@type": "City",
++      "name": "Pawleys Island"
++    },
++    {
++      "@type": "City",
++      "name": "Conway"
++    },
++    {
++      "@type": "City",
++      "name": "Little River"
++    },
++    {
++      "@type": "City",
++      "name": "Wilmington"
++    },
++    {
++      "@type": "AdministrativeArea",
++      "name": "Grand Strand"
++    },
++    {
++      "@type": "State",
++      "name": "South Carolina"
++    },
++    {
++      "@type": "State",
++      "name": "North Carolina"
++    }
++  ],
++  "knowsAbout": [
++    "Artificial intelligence consulting",
++    "AI agents",
++    "Workflow automation",
++    "Web design",
++    "Local SEO"
+   ],
+-  "knowsAbout": ["Artificial intelligence consulting", "AI agents", "Workflow automation", "Web design", "Local SEO"]
++  "founder": {
++    "@type": "Person",
++    "name": "Gregg Maynard",
++    "jobTitle": "Founder",
++    "description": "30 years in technology and the legal field.",
++    "sameAs": [
++      "https://webpalmbeaches.com/",
++      "https://capitolcodesign.com/"
++    ]
++  }
+ }
+ </script>
+ </head>
+@@ -173,8 +229,8 @@
+         <span class="pulse"></span>
+         Now Offering AI Strategy Sessions
+       </div>
+-      <h1 class="reveal stagger-1">AI consulting for businesses <em>ready to lead</em></h1>
+-      <p class="hero-sub reveal stagger-2">Grand Strand Digital helps Grand Strand businesses harness artificial intelligence — from custom AI agents and workflow automation to intelligent web experiences. Two decades of tech expertise, now supercharged with AI.</p>
++      <h1 class="reveal stagger-1">AI consulting and web design for <em>Grand Strand businesses</em></h1>
++      <p class="hero-sub reveal stagger-2">Grand Strand Digital helps businesses from Little River to Pawleys Island answer every inquiry, follow up on every lead, and run lean through the off-season, with AI agents, automation, and websites built to rank in Myrtle Beach search.</p>
+       <div class="hero-actions reveal stagger-3">
+         <a href="contact.html" class="btn-primary">
+           Book Free AI Strategy Call
+@@ -186,8 +242,8 @@
+       </div>
+       <div class="hero-stats reveal stagger-4">
+         <div class="stat">
+-          <span class="stat-number">20+</span>
+-          <span class="stat-label">Years Experience</span>
++          <span class="stat-number">30</span>
++          <span class="stat-label">Years in Tech &amp; Legal</span>
+         </div>
+         <div class="stat">
+           <span class="stat-number">100+</span>
+@@ -205,7 +261,7 @@
+ <!-- Trust Bar -->
+ <section style="padding:2.5rem 0;background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+   <div class="container">
+-    <p style="text-align:center;font-family:var(--heading);font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.75rem">Trusted By Local &amp; National Businesses</p>
++    <p style="text-align:center;font-family:var(--heading);font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.75rem">Working with businesses from Wilmington to Pawleys Island</p>
+     <div style="display:flex;justify-content:center;align-items:center;gap:3.5rem;flex-wrap:wrap">
+       <span style="font-family:var(--heading);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary)">Coastal Realty</span>
+       <span style="font-family:var(--heading);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary)">Ocean Eats</span>
+@@ -221,39 +277,39 @@
+   <div class="container">
+     <div class="services-header" style="margin-bottom:4rem">
+       <div class="section-label reveal">What We Do</div>
+-      <h2 class="section-title reveal stagger-1">AI-first services built on<br>decades of web expertise</h2>
+-      <p class="section-desc reveal stagger-2">Grand Strand Digital combines deep technical knowledge with cutting-edge AI to deliver solutions that transform how businesses operate, engage customers, and grow.</p>
++      <h2 class="section-title reveal stagger-1">What we build for<br>Myrtle Beach businesses</h2>
++      <p class="section-desc reveal stagger-2">Six services with one goal: fewer missed calls, less admin, and more customers finding you first. Every engagement is led by founder Gregg Maynard, who brings 30 years in technology and the legal field.</p>
+     </div>
+     <div class="services-grid">
+       <div class="service-card featured reveal">
+         <div class="service-icon">&#129302;</div>
+         <h3>AI Agent Development</h3>
+-        <p>Custom AI agents that handle customer support, lead qualification, scheduling, and internal workflows — working 24/7 so your team can focus on what matters.</p>
++        <p>AI agents that answer guest questions, qualify leads, and book appointments around the clock, including the evening rush in July when your front desk is slammed.</p>
+       </div>
+       <div class="service-card featured reveal stagger-1">
+         <div class="service-icon">&#9889;</div>
+         <h3>Workflow Automation</h3>
+-        <p>Intelligent automation that connects your tools, eliminates repetitive tasks, and streamlines operations. We build systems that think, not just execute.</p>
++        <p>Connect your booking system, CRM, and inbox so confirmations, follow-ups, and invoices go out on their own. Built to flex between peak season and the slow months.</p>
+       </div>
+       <div class="service-card featured reveal stagger-2">
+         <div class="service-icon">&#129504;</div>
+         <h3>AI Strategy Consulting</h3>
+-        <p>Not sure where AI fits? We audit your operations, identify high-impact opportunities, and build a roadmap tailored to your business goals and budget.</p>
++        <p>A plain-English review of where AI pays off in your business, ranked by impact and cost, with a roadmap you can start this month.</p>
+       </div>
+       <div class="service-card reveal stagger-3">
+         <div class="service-icon">&#127760;</div>
+-        <h3>AI-Powered Websites</h3>
+-        <p>WordPress and custom web solutions enhanced with AI — intelligent search, personalized content, chatbots, and dynamic user experiences that convert.</p>
++        <h3>Websites That Rank</h3>
++        <p>Fast, mobile-first WordPress and custom sites with online booking and chat built in, and <a href="services.html#tab-web">web design for Myrtle Beach</a> search built into the structure.</p>
+       </div>
+       <div class="service-card reveal stagger-4">
+         <div class="service-icon">&#128200;</div>
+-        <h3>SEO &amp; Content Strategy</h3>
+-        <p>AI-powered keyword research, content optimization, and local SEO built specifically for Myrtle Beach and Grand Strand businesses competing in search.</p>
++        <h3>Local SEO &amp; Content</h3>
++        <p><a href="services.html#tab-seo">Myrtle Beach SEO</a>: Google Business Profile, local citations, and content aimed at what Grand Strand customers actually search, from &ldquo;near me&rdquo; to North Myrtle Beach and Conway.</p>
+       </div>
+       <div class="service-card reveal stagger-5">
+         <div class="service-icon">&#128279;</div>
+         <h3>System Integration</h3>
+-        <p>Connect your CRM, email, social, and business tools through intelligent integrations. We make your entire tech stack work as one cohesive system.</p>
++        <p>Your booking, POS, CRM, and email tools working as one system, so customer data stops living in five places.</p>
+       </div>
+     </div>
+   </div>
+@@ -263,35 +319,35 @@
+ <section id="usecases">
+   <div class="container">
+     <div class="section-label reveal">AI In Action</div>
+-    <h2 class="section-title reveal stagger-1">Real results for<br>real businesses</h2>
+-    <p class="section-desc reveal stagger-2">AI isn't science fiction — it's practical, accessible, and transformative. Here's how our clients put it to work.</p>
++    <h2 class="section-title reveal stagger-1">How AI fits a<br>coastal Carolina business</h2>
++    <p class="section-desc reveal stagger-2">The Grand Strand runs on short booking windows, seasonal staff, and customers who expect an answer now. Here's where AI helps most.</p>
+     <div class="usecases-grid">
+       <div class="usecase reveal">
+         <div class="usecase-num">01</div>
+         <div>
+-          <h4>Automate Customer Support</h4>
+-          <p>Deploy intelligent chatbots that handle FAQs, book appointments, and escalate complex issues — reducing response time from hours to seconds.</p>
++          <h4>Answer Booking Questions After Hours</h4>
++          <p>An assistant trained on your rates, policies, and availability answers guests at any hour and passes anything it can't handle to your team.</p>
+         </div>
+       </div>
+       <div class="usecase reveal stagger-1">
+         <div class="usecase-num">02</div>
+         <div>
+-          <h4>Streamline Content Creation</h4>
+-          <p>AI-powered content pipelines that generate blog posts, social media, and email campaigns aligned with your brand voice and SEO strategy.</p>
++          <h4>Keep Up With Reviews in Peak Season</h4>
++          <p>Draft on-brand replies to Google and TripAdvisor reviews in minutes, so a busy summer doesn't leave your reputation unattended.</p>
+         </div>
+       </div>
+       <div class="usecase reveal stagger-2">
+         <div class="usecase-num">03</div>
+         <div>
+-          <h4>Intelligent Lead Scoring</h4>
+-          <p>AI agents that analyze visitor behavior, qualify leads automatically, and route hot prospects to your sales team in real time.</p>
++          <h4>Follow Up on Every Estimate</h4>
++          <p>For roofing, HVAC, and other home services, automatic follow-ups keep open estimates and storm-season inquiries from going cold.</p>
+         </div>
+       </div>
+       <div class="usecase reveal stagger-3">
+         <div class="usecase-num">04</div>
+         <div>
+-          <h4>Data-Driven Decision Making</h4>
+-          <p>Transform your business data into actionable insights with custom dashboards and AI-powered analytics that spot trends before your competitors do.</p>
++          <h4>See the Season Coming</h4>
++          <p>One dashboard for bookings, calls, and web traffic, so you can staff and spend ahead of demand instead of after it.</p>
+         </div>
+       </div>
+     </div>
+@@ -303,29 +359,29 @@
+   <div class="container">
+     <div style="text-align:center;max-width:600px;margin:0 auto">
+       <div class="section-label reveal" style="justify-content:center">How It Works</div>
+-      <h2 class="section-title reveal stagger-1">From first call<br>to full deployment</h2>
+-      <p class="section-desc reveal stagger-2" style="margin:0 auto">A proven process refined over 20+ years, now optimized for AI-era speed and precision.</p>
++      <h2 class="section-title reveal stagger-1">How a<br>project runs</h2>
++      <p class="section-desc reveal stagger-2" style="margin:0 auto">Four steps, a fixed price before work starts, and a working demo every week.</p>
+     </div>
+     <div class="process-steps">
+       <div class="step reveal">
+         <div class="step-marker">01</div>
+         <h4>Discovery</h4>
+-        <p>Free strategy call to understand your business, identify AI opportunities, and align on goals.</p>
++        <p>A free 30-minute call to learn how your business runs and where time and leads are slipping.</p>
+       </div>
+       <div class="step reveal stagger-1">
+         <div class="step-marker">02</div>
+         <h4>Blueprint</h4>
+-        <p>Custom roadmap with clear milestones, ROI projections, and technology recommendations.</p>
++        <p>A written plan with priorities, a timeline, and a fixed price.</p>
+       </div>
+       <div class="step reveal stagger-2">
+         <div class="step-marker">03</div>
+         <h4>Build & Test</h4>
+-        <p>Agile development with weekly demos. You see progress in real time, not just at launch.</p>
++        <p>Weekly demos of working software, not slide decks.</p>
+       </div>
+       <div class="step reveal stagger-3">
+         <div class="step-marker">04</div>
+-        <h4>Launch & Evolve</h4>
+-        <p>Go live with confidence. We monitor, optimize, and evolve your AI systems as your business grows.</p>
++        <h4>Launch & Improve</h4>
++        <p>Go live, train your team, then tune the system as the seasons change.</p>
+       </div>
+     </div>
+   </div>
+@@ -336,7 +392,7 @@
+   <div class="container">
+     <div style="text-align:center;max-width:600px;margin:0 auto">
+       <div class="section-label reveal" style="justify-content:center">Client Stories</div>
+-      <h2 class="section-title reveal stagger-1">Trusted by businesses<br>across the Grand Strand</h2>
++      <h2 class="section-title reveal stagger-1">Grand Strand businesses<br>we work with</h2>
+     </div>
+     <div class="testimonials-grid">
+       <div class="testimonial reveal">
+@@ -380,15 +436,15 @@
+ <section class="cta-section" id="cta">
+   <div class="container">
+     <div class="section-label reveal" style="justify-content:center">Get Started</div>
+-    <h2 class="section-title reveal stagger-1">Ready to see what AI<br>can do for your business?</h2>
+-    <p class="section-desc reveal stagger-2">Book a free 30-minute strategy session with Grand Strand Digital. We'll identify the biggest AI opportunities for your business — no pressure, no jargon, just clarity.</p>
++    <h2 class="section-title reveal stagger-1">Find out where AI<br>fits your business</h2>
++    <p class="section-desc reveal stagger-2">Book a free 30-minute strategy session. You'll leave with two or three specific places AI can save you time, whether or not we work together.</p>
+     <form class="cta-form reveal stagger-3" id="ctaForm" novalidate>
+       <input type="email" name="email" placeholder="Enter your email address" aria-label="Email address" autocomplete="email" required>
+       <input type="text" name="website_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0">
+       <button type="submit" class="btn-primary">Let's Talk</button>
+     </form>
+     <p id="ctaStatus" role="status" aria-live="polite" style="margin-top:.75rem;font-size:.9rem;color:var(--gold);min-height:1.2em"></p>
+-    <p class="reveal stagger-4" style="margin-top:1rem;font-size:.8rem;color:rgba(255,255,255,.4)">Or call Grand Strand Digital directly — <a href="tel:8439001976" style="color:var(--gold);font-weight:700">843-900-1976</a>. We're a local team who picks up the phone.</p>
++    <p class="reveal stagger-4" style="margin-top:1rem;font-size:.8rem;color:rgba(255,255,255,.4)">Or call Grand Strand Digital at <a href="tel:8439001976" style="color:var(--gold);font-weight:700">843-900-1976</a>.</p>
+   </div>
+ </section>
+ 
+@@ -400,7 +456,7 @@
+         <a href="index.html" class="nav-logo">
+           <img src="logo.png" alt="Grand Strand Digital" width="42" height="44" decoding="async">
+         </a>
+-        <p>AI consulting and web innovation for Grand Strand businesses. Based in the Grand Strand, serving clients who are ready to lead with technology.</p>
++        <p>AI consulting, automation, and web design for businesses from Wilmington to Pawleys Island. Serving the Grand Strand and clients nationwide.</p>
+         <a href="tel:8439001976" class="footer-phone">843-900-1976</a>
+       </div>
+       <div class="footer-links">
+diff --git a/process.html b/process.html
+index 0c15a0a..bc6b7de 100644
+--- a/process.html
++++ b/process.html
+@@ -3,9 +3,10 @@
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-<title>Our Process — Grand Strand Digital</title>
+-<meta name="description" content="Our proven 4-step process: Discovery, Blueprint, Build & Test, Launch & Evolve. See how Grand Strand Digital delivers AI projects on time and on budget.">
+-<meta property="og:title" content="Our Process — Grand Strand Digital">
++<title>Our AI &amp; Web Project Process | Grand Strand Digital</title>
++<meta name="description" content="How Grand Strand Digital runs AI and web projects for Myrtle Beach businesses: free call, fixed-price plan, weekly demos, launch, and support.">
++<meta property="og:title" content="Our AI &amp; Web Project Process | Grand Strand Digital">
++<meta property="og:description" content="How Grand Strand Digital runs AI and web projects for Myrtle Beach businesses: free call, fixed-price plan, weekly demos, launch, and support.">
+ <meta property="og:url" content="https://grandstranddigital.com/process.html">
+ <link rel="canonical" href="https://grandstranddigital.com/process.html">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+@@ -28,6 +29,62 @@
+ @media(max-width:1024px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+ @media(max-width:768px){.values-grid{grid-template-columns:1fr}.team-grid{grid-template-columns:1fr 1fr}}
+ </style>
++<script type="application/ld+json">
++{
++  "@context": "https://schema.org",
++  "@type": "FAQPage",
++  "mainEntity": [
++    {
++      "@type": "Question",
++      "name": "How long does a project take?",
++      "acceptedAnswer": {
++        "@type": "Answer",
++        "text": "It depends on scope. A focused AI chatbot can be live in 2 to 3 weeks. Larger automation systems usually take 6 to 10 weeks. You'll get a realistic timeline on your free strategy call."
++      }
++    },
++    {
++      "@type": "Question",
++      "name": "Do I need to be technical?",
++      "acceptedAnswer": {
++        "@type": "Answer",
++        "text": "No. We handle the technical work, explain everything in plain language, and train your team on any new tools. Clients range from owner-operators to companies with dozens of staff."
++      }
++    },
++    {
++      "@type": "Question",
++      "name": "How much does it cost?",
++      "acceptedAnswer": {
++        "@type": "Answer",
++        "text": "Packages start at $3,500, with larger engagements at $9,500 and $19,500. Every project gets a written, fixed-price proposal before any work begins."
++      }
++    },
++    {
++      "@type": "Question",
++      "name": "Will AI replace my staff?",
++      "acceptedAnswer": {
++        "@type": "Answer",
++        "text": "No. AI takes over repetitive tasks so your people can spend their time on customers and the work that needs a human."
++      }
++    },
++    {
++      "@type": "Question",
++      "name": "What happens after launch?",
++      "acceptedAnswer": {
++        "@type": "Answer",
++        "text": "We monitor and improve your systems over time. Monthly support plans keep them up to date as your business changes."
++      }
++    },
++    {
++      "@type": "Question",
++      "name": "Do you work with businesses outside Myrtle Beach?",
++      "acceptedAnswer": {
++        "@type": "Answer",
++        "text": "Yes. We work up and down the coast, from Wilmington and Brunswick County to Murrells Inlet and Pawleys Island, inland to Conway, and with clients nationwide by video call."
++      }
++    }
++  ]
++}
++</script>
+ </head>
+ <body>
+ 
+@@ -51,18 +108,18 @@
+   <div class="page-hero-overlay"></div>
+   <div class="container">
+     <div class="breadcrumb reveal"><a href="index.html">Home</a> / <span>Our Process</span></div>
+-    <h1 class="reveal stagger-1">From First Call to <em>Full Deployment</em></h1>
+-    <p class="reveal stagger-2">A proven process refined over 20+ years of web expertise, now optimized for AI-era speed and precision. Grand Strand Digital keeps you informed and involved at every step.</p>
++    <h1 class="reveal stagger-1">How we run AI and web projects for <em>Grand Strand businesses</em></h1>
++    <p class="reveal stagger-2">Six steps, a fixed price before work starts, and a working demo every week. You always know what's done, what's next, and what it costs.</p>
+   </div>
+ </section>
+ 
+ <!-- Counters Row -->
+ <section class="bg-alt" style="padding:3.5rem 0">
+   <div class="container counters-row" style="display:flex;justify-content:center;gap:5rem;flex-wrap:wrap;text-align:center">
+-    <div class="reveal"><div class="counter" data-count="20" data-suffix="+">0+</div><div class="counter-label">Years Experience</div></div>
+-    <div class="reveal stagger-1"><div class="counter" data-count="100" data-suffix="+">0+</div><div class="counter-label">Projects Delivered</div></div>
+-    <div class="reveal stagger-2"><div class="counter" data-count="98" data-suffix="%">0%</div><div class="counter-label">Client Satisfaction</div></div>
+-    <div class="reveal stagger-3"><div class="counter" data-count="14" data-suffix=" days">0 days</div><div class="counter-label">Avg. First Milestone</div></div>
++    <div class="reveal"><div class="counter" data-count="30">0</div><div class="counter-label">Years in Tech &amp; Legal</div></div>
++    <div class="reveal stagger-1"><div class="counter" data-count="6">0</div><div class="counter-label">Step Process</div></div>
++    <div class="reveal stagger-2"><div class="counter" data-count="30" data-suffix=" min">0 min</div><div class="counter-label">Free Strategy Call</div></div>
++    <div class="reveal stagger-3"><div class="counter" data-count="1" data-suffix=" day">0 day</div><div class="counter-label">Reply Time</div></div>
+   </div>
+ </section>
+ 
+@@ -71,8 +128,8 @@
+   <div class="container">
+     <div class="section-center" style="margin-bottom:3rem">
+       <div class="section-label reveal">Step by Step</div>
+-      <h2 class="section-title reveal stagger-1">How Grand Strand Digital delivers results</h2>
+-      <p class="section-desc reveal stagger-2">Every engagement follows this proven framework, customized to the scope and complexity of your project.</p>
++      <h2 class="section-title reveal stagger-1">Our six-step process</h2>
++      <p class="section-desc reveal stagger-2">Scaled to fit anything from a single chatbot to a full automation rollout.</p>
+     </div>
+ 
+     <div class="timeline">
+@@ -81,7 +138,7 @@
+         <div class="timeline-content">
+           <div class="timeline-step">Step 01</div>
+           <h3>Discovery & Strategy Call</h3>
+-          <p>Every project starts with a free 30-minute strategy session. We'll discuss your business goals, current challenges, and where AI can make the biggest impact. You'll leave with actionable ideas — whether or not you work with us.</p>
++          <p>A free 30-minute call about your business, your busiest weeks, and where time and leads are slipping. You'll leave with ideas you can use whether or not we work together.</p>
+           <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
+             <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Free consultation</span>
+             <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">30 minutes</span>
+@@ -94,11 +151,11 @@
+         <div class="timeline-content">
+           <div class="timeline-step">Step 02</div>
+           <h3>Audit & Blueprint</h3>
+-          <p>We conduct a thorough analysis of your current operations, tech stack, and workflows. The result is a detailed blueprint with prioritized recommendations, timeline estimates, ROI projections, and clear milestones.</p>
++          <p>We review your workflows and tools, then deliver a written plan with priorities, a timeline, and a fixed price.</p>
+           <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
+             <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Operations audit</span>
+             <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Tech stack review</span>
+-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">ROI projections</span>
++            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Fixed price</span>
+           </div>
+         </div>
+       </div>
+@@ -107,7 +164,7 @@
+         <div class="timeline-content">
+           <div class="timeline-step">Step 03</div>
+           <h3>Build & Iterate</h3>
+-          <p>Development happens in agile sprints with weekly demos and progress updates. You see real, working software every week — not just wireframes and promises. Feedback is incorporated continuously.</p>
++          <p>Work happens in short sprints with a live demo each week. You give feedback on working software, not mockups.</p>
+           <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
+             <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Weekly demos</span>
+             <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Agile sprints</span>
+@@ -120,7 +177,7 @@
+         <div class="timeline-content">
+           <div class="timeline-step">Step 04</div>
+           <h3>Testing & Quality Assurance</h3>
+-          <p>Before anything goes live, we run comprehensive testing — functional, performance, security, and user acceptance. Every edge case is considered, every integration verified.</p>
++          <p>Every workflow, integration, and edge case is tested before launch, including what happens when the AI doesn't know the answer.</p>
+           <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
+             <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Performance testing</span>
+             <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Security review</span>
+@@ -133,9 +190,9 @@
+         <div class="timeline-content">
+           <div class="timeline-step">Step 05</div>
+           <h3>Launch & Go Live</h3>
+-          <p>Smooth, coordinated launch with zero downtime. We handle all the technical details — DNS, deployment, monitoring, and rollback plans. Your team gets full training and documentation.</p>
++          <p>We schedule launch around your calendar, never in the middle of your busiest weekend, and train your team with written guides.</p>
+           <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
+-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Zero downtime</span>
++            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Scheduled around you</span>
+             <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Team training</span>
+             <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Documentation</span>
+           </div>
+@@ -146,9 +203,9 @@
+         <div class="timeline-content">
+           <div class="timeline-step">Step 06</div>
+           <h3>Evolve & Optimize</h3>
+-          <p>AI systems get smarter over time. Grand Strand Digital provides ongoing monitoring, performance optimization, and iterative improvements. As your business grows, your AI grows with it.</p>
++          <p>After launch we monitor results and adjust as your business and the seasons change. Monthly support plans are available.</p>
+           <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
+-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">24/7 monitoring</span>
++            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Ongoing monitoring</span>
+             <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Monthly reports</span>
+             <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Continuous evolution</span>
+           </div>
+@@ -166,12 +223,12 @@
+       <h2 class="section-title reveal stagger-1">What makes us different</h2>
+     </div>
+     <div class="values-grid">
+-      <div class="value-card reveal"><div class="v-icon">&#129309;</div><h4>Transparent Partnership</h4><p>No hidden fees, no surprises. You get clear pricing, weekly updates, and direct access to your project team from day one.</p></div>
+-      <div class="value-card reveal stagger-1"><div class="v-icon">&#127919;</div><h4>Results-Focused</h4><p>We measure success by your business outcomes, not lines of code. Every decision is tied to your goals and ROI.</p></div>
+-      <div class="value-card reveal stagger-2"><div class="v-icon">&#128161;</div><h4>AI-Native Thinking</h4><p>AI isn't bolted on — it's woven into everything we build. 20+ years of web expertise now supercharged with cutting-edge AI.</p></div>
+-      <div class="value-card reveal stagger-3"><div class="v-icon">&#127796;</div><h4>Local Expertise</h4><p>Based in the Grand Strand, we understand the Carolinas market. We're a local team who picks up the phone.</p></div>
+-      <div class="value-card reveal stagger-4"><div class="v-icon">&#128640;</div><h4>Speed to Value</h4><p>Our agile process delivers working results in weeks, not months. You see ROI from the very first milestone.</p></div>
+-      <div class="value-card reveal stagger-5"><div class="v-icon">&#128736;&#65039;</div><h4>Ongoing Support</h4><p>We don't disappear after launch. Continuous monitoring, optimization, and support to keep your systems running at peak performance.</p></div>
++      <div class="value-card reveal"><div class="v-icon">&#129309;</div><h4>Transparent Pricing</h4><p>Fixed prices in writing before work begins, and weekly updates after.</p></div>
++      <div class="value-card reveal stagger-1"><div class="v-icon">&#127919;</div><h4>Results You Can Measure</h4><p>We track hours saved, response times, and leads in your own numbers.</p></div>
++      <div class="value-card reveal stagger-2"><div class="v-icon">&#128161;</div><h4>AI Built In, Not Bolted On</h4><p>AI is designed into the system from the start, on top of decades of web development experience.</p></div>
++      <div class="value-card reveal stagger-3"><div class="v-icon">&#127796;</div><h4>Built for the Carolinas Coast</h4><p>We build for the Grand Strand's seasonal, tourism-driven economy, from Wilmington to Pawleys Island.</p></div>
++      <div class="value-card reveal stagger-4"><div class="v-icon">&#128640;</div><h4>Fast First Results</h4><p>Most first projects go live in weeks, so you see value early.</p></div>
++      <div class="value-card reveal stagger-5"><div class="v-icon">&#128736;&#65039;</div><h4>Ongoing Support</h4><p>We stay on after launch to monitor, improve, and answer questions.</p></div>
+     </div>
+   </div>
+ </section>
+@@ -181,33 +238,15 @@
+   <div class="container">
+     <div class="section-center" style="max-width:600px;margin:0 auto 3.5rem">
+       <div class="section-label reveal" style="justify-content:center">Our People</div>
+-      <h2 class="section-title reveal stagger-1">The AI &amp; SEO specialists behind your results</h2>
+-      <p class="section-desc reveal stagger-2" style="margin:0 auto">Meet the team of AI researchers, SEO strategists, and digital specialists who make the magic happen at Grand Strand Digital.</p>
++      <h2 class="section-title reveal stagger-1">Who you'll work with</h2>
++      <p class="section-desc reveal stagger-2" style="margin:0 auto">Every engagement is led personally by our founder.</p>
+     </div>
+-    <div class="team-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem">
++    <div class="team-grid" style="display:grid;grid-template-columns:minmax(0,420px);justify-content:center;gap:1.5rem">
+       <div class="value-card reveal" style="padding:2rem 1.5rem">
+-        <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--bg-dark),var(--tertiary));display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:800;font-size:1.3rem;color:var(--gold);margin:0 auto 1.25rem">SJ</div>
+-        <h4 style="margin-bottom:.25rem">Sarah Johnson</h4>
+-        <div style="font-family:var(--body);font-size:.8rem;color:var(--accent);font-weight:600;margin-bottom:.75rem">Founder &amp; CEO</div>
+-        <p>Former Google SEO specialist with 15+ years of experience in search algorithms and AI applications for local and national brands.</p>
+-      </div>
+-      <div class="value-card reveal stagger-1" style="padding:2rem 1.5rem">
+-        <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--bg-dark),var(--tertiary));display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:800;font-size:1.3rem;color:var(--gold);margin:0 auto 1.25rem">MC</div>
+-        <h4 style="margin-bottom:.25rem">Michael Chen</h4>
+-        <div style="font-family:var(--body);font-size:.8rem;color:var(--accent);font-weight:600;margin-bottom:.75rem">AI Research Director</div>
+-        <p>PhD in Machine Learning with deep expertise in natural language processing, search algorithms, and AI-driven content strategies.</p>
+-      </div>
+-      <div class="value-card reveal stagger-2" style="padding:2rem 1.5rem">
+-        <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--bg-dark),var(--tertiary));display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:800;font-size:1.3rem;color:var(--gold);margin:0 auto 1.25rem">JW</div>
+-        <h4 style="margin-bottom:.25rem">Jasmine Williams</h4>
+-        <div style="font-family:var(--body);font-size:.8rem;color:var(--accent);font-weight:600;margin-bottom:.75rem">Content Strategy Lead</div>
+-        <p>Content marketing expert specializing in AI-driven content optimization, semantic SEO strategies, and local market storytelling.</p>
+-      </div>
+-      <div class="value-card reveal stagger-3" style="padding:2rem 1.5rem">
+-        <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--bg-dark),var(--tertiary));display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:800;font-size:1.3rem;color:var(--gold);margin:0 auto 1.25rem">DR</div>
+-        <h4 style="margin-bottom:.25rem">Daniel Rodriguez</h4>
+-        <div style="font-family:var(--body);font-size:.8rem;color:var(--accent);font-weight:600;margin-bottom:.75rem">Technical SEO Specialist</div>
+-        <p>Expert in technical SEO implementation, site architecture optimization, and schema markup for enhanced search visibility and Core Web Vitals.</p>
++        <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--bg-dark),var(--tertiary));display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:800;font-size:1.3rem;color:var(--gold);margin:0 auto 1.25rem">GM</div>
++        <h4 style="margin-bottom:.25rem">Gregg Maynard</h4>
++        <div style="font-family:var(--body);font-size:.8rem;color:var(--accent);font-weight:600;margin-bottom:.75rem">Founder</div>
++        <p>Gregg brings 30 years in technology and the legal field to every project. He runs each strategy engagement himself and stays involved from the first call through launch, so you never get handed off.</p>
+       </div>
+     </div>
+   </div>
+@@ -220,7 +259,7 @@
+       <div>
+         <div class="section-label reveal">Common Questions</div>
+         <h2 class="section-title reveal stagger-1">Frequently asked questions</h2>
+-        <p class="section-desc reveal stagger-2" style="margin-bottom:2rem">Have a question that's not here? We're happy to chat.</p>
++        <p class="section-desc reveal stagger-2" style="margin-bottom:2rem">Have a question that isn't here? Call or send us a note.</p>
+         <a href="contact.html" class="btn-primary reveal stagger-3">Ask Us Anything</a>
+         <div class="reveal stagger-4" style="margin-top:1rem">
+           <a href="tel:8439001976" style="font-family:var(--heading);font-size:.85rem;font-weight:700;color:var(--accent);letter-spacing:.05em">Or call: 843-900-1976</a>
+@@ -228,28 +267,28 @@
+       </div>
+       <div class="reveal">
+         <div class="accordion-item open">
+-          <div class="accordion-header">How long does a typical project take? <div class="accordion-icon"></div></div>
+-          <div class="accordion-body"><p>It depends on scope. A simple AI chatbot can be live in 2-3 weeks. Comprehensive automation systems typically take 6-10 weeks. During our free strategy call, we'll provide a realistic timeline for your specific project.</p></div>
++          <div class="accordion-header">How long does a project take? <div class="accordion-icon"></div></div>
++          <div class="accordion-body"><p>It depends on scope. A focused AI chatbot can be live in 2 to 3 weeks. Larger automation systems usually take 6 to 10 weeks. You'll get a realistic timeline on your free strategy call.</p></div>
+         </div>
+         <div class="accordion-item">
+-          <div class="accordion-header">Do I need technical knowledge? <div class="accordion-icon"></div></div>
+-          <div class="accordion-body"><p>Not at all. Grand Strand Digital handles all the technical work. We explain everything in plain language and train your team on any new tools. Our clients range from solo entrepreneurs to mid-size companies.</p></div>
++          <div class="accordion-header">Do I need to be technical? <div class="accordion-icon"></div></div>
++          <div class="accordion-body"><p>No. We handle the technical work, explain everything in plain language, and train your team on any new tools. Clients range from owner-operators to companies with dozens of staff.</p></div>
+         </div>
+         <div class="accordion-item">
+-          <div class="accordion-header">What's the investment range? <div class="accordion-icon"></div></div>
+-          <div class="accordion-body"><p>Projects start at $2,500 for focused solutions like chatbots or workflow automation. Comprehensive AI strategy and implementation ranges from $10,000-$50,000+. We always provide detailed proposals before any commitment.</p></div>
++          <div class="accordion-header">How much does it cost? <div class="accordion-icon"></div></div>
++          <div class="accordion-body"><p>Packages start at $3,500, with larger engagements at $9,500 and $19,500. Every project gets a written, fixed-price proposal before any work begins.</p></div>
+         </div>
+         <div class="accordion-item">
+-          <div class="accordion-header">Will AI replace my employees? <div class="accordion-icon"></div></div>
+-          <div class="accordion-body"><p>No — that's not our goal. AI handles repetitive, time-consuming tasks so your team can focus on high-value work. Think of it as giving your best people superpowers, not replacing them.</p></div>
++          <div class="accordion-header">Will AI replace my staff? <div class="accordion-icon"></div></div>
++          <div class="accordion-body"><p>No. AI takes over repetitive tasks so your people can spend their time on customers and the work that needs a human.</p></div>
+         </div>
+         <div class="accordion-item">
+           <div class="accordion-header">What happens after launch? <div class="accordion-icon"></div></div>
+-          <div class="accordion-body"><p>Grand Strand Digital provides ongoing support, monitoring, and optimization. AI systems improve over time with more data and feedback. We offer monthly retainer plans to keep your systems evolving with your business.</p></div>
++          <div class="accordion-body"><p>We monitor and improve your systems over time. Monthly support plans keep them up to date as your business changes.</p></div>
+         </div>
+         <div class="accordion-item">
+-          <div class="accordion-header">Do you work with businesses outside the Grand Strand? <div class="accordion-icon"></div></div>
+-          <div class="accordion-body"><p>Absolutely. While we're based in the Grand Strand and love working with local Carolinas businesses, we serve clients across the region and nationally. All of our work can be done remotely with the same quality and attention.</p></div>
++          <div class="accordion-header">Do you work with businesses outside Myrtle Beach? <div class="accordion-icon"></div></div>
++          <div class="accordion-body"><p>Yes. We work up and down the coast, from Wilmington and Brunswick County to Murrells Inlet and Pawleys Island, inland to Conway, and with clients nationwide by video call.</p></div>
+         </div>
+       </div>
+     </div>
+@@ -260,8 +299,8 @@
+ <section class="cta-banner">
+   <div class="container">
+     <div class="section-label reveal" style="justify-content:center">Start Here</div>
+-    <h2 class="section-title reveal stagger-1">Ready to see the process in action?</h2>
+-    <p class="section-desc reveal stagger-2" style="margin:0 auto">Your free strategy call is the first step. No pressure, no jargon — just clarity on how AI can help your business.</p>
++    <h2 class="section-title reveal stagger-1">Start with a free strategy call</h2>
++    <p class="section-desc reveal stagger-2" style="margin:0 auto">Thirty minutes, no obligation, and specific next steps for your business.</p>
+     <div class="cta-actions reveal stagger-3">
+       <a href="contact.html" class="btn-primary">Book Free Strategy Call</a>
+       <a href="tel:8439001976" class="btn-secondary light">Call 843-900-1976</a>
+@@ -275,7 +314,7 @@
+     <div class="footer-inner">
+       <div class="footer-brand">
+         <a href="index.html" class="nav-logo"><img src="logo.png" alt="Grand Strand Digital" width="42" height="44" decoding="async"></a>
+-        <p>AI consulting and web innovation for Grand Strand businesses. Based in the Grand Strand, serving clients who are ready to lead with technology.</p>
++        <p>AI consulting, automation, and web design for businesses from Wilmington to Pawleys Island. Serving the Grand Strand and clients nationwide.</p>
+         <a href="tel:8439001976" class="footer-phone">843-900-1976</a>
+       </div>
+       <div class="footer-links">
+diff --git a/services.html b/services.html
+index e82b99d..8062514 100644
+--- a/services.html
++++ b/services.html
+@@ -3,9 +3,10 @@
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-<title>Services — Grand Strand Digital</title>
+-<meta name="description" content="AI agent development, workflow automation, AI strategy consulting, web design, and SEO services for Grand Strand businesses. Grand Strand Digital.">
+-<meta property="og:title" content="Services — Grand Strand Digital">
++<title>AI, Web Design &amp; SEO in Myrtle Beach | Grand Strand Digital</title>
++<meta name="description" content="AI agents, workflow automation, web design, and local SEO for businesses in Myrtle Beach, Conway, and North Myrtle Beach. Book a free strategy call.">
++<meta property="og:title" content="AI, Web Design &amp; SEO in Myrtle Beach | Grand Strand Digital">
++<meta property="og:description" content="AI agents, workflow automation, web design, and local SEO for businesses in Myrtle Beach, Conway, and North Myrtle Beach. Book a free strategy call.">
+ <meta property="og:url" content="https://grandstranddigital.com/services.html">
+ <link rel="canonical" href="https://grandstranddigital.com/services.html">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+@@ -22,6 +23,91 @@
+ .counter{font-family:var(--heading);font-size:2.8rem;font-weight:800;color:var(--accent);line-height:1}
+ .counter-label{font-family:var(--heading);font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-top:.4rem}
+ </style>
++<script type="application/ld+json">
++{
++  "@context": "https://schema.org",
++  "@graph": [
++    {
++      "@type": "Service",
++      "name": "AI Agent Development",
++      "description": "AI agents that answer customer questions, qualify leads, and book appointments on web, SMS, email, and voice.",
++      "serviceType": "AI Agent Development",
++      "provider": {
++        "@id": "https://grandstranddigital.com/#business"
++      },
++      "areaServed": {
++        "@type": "AdministrativeArea",
++        "name": "Grand Strand"
++      }
++    },
++    {
++      "@type": "Service",
++      "name": "Workflow Automation",
++      "description": "Automated confirmations, follow-ups, invoicing, document processing, and CRM updates.",
++      "serviceType": "Workflow Automation",
++      "provider": {
++        "@id": "https://grandstranddigital.com/#business"
++      },
++      "areaServed": {
++        "@type": "AdministrativeArea",
++        "name": "Grand Strand"
++      }
++    },
++    {
++      "@type": "Service",
++      "name": "AI Strategy Consulting",
++      "description": "A plain-English review of where AI pays off, ranked by impact and cost, with a phased roadmap.",
++      "serviceType": "AI Strategy Consulting",
++      "provider": {
++        "@id": "https://grandstranddigital.com/#business"
++      },
++      "areaServed": {
++        "@type": "AdministrativeArea",
++        "name": "Grand Strand"
++      }
++    },
++    {
++      "@type": "Service",
++      "name": "Web Design",
++      "description": "Fast, mobile-first WordPress and custom websites with online booking, chat, and local SEO built in.",
++      "serviceType": "Web Design",
++      "provider": {
++        "@id": "https://grandstranddigital.com/#business"
++      },
++      "areaServed": {
++        "@type": "AdministrativeArea",
++        "name": "Grand Strand"
++      }
++    },
++    {
++      "@type": "Service",
++      "name": "Local SEO",
++      "description": "Google Business Profile, local citations, reviews, technical SEO, and content for Grand Strand searches.",
++      "serviceType": "Local SEO",
++      "provider": {
++        "@id": "https://grandstranddigital.com/#business"
++      },
++      "areaServed": {
++        "@type": "AdministrativeArea",
++        "name": "Grand Strand"
++      }
++    },
++    {
++      "@type": "Service",
++      "name": "System Integration",
++      "description": "Connecting booking, POS, CRM, payment, and email tools so data moves on its own.",
++      "serviceType": "System Integration",
++      "provider": {
++        "@id": "https://grandstranddigital.com/#business"
++      },
++      "areaServed": {
++        "@type": "AdministrativeArea",
++        "name": "Grand Strand"
++      }
++    }
++  ]
++}
++</script>
+ </head>
+ <body>
+ 
+@@ -47,8 +133,8 @@
+   <div class="page-hero-overlay"></div>
+   <div class="container">
+     <div class="breadcrumb reveal"><a href="index.html">Home</a> / <span>Services</span></div>
+-    <h1 class="reveal stagger-1">AI-First Services Built on <em>Decades of Expertise</em></h1>
+-    <p class="reveal stagger-2">Grand Strand Digital delivers end-to-end AI consulting, automation, and web solutions tailored for Grand Strand businesses ready to outpace the competition.</p>
++    <h1 class="reveal stagger-1">AI, web design, and SEO services for <em>the Grand Strand</em></h1>
++    <p class="reveal stagger-2">Everything a Myrtle Beach business needs to get found, answer every customer, and cut busywork, from one team that builds it end to end.</p>
+   </div>
+ </section>
+ 
+@@ -69,22 +155,22 @@
+       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
+         <div class="reveal-left">
+           <div class="section-label">Our Flagship Service</div>
+-          <h2 class="section-title">Custom AI Agent Development</h2>
+-          <p class="section-desc" style="margin-bottom:1.5rem">Grand Strand Digital builds intelligent AI agents that become tireless members of your team. From customer-facing chatbots to internal workflow assistants, our agents learn, adapt, and deliver results around the clock.</p>
++          <h2 class="section-title">AI agents for Myrtle Beach businesses</h2>
++          <p class="section-desc" style="margin-bottom:1.5rem">We build AI agents that handle the questions your staff answers fifty times a day: rates, hours, availability, pricing, directions. They work on your website, by text, and by phone, and hand anything complex to a person.</p>
+           <ul style="list-style:none;margin-bottom:2rem">
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Customer support bots with natural language understanding</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Lead qualification agents that route hot prospects instantly</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Appointment scheduling and follow-up automation</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Internal knowledge base assistants for your team</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Multi-channel deployment (web, SMS, email, voice)</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Guest and customer chat trained on your own policies</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Lead qualification that sends ready buyers straight to your phone</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Booking, rescheduling, and reminder automation</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Internal assistants that help seasonal hires get up to speed</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Web, SMS, email, and voice deployment</li>
+           </ul>
+           <a href="contact.html" class="btn-primary">Discuss Your AI Agent</a>
+         </div>
+         <div class="reveal-right" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+-          <div class="detail-card"><div class="card-icon">&#128172;</div><h3>Chat Agents</h3><p>24/7 conversational agents that handle inquiries, resolve issues, and convert visitors into customers.</p></div>
+-          <div class="detail-card" style="margin-top:2rem"><div class="card-icon">&#128202;</div><h3>Analytics Agents</h3><p>Agents that monitor your data, surface insights, and alert you to opportunities or anomalies.</p></div>
+-          <div class="detail-card"><div class="card-icon">&#128197;</div><h3>Scheduling Agents</h3><p>Automated booking, rescheduling, and reminder systems integrated with your calendar tools.</p></div>
+-          <div class="detail-card" style="margin-top:2rem"><div class="card-icon">&#128101;</div><h3>Internal Agents</h3><p>Knowledge base assistants that help your team find answers, complete tasks, and onboard faster.</p></div>
++          <div class="detail-card"><div class="card-icon">&#128172;</div><h3>Chat Agents</h3><p>Answer guest and customer questions instantly, day or night, in your voice.</p></div>
++          <div class="detail-card" style="margin-top:2rem"><div class="card-icon">&#128202;</div><h3>Analytics Agents</h3><p>Watch bookings, calls, and sales, and flag changes before they become problems.</p></div>
++          <div class="detail-card"><div class="card-icon">&#128197;</div><h3>Scheduling Agents</h3><p>Fill your calendar and cut no-shows with automatic reminders and easy rescheduling.</p></div>
++          <div class="detail-card" style="margin-top:2rem"><div class="card-icon">&#128101;</div><h3>Internal Agents</h3><p>Give new and seasonal staff instant answers from your own manuals and procedures.</p></div>
+         </div>
+       </div>
+     </div>
+@@ -94,26 +180,20 @@
+       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
+         <div>
+           <div class="section-label">Eliminate Busywork</div>
+-          <h2 class="section-title">Intelligent Workflow Automation</h2>
+-          <p class="section-desc" style="margin-bottom:1.5rem">Stop wasting hours on repetitive tasks. Grand Strand Digital builds automation systems that think — connecting your tools, processing data, and making intelligent decisions at machine speed.</p>
++          <h2 class="section-title">Workflow automation that flexes with the season</h2>
++          <p class="section-desc" style="margin-bottom:1.5rem">Peak season doubles the paperwork without doubling your office staff. We connect your tools so confirmations, follow-ups, invoices, and data entry happen automatically, then scale back down when things slow.</p>
+           <ul style="list-style:none;margin-bottom:2rem">
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Email and communication automation</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Document processing and data extraction</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Invoice and payment workflow automation</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> CRM data sync and enrichment</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Custom API integrations and webhooks</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Booking confirmations and follow-up emails</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Document and form processing</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Invoicing and payment reminders</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> CRM updates and lead routing</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Custom integrations and webhooks</li>
+           </ul>
+           <a href="contact.html" class="btn-primary">Automate Your Workflows</a>
+         </div>
+         <div style="background:var(--bg-alt);padding:2.5rem;border:1px solid var(--border)">
+-          <h3 style="font-family:var(--heading);font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--tertiary);margin-bottom:1.5rem">Typical ROI Metrics</h3>
+-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+-            <div><div class="counter" data-count="60" data-suffix="%">0%</div><div class="counter-label">Less Manual Work</div></div>
+-            <div><div class="counter" data-count="50" data-suffix="%">0%</div><div class="counter-label">Faster Processing</div></div>
+-            <div><div class="counter" data-count="30" data-suffix="%">0%</div><div class="counter-label">Cost Reduction</div></div>
+-            <div><div class="counter" data-count="70" data-suffix="%">0%</div><div class="counter-label">Error Reduction</div></div>
+-          </div>
+-          <p style="font-size:.72rem;color:var(--text-muted);margin-top:1.5rem;line-height:1.5">Typical results in targeted processes, based on industry benchmarks from McKinsey and Deloitte&rsquo;s Global Intelligent Automation Survey. Actual results vary by process.</p>
++          <h3 style="font-family:var(--heading);font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--tertiary);margin-bottom:1.5rem">What to Expect</h3>
++          <p style="font-size:1rem;line-height:1.8;color:var(--text-secondary)">We measure hours spent and response times on your own processes before and after launch, so you see results in your numbers, not an industry average.</p>
+         </div>
+       </div>
+     </div>
+@@ -123,29 +203,29 @@
+       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
+         <div>
+           <div class="section-label">Your AI Roadmap</div>
+-          <h2 class="section-title">AI Strategy Consulting</h2>
+-          <p class="section-desc" style="margin-bottom:1.5rem">Not sure where AI fits in your business? Grand Strand Digital conducts thorough audits, identifies high-impact opportunities, and builds a prioritized roadmap you can act on immediately.</p>
++          <h2 class="section-title">AI strategy consulting in plain English</h2>
++          <p class="section-desc" style="margin-bottom:1.5rem">Not sure where AI fits? We start with how your business actually runs, then show you where AI earns its keep and where it doesn't.</p>
+           <div class="accordion-item open">
+             <div class="accordion-header">Operational Audit <div class="accordion-icon"></div></div>
+-            <div class="accordion-body"><p>We map your current workflows, technology stack, and pain points to identify where AI can make the biggest difference — often in places you haven't considered.</p></div>
++            <div class="accordion-body"><p>We map your workflows, tools, and bottlenecks, from the front desk to the back office.</p></div>
+           </div>
+           <div class="accordion-item">
+             <div class="accordion-header">Opportunity Scoring <div class="accordion-icon"></div></div>
+-            <div class="accordion-body"><p>Each opportunity is scored on impact, feasibility, and ROI potential, so you invest in the right initiatives first.</p></div>
++            <div class="accordion-body"><p>Each opportunity is ranked on impact, effort, and cost, so the first project can pay for the next.</p></div>
+           </div>
+           <div class="accordion-item">
+             <div class="accordion-header">Technology Selection <div class="accordion-icon"></div></div>
+-            <div class="accordion-body"><p>We recommend the right AI tools, platforms, and providers for your specific needs — no vendor lock-in, no unnecessary complexity.</p></div>
++            <div class="accordion-body"><p>We recommend tools that fit your budget and your team, with no vendor lock-in.</p></div>
+           </div>
+           <div class="accordion-item">
+             <div class="accordion-header">Implementation Roadmap <div class="accordion-icon"></div></div>
+-            <div class="accordion-body"><p>A phased plan with clear milestones, timelines, and budget estimates that your team can follow with confidence.</p></div>
++            <div class="accordion-body"><p>You get a phased roadmap with milestones and fixed prices your team can follow.</p></div>
+           </div>
+         </div>
+         <div>
+           <div style="background:linear-gradient(135deg,var(--bg-dark),var(--tertiary));padding:3rem;color:var(--text-light)">
+             <h3 style="font-family:var(--heading);font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem">Free Strategy Session</h3>
+-            <p style="font-size:1rem;line-height:1.8;color:rgba(255,255,255,.7);margin-bottom:1.5rem">Every engagement starts with a complimentary 30-minute strategy call. We'll discuss your business, identify quick wins, and outline a path forward — no obligation.</p>
++            <p style="font-size:1rem;line-height:1.8;color:rgba(255,255,255,.7);margin-bottom:1.5rem">Every engagement starts with a free 30-minute call with founder Gregg Maynard. You'll leave with specific ideas, whether or not we work together.</p>
+             <a href="contact.html" class="btn-primary">Book Your Free Session</a>
+             <a href="tel:8439001976" style="display:block;margin-top:1rem;font-family:var(--heading);font-size:.85rem;font-weight:700;color:var(--gold);letter-spacing:.05em">Or call: 843-900-1976</a>
+           </div>
+@@ -158,21 +238,21 @@
+       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
+         <div>
+           <div class="section-label">Web + AI</div>
+-          <h2 class="section-title">AI-Powered Websites</h2>
+-          <p class="section-desc" style="margin-bottom:1.5rem">Grand Strand Digital builds websites that don't just look great — they think. AI-enhanced search, personalization, chatbots, and dynamic content that adapts to every visitor.</p>
++          <h2 class="section-title">Web design in Myrtle Beach, built to rank and convert</h2>
++          <p class="section-desc" style="margin-bottom:1.5rem">Your website is often the last stop before someone books, calls, or drives over. We build fast, mobile-first sites with online booking, chat, and local SEO built into the structure from day one.</p>
+           <ul style="list-style:none;margin-bottom:2rem">
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> WordPress & custom web development</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> AI-powered site search and recommendations</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Embedded conversational chatbots</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Dynamic content personalization</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Performance optimization & Core Web Vitals</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> WordPress and custom development</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Online booking and reservation integrations</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Built-in AI chat</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Local SEO structure and schema markup</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Core Web Vitals and accessibility</li>
+           </ul>
+           <a href="contact.html" class="btn-primary">Start Your Web Project</a>
+         </div>
+         <div style="display:grid;gap:1rem">
+-          <div class="detail-card"><div class="card-icon">&#127912;</div><h3>Design & UX</h3><p>Custom designs that reflect your brand, engage visitors, and guide them toward conversion — every pixel with purpose.</p></div>
+-          <div class="detail-card"><div class="card-icon">&#9889;</div><h3>Performance</h3><p>Lightning-fast load times, mobile-first responsiveness, and accessibility built in from the start.</p></div>
+-          <div class="detail-card"><div class="card-icon">&#128274;</div><h3>Security</h3><p>SSL, firewall, malware scanning, and regular updates to keep your site — and your customers — protected.</p></div>
++          <div class="detail-card"><div class="card-icon">&#127912;</div><h3>Design & UX</h3><p>Designs built around what your customers came to do: book, call, or get a quote.</p></div>
++          <div class="detail-card"><div class="card-icon">&#9889;</div><h3>Performance</h3><p>Fast loading on a phone with one bar of signal on the beach.</p></div>
++          <div class="detail-card"><div class="card-icon">&#128274;</div><h3>Security</h3><p>SSL, monitoring, backups, and updates handled for you.</p></div>
+         </div>
+       </div>
+     </div>
+@@ -182,22 +262,22 @@
+       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
+         <div>
+           <div class="section-label">Be Found</div>
+-          <h2 class="section-title">AI-Powered SEO &amp; Content</h2>
+-          <p class="section-desc" style="margin-bottom:1.5rem">We harness artificial intelligence to deliver comprehensive SEO solutions that drive traffic, increase rankings, and grow your business — with a deep focus on the Myrtle Beach and Grand Strand market.</p>
++          <h2 class="section-title">Myrtle Beach SEO and local search</h2>
++          <p class="section-desc" style="margin-bottom:1.5rem">Most Grand Strand customers find a business through Google Maps or a &ldquo;near me&rdquo; search. We focus on the local signals that decide those results, then add content that answers what your customers ask.</p>
+           <ul style="list-style:none;margin-bottom:2rem">
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> AI-powered keyword research with semantic clustering &amp; intent analysis</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> AI content optimization — gap analysis &amp; SEO-enhanced creation</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Local SEO &amp; Google Business Profile for Grand Strand businesses</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Technical SEO — Core Web Vitals, schema markup, site architecture</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> AI link building strategy — authority site identification &amp; outreach</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Predictive analytics &amp; competitive benchmarking with ROI tracking</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Keyword research for Grand Strand searches</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Google Business Profile setup and optimization</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Local citations and a review strategy</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Technical SEO: speed, schema, site structure</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Service and service-area pages</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Monthly reporting tied to calls and leads</li>
+           </ul>
+           <a href="contact.html" class="btn-primary">Get Your Free SEO Audit</a>
+         </div>
+         <div style="display:flex;flex-direction:column;gap:1rem">
+-          <div class="detail-card"><div class="card-icon">&#128269;</div><h3>Keyword Intelligence</h3><p>Our AI tools analyze search patterns, competitor strategies, and user intent to identify high-value keywords with optimal search volume and competition levels — including voice search queries.</p></div>
+-          <div class="detail-card"><div class="card-icon">&#127758;</div><h3>Local SEO Domination</h3><p>Designed specifically for Myrtle Beach and Grand Strand businesses: Google Business Profile optimization, local citation building, and reputation management that gets you found by nearby customers.</p></div>
+-          <div class="detail-card"><div class="card-icon">&#128200;</div><h3>AI Analytics &amp; Reporting</h3><p>Actionable monthly insights — predictive ranking analysis, competitive benchmarking, and clear reporting on every dollar of SEO ROI. You'll always know what's working.</p></div>
++          <div class="detail-card"><div class="card-icon">&#128269;</div><h3>Keyword Research</h3><p>The searches your customers actually run, including town names from Little River to Pawleys Island.</p></div>
++          <div class="detail-card"><div class="card-icon">&#127758;</div><h3>Local SEO</h3><p>Google Business Profile, citations, and reviews that help you show up in the map results.</p></div>
++          <div class="detail-card"><div class="card-icon">&#128200;</div><h3>Reporting</h3><p>A monthly report on rankings, calls, and leads, in plain English.</p></div>
+         </div>
+       </div>
+     </div>
+@@ -207,22 +287,22 @@
+       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
+         <div>
+           <div class="section-label">Connect Everything</div>
+-          <h2 class="section-title">System Integration</h2>
+-          <p class="section-desc" style="margin-bottom:1.5rem">Your tools should work together, not against each other. Grand Strand Digital connects your CRM, email, social, payment, and business systems through intelligent integrations that keep everything in sync.</p>
++          <h2 class="section-title">System integration for the tools you already use</h2>
++          <p class="section-desc" style="margin-bottom:1.5rem">Your property management system, POS, CRM, and email platform should share data, not make you retype it. We connect them so information moves on its own.</p>
+           <ul style="list-style:none;margin-bottom:2rem">
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> CRM integrations (Salesforce, HubSpot, etc.)</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> CRM integrations (HubSpot, Salesforce, and others)</li>
+             <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Payment and invoicing connections</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Marketing platform sync (Mailchimp, etc.)</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Custom API development and webhooks</li>
+-            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Real-time data synchronization</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Email marketing sync</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Custom API work and webhooks</li>
++            <li style="padding:.6rem 0;font-size:.95rem;color:var(--text-secondary);padding-left:1.5rem;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">&#10003;</span> Real-time data sync</li>
+           </ul>
+           <a href="contact.html" class="btn-primary">Connect Your Systems</a>
+         </div>
+         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+-          <div class="detail-card"><div class="card-icon">&#128231;</div><h3>Email</h3><p>Automated email workflows triggered by customer actions and business events.</p></div>
+-          <div class="detail-card"><div class="card-icon">&#128176;</div><h3>Payments</h3><p>Stripe, Square, PayPal — connected to your invoicing and accounting tools.</p></div>
+-          <div class="detail-card"><div class="card-icon">&#128241;</div><h3>Social</h3><p>Unified social media management with AI-powered scheduling and analytics.</p></div>
+-          <div class="detail-card"><div class="card-icon">&#9729;&#65039;</div><h3>Cloud</h3><p>AWS, Google Cloud, Azure integrations for scalable, reliable infrastructure.</p></div>
++          <div class="detail-card"><div class="card-icon">&#128231;</div><h3>Email</h3><p>Automatic messages triggered by bookings, purchases, and inquiries.</p></div>
++          <div class="detail-card"><div class="card-icon">&#128176;</div><h3>Payments</h3><p>Stripe, Square, and PayPal connected to your accounting.</p></div>
++          <div class="detail-card"><div class="card-icon">&#128241;</div><h3>Social</h3><p>Scheduled posts and review alerts in one place.</p></div>
++          <div class="detail-card"><div class="card-icon">&#9729;&#65039;</div><h3>Cloud</h3><p>AWS, Google Cloud, and Azure integrations.</p></div>
+         </div>
+       </div>
+     </div>
+@@ -233,8 +313,8 @@
+ <section class="cta-banner">
+   <div class="container">
+     <div class="section-label reveal" style="justify-content:center">Ready to Start?</div>
+-    <h2 class="section-title reveal stagger-1">Let's discuss which services<br>are right for your business</h2>
+-    <p class="section-desc reveal stagger-2" style="margin:0 auto">Every business is different. Book a free strategy call with Grand Strand Digital to explore tailored solutions.</p>
++    <h2 class="section-title reveal stagger-1">Not sure which<br>service you need?</h2>
++    <p class="section-desc reveal stagger-2" style="margin:0 auto">Book a free strategy call and we'll point you to the one or two that will matter most for your business.</p>
+     <div class="cta-actions reveal stagger-3">
+       <a href="contact.html" class="btn-primary">Book Free Strategy Call</a>
+       <a href="tel:8439001976" class="btn-secondary light">Call 843-900-1976</a>
+@@ -248,7 +328,7 @@
+     <div class="footer-inner">
+       <div class="footer-brand">
+         <a href="index.html" class="nav-logo"><img src="logo.png" alt="Grand Strand Digital" width="42" height="44" decoding="async"></a>
+-        <p>AI consulting and web innovation for Grand Strand businesses. Based in the Grand Strand, serving clients who are ready to lead with technology.</p>
++        <p>AI consulting, automation, and web design for businesses from Wilmington to Pawleys Island. Serving the Grand Strand and clients nationwide.</p>
+         <a href="tel:8439001976" class="footer-phone">843-900-1976</a>
+       </div>
+       <div class="footer-links">
+diff --git a/solutions.html b/solutions.html
+index 1f9327e..787f855 100644
+--- a/solutions.html
++++ b/solutions.html
+@@ -3,9 +3,10 @@
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-<title>AI Solutions — Grand Strand Digital</title>
+-<meta name="description" content="Real-world AI solutions for customer support, content creation, lead scoring, and business intelligence for Grand Strand businesses. Grand Strand Digital.">
+-<meta property="og:title" content="AI Solutions — Grand Strand Digital">
++<title>Myrtle Beach AI Solutions by Industry | Grand Strand Digital</title>
++<meta name="description" content="How Myrtle Beach hotels, vacation rentals, golf courses, and home service companies use AI to answer customers, book more jobs, and save time.">
++<meta property="og:title" content="Myrtle Beach AI Solutions by Industry | Grand Strand Digital">
++<meta property="og:description" content="How Myrtle Beach hotels, vacation rentals, golf courses, and home service companies use AI to answer customers, book more jobs, and save time.">
+ <meta property="og:url" content="https://grandstranddigital.com/solutions.html">
+ <link rel="canonical" href="https://grandstranddigital.com/solutions.html">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+@@ -70,8 +71,8 @@
+   <div class="page-hero-overlay"></div>
+   <div class="container">
+     <div class="breadcrumb reveal"><a href="index.html">Home</a> / <span>AI Solutions</span></div>
+-    <h1 class="reveal stagger-1">Real AI Solutions for <em>Real Businesses</em></h1>
+-    <p class="reveal stagger-2">AI isn't science fiction. Grand Strand Digital delivers practical, proven AI solutions that Grand Strand businesses are using right now to save time, reduce costs, and grow faster.</p>
++    <h1 class="reveal stagger-1">AI solutions for hospitality, home services, and more on <em>the Grand Strand</em></h1>
++    <p class="reveal stagger-2">Practical AI for the problems coastal Carolina businesses actually have: short booking windows, seasonal staffing, and customers who expect an answer now.</p>
+   </div>
+ </section>
+ 
+@@ -80,74 +81,74 @@
+   <div class="container">
+     <div class="section-center" style="margin-bottom:4rem">
+       <div class="section-label reveal">AI In Action</div>
+-      <h2 class="section-title reveal stagger-1">How our clients put AI to work</h2>
+-      <p class="section-desc reveal stagger-2">Every solution Grand Strand Digital builds is tailored to the specific needs and goals of the business. Here's a deeper look at what's possible.</p>
++      <h2 class="section-title reveal stagger-1">Four problems we solve most often</h2>
++      <p class="section-desc reveal stagger-2">Each solution is built around your business, your tools, and your busiest weeks.</p>
+     </div>
+ 
+     <div class="solution-showcase reveal">
+       <div class="visual">
+         <div class="big-num">01</div>
+-        <h3>Automated Customer Support</h3>
+-        <p>Intelligent chatbots that handle FAQs, book appointments, and escalate complex issues in real time.</p>
++        <h3>After-Hours Guest and Customer Questions</h3>
++        <p>Instant answers on your website and by text, any hour of the day.</p>
+       </div>
+       <div class="details">
+         <h4>The Challenge</h4>
+-        <p>Customers expect instant answers. Hiring 24/7 support staff is expensive and difficult to scale, especially for small and mid-size businesses.</p>
++        <p>Inquiries spike in the evenings and on weekends during booking season, exactly when your office is closed or swamped.</p>
+         <h4>The Solution</h4>
+-        <p>Grand Strand Digital deploys AI chatbots trained on your specific business knowledge. They handle common inquiries instantly, escalate complex issues to your team, and learn from every interaction.</p>
+-        <div class="benefit"><div class="benefit-icon">&#9889;</div><span>Response time drops from hours to under 3 seconds</span></div>
+-        <div class="benefit"><div class="benefit-icon">&#128176;</div><span>Support costs reduced by up to 60%</span></div>
+-        <div class="benefit"><div class="benefit-icon">&#128200;</div><span>Customer satisfaction scores increase 25-40%</span></div>
++        <p>An AI assistant trained on your rates, policies, and availability answers right away and routes anything complex to your team the next morning.</p>
++        <div class="benefit"><div class="benefit-icon">&#9889;</div><span>Answers in seconds, at any hour</span></div>
++        <div class="benefit"><div class="benefit-icon">&#128176;</div><span>Complex questions handed to your team</span></div>
++        <div class="benefit"><div class="benefit-icon">&#128200;</div><span>Trained on your own rates and policies</span></div>
+       </div>
+     </div>
+ 
+     <div class="solution-showcase reveal">
+       <div class="visual">
+         <div class="big-num">02</div>
+-        <h3>Content Creation Pipeline</h3>
+-        <p>AI-powered systems that generate blog posts, social media, and email campaigns aligned with your brand.</p>
++        <h3>Reviews and Marketing in Peak Season</h3>
++        <p>Keep reviews answered and posts going when nobody has time.</p>
+       </div>
+       <div class="details">
+         <h4>The Challenge</h4>
+-        <p>Consistent, high-quality content is essential for SEO and engagement, but creating it is time-consuming and requires specialized skills.</p>
++        <p>From Memorial Day to Labor Day, reviews pile up and marketing stalls.</p>
+         <h4>The Solution</h4>
+-        <p>We build AI content pipelines that draft blog posts, social media captions, email campaigns, and more — all in your brand voice and optimized for search engines.</p>
+-        <div class="benefit"><div class="benefit-icon">&#128221;</div><span>10x content output without additional headcount</span></div>
+-        <div class="benefit"><div class="benefit-icon">&#127919;</div><span>SEO-optimized from creation, not as an afterthought</span></div>
+-        <div class="benefit"><div class="benefit-icon">&#128337;</div><span>Content calendar stays full months in advance</span></div>
++        <p>AI drafts review replies, social posts, and emails in your voice, and a person approves every message before it goes out.</p>
++        <div class="benefit"><div class="benefit-icon">&#128221;</div><span>Review replies drafted in minutes</span></div>
++        <div class="benefit"><div class="benefit-icon">&#127919;</div><span>Every message approved by a person</span></div>
++        <div class="benefit"><div class="benefit-icon">&#128337;</div><span>Marketing keeps running in peak season</span></div>
+       </div>
+     </div>
+ 
+     <div class="solution-showcase reveal">
+       <div class="visual">
+         <div class="big-num">03</div>
+-        <h3>Intelligent Lead Scoring</h3>
+-        <p>AI agents that analyze visitor behavior, qualify leads, and route hot prospects to your sales team.</p>
++        <h3>Leads That Go Cold</h3>
++        <p>Automatic follow-up so open estimates and inquiries turn into jobs.</p>
+       </div>
+       <div class="details">
+         <h4>The Challenge</h4>
+-        <p>Sales teams waste time chasing cold leads while hot prospects slip through the cracks. Manual lead scoring is slow and inconsistent.</p>
++        <p>Home service and real estate leads often contact two or three companies. The first to follow up usually wins, and follow-up is the first thing to slip when you're busy.</p>
+         <h4>The Solution</h4>
+-        <p>Grand Strand Digital builds AI-powered lead scoring that analyzes behavior patterns, engagement signals, and demographic data to rank and route leads automatically.</p>
+-        <div class="benefit"><div class="benefit-icon">&#127919;</div><span>Hot leads identified and routed in real time</span></div>
+-        <div class="benefit"><div class="benefit-icon">&#128200;</div><span>Sales conversion rates increase 30-50%</span></div>
+-        <div class="benefit"><div class="benefit-icon">&#128101;</div><span>Sales team focuses only on highest-value prospects</span></div>
++        <p>AI qualifies each lead, sends a fast first response, and schedules follow-ups until the prospect books or says no.</p>
++        <div class="benefit"><div class="benefit-icon">&#127919;</div><span>A fast first response to every lead</span></div>
++        <div class="benefit"><div class="benefit-icon">&#128200;</div><span>Follow-ups that run until the lead books or says no</span></div>
++        <div class="benefit"><div class="benefit-icon">&#128101;</div><span>Your team spends its time on ready buyers</span></div>
+       </div>
+     </div>
+ 
+     <div class="solution-showcase reveal">
+       <div class="visual">
+         <div class="big-num">04</div>
+-        <h3>Data-Driven Decisions</h3>
+-        <p>Custom dashboards and AI analytics that transform raw data into actionable business insights.</p>
++        <h3>Planning Around the Season</h3>
++        <p>One dashboard for bookings, calls, and web traffic.</p>
+       </div>
+       <div class="details">
+         <h4>The Challenge</h4>
+-        <p>Businesses sit on mountains of data but lack the tools and expertise to turn it into decisions. Spreadsheets only go so far.</p>
++        <p>Booking, phone, and website data live in separate systems, so staffing and ad decisions run on gut feel.</p>
+         <h4>The Solution</h4>
+-        <p>We build custom analytics dashboards powered by AI that surface trends, predict outcomes, and recommend actions — giving you a competitive intelligence edge.</p>
+-        <div class="benefit"><div class="benefit-icon">&#128202;</div><span>Real-time dashboards tailored to your KPIs</span></div>
+-        <div class="benefit"><div class="benefit-icon">&#129504;</div><span>Predictive analytics that spot trends early</span></div>
++        <p>We pull your data into one dashboard that shows trends week over week and season over season, so you can plan ahead of demand.</p>
++        <div class="benefit"><div class="benefit-icon">&#128202;</div><span>Bookings, calls, and traffic in one view</span></div>
++        <div class="benefit"><div class="benefit-icon">&#129504;</div><span>Week-over-week and season-over-season trends</span></div>
+         <div class="benefit"><div class="benefit-icon">&#9889;</div><span>Automated alerts when metrics need attention</span></div>
+       </div>
+     </div>
+@@ -159,18 +160,18 @@
+   <div class="container">
+     <div class="section-center" style="margin-bottom:1rem">
+       <div class="section-label reveal">Industries We Serve</div>
+-      <h2 class="section-title reveal stagger-1">AI for every industry</h2>
+-      <p class="section-desc reveal stagger-2">Grand Strand Digital works with businesses across the Grand Strand and beyond, delivering AI solutions customized for each industry's unique challenges.</p>
++      <h2 class="section-title reveal stagger-1">AI for Grand Strand industries</h2>
++      <p class="section-desc reveal stagger-2">We work with the businesses that make up the coast's economy, and with anyone else who wants to work smarter.</p>
+     </div>
+     <div class="industries-grid">
+-      <div class="industry-card reveal"><div class="ind-icon">&#127973;</div><h4>Healthcare</h4><p>Patient intake, appointment scheduling, and HIPAA-compliant communication automation.</p></div>
+-      <div class="industry-card reveal stagger-1"><div class="ind-icon">&#127970;</div><h4>Real Estate</h4><p>Automated lead capture, property matching, and client follow-up systems.</p></div>
+-      <div class="industry-card reveal stagger-2"><div class="ind-icon">&#9878;&#65039;</div><h4>Legal</h4><p>Document processing, client intake forms, and intelligent case research.</p></div>
+-      <div class="industry-card reveal stagger-3"><div class="ind-icon">&#127860;</div><h4>Hospitality</h4><p>Reservation management, review monitoring, and guest experience personalization.</p></div>
+-      <div class="industry-card reveal stagger-4"><div class="ind-icon">&#128722;</div><h4>Retail & E-Commerce</h4><p>Inventory optimization, personalized recommendations, and automated customer service.</p></div>
+-      <div class="industry-card reveal stagger-5"><div class="ind-icon">&#128188;</div><h4>Professional Services</h4><p>Proposal generation, project tracking, and automated client reporting.</p></div>
+-      <div class="industry-card reveal stagger-6"><div class="ind-icon">&#128295;</div><h4>Home Services</h4><p>Online booking, estimate automation, and review generation systems.</p></div>
+-      <div class="industry-card reveal"><div class="ind-icon">&#127891;</div><h4>Education</h4><p>Enrollment automation, student communication, and content delivery systems.</p></div>
++      <div class="industry-card reveal"><div class="ind-icon">&#127976;</div><h4>Hotels &amp; Resorts</h4><p>Reservation questions, guest messaging, and review replies.</p></div>
++      <div class="industry-card reveal stagger-1"><div class="ind-icon">&#127958;&#65039;</div><h4>Vacation Rentals</h4><p>Guest communication, owner reporting, and turnover scheduling.</p></div>
++      <div class="industry-card reveal stagger-2"><div class="ind-icon">&#9971;</div><h4>Golf Courses</h4><p>Tee-time questions, group and tournament inquiries, and package follow-up.</p></div>
++      <div class="industry-card reveal stagger-3"><div class="ind-icon">&#127860;</div><h4>Restaurants</h4><p>Reservations, online ordering, and review monitoring.</p></div>
++      <div class="industry-card reveal stagger-4"><div class="ind-icon">&#128295;</div><h4>Home Services</h4><p>Online booking, estimate follow-up, and storm-season call overflow.</p></div>
++      <div class="industry-card reveal stagger-5"><div class="ind-icon">&#127970;</div><h4>Real Estate</h4><p>Lead capture and follow-up for relocation and second-home buyers.</p></div>
++      <div class="industry-card reveal stagger-6"><div class="ind-icon">&#127973;</div><h4>Healthcare</h4><p>Patient intake and appointment reminders, designed around HIPAA requirements.</p></div>
++      <div class="industry-card reveal"><div class="ind-icon">&#128188;</div><h4>Professional Services</h4><p>Client intake, proposals, and automated reporting.</p></div>
+     </div>
+   </div>
+ </section>
+@@ -179,8 +180,8 @@
+ <section class="cta-banner">
+   <div class="container">
+     <div class="section-label reveal" style="justify-content:center">Your Industry, Your Solution</div>
+-    <h2 class="section-title reveal stagger-1">Don't see your industry?<br>We'll build a custom solution</h2>
+-    <p class="section-desc reveal stagger-2" style="margin:0 auto">Grand Strand Digital tailors every AI solution to the specific needs of your business. Let's talk about yours.</p>
++    <h2 class="section-title reveal stagger-1">Don't see<br>your industry?</h2>
++    <p class="section-desc reveal stagger-2" style="margin:0 auto">Tell us how your business runs and we'll show you where AI fits. The first call is free.</p>
+     <div class="cta-actions reveal stagger-3">
+       <a href="contact.html" class="btn-primary">Book Free Strategy Call</a>
+       <a href="tel:8439001976" class="btn-secondary light">Call 843-900-1976</a>
+@@ -194,7 +195,7 @@
+     <div class="footer-inner">
+       <div class="footer-brand">
+         <a href="index.html" class="nav-logo"><img src="logo.png" alt="Grand Strand Digital" width="42" height="44" decoding="async"></a>
+-        <p>AI consulting and web innovation for Grand Strand businesses. Based in the Grand Strand, serving clients who are ready to lead with technology.</p>
++        <p>AI consulting, automation, and web design for businesses from Wilmington to Pawleys Island. Serving the Grand Strand and clients nationwide.</p>
+         <a href="tel:8439001976" class="footer-phone">843-900-1976</a>
+       </div>
+       <div class="footer-links">
