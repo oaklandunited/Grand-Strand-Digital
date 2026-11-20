@@ -141,30 +141,31 @@
   // --- Counter animation (skipped for reduced motion) ---
   const counters = document.querySelectorAll('[data-count]');
   const finalText = (el) => (el.dataset.prefix || '') + parseInt(el.dataset.count, 10) + (el.dataset.suffix || '');
-  function animateCounters() {
-    counters.forEach(el => {
-      if (reduceMotion) { el.textContent = finalText(el); return; }
-      const target = parseInt(el.dataset.count, 10);
-      const start = performance.now();
-      const duration = 1500;
-      const step = (now) => {
-        const t = Math.min(1, (now - start) / duration);
-        el.textContent = (el.dataset.prefix || '') + Math.round(target * t) + (el.dataset.suffix || '');
-        if (t < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    });
+  function animateCounter(el) {
+    if (reduceMotion) { el.textContent = finalText(el); return; }
+    const target = parseInt(el.dataset.count, 10);
+    const start = performance.now();
+    const duration = 1500;
+    const step = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = (el.dataset.prefix || '') + Math.round(target * t) + (el.dataset.suffix || '');
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
   }
-  const counterSection = document.querySelector('.counters-row');
-  if (counterSection && counters.length) {
+  // Observe each counter on its own so counters work anywhere on the page,
+  // including inside tab panels that only become visible when selected.
+  if (counters.length) {
     if ('IntersectionObserver' in window) {
       const counterObserver = new IntersectionObserver((entries) => {
-        if (entries.some(e => e.isIntersecting)) {
-          animateCounters();
-          counterObserver.disconnect();
-        }
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            animateCounter(e.target);
+            counterObserver.unobserve(e.target);
+          }
+        });
       }, { threshold: 0.3 });
-      counterObserver.observe(counterSection);
+      counters.forEach(el => counterObserver.observe(el));
     } else {
       counters.forEach(el => { el.textContent = finalText(el); });
     }
