@@ -1,5 +1,4 @@
 /* === GRAND STRAND DIGITAL — SHARED STYLES === */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lato:wght@300;400;700&display=swap');
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -28,14 +27,14 @@ a{color:inherit;text-decoration:none}
 /* === UTILITY === */
 .container{max-width:1140px;margin:0 auto;padding:0 2rem}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
-.reveal-left.visible{opacity:1;transform:translateX(0)}
-.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
-.reveal-right.visible{opacity:1;transform:translateX(0)}
-.reveal-scale{opacity:0;transform:scale(0.9);transition:opacity .8s ease,transform .8s ease}
-.reveal-scale.visible{opacity:1;transform:scale(1)}
+.js .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.js .reveal.visible{opacity:1;transform:translateY(0)}
+.js .reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.js .reveal-left.visible{opacity:1;transform:translateX(0)}
+.js .reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+.js .reveal-right.visible{opacity:1;transform:translateX(0)}
+.js .reveal-scale{opacity:0;transform:scale(0.9);transition:opacity .8s ease,transform .8s ease}
+.js .reveal-scale.visible{opacity:1;transform:scale(1)}
 .stagger-1{transition-delay:.1s}.stagger-2{transition-delay:.2s}.stagger-3{transition-delay:.3s}.stagger-4{transition-delay:.4s}.stagger-5{transition-delay:.5s}.stagger-6{transition-delay:.6s}
 .section-center{text-align:center;max-width:600px;margin:0 auto}
 .bg-alt{background:var(--bg-alt)}
@@ -194,3 +193,14 @@ footer{background:var(--bg-dark);padding:3.5rem 0 2rem;color:rgba(255,255,255,.6
   .tabs{gap:0}
   .tab-btn{padding:.75rem 1rem;font-size:.7rem}
 }
+
+/* Respect users who ask the OS for less motion */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+  .js .reveal,.js .reveal-left,.js .reveal-right,.js .reveal-scale{opacity:1;transform:none}
+}
+
+/* Visible keyboard focus */
+a:focus-visible,button:focus-visible,[role="button"]:focus-visible,[role="tab"]:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.accordion-header{cursor:pointer}

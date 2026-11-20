@@ -16,6 +16,8 @@ Add the following secrets:
 | `SITEGROUND_HOST` | SiteGround server IP or domain | `grandstranddigital.com` or server IP |
 | `SITEGROUND_USERNAME` | SSH username created in SiteGround Site Tools | `uXXX-yyyyy` |
 | `SITEGROUND_SSH_KEY` | Private SSH key (full text with headers) | `-----BEGIN RSA PRIVATE KEY----- ... -----END RSA PRIVATE KEY-----` |
+| `SITEGROUND_SSH_PASSPHRASE` | Passphrase for the SSH key | |
+| `SITEGROUND_KNOWN_HOSTS` | *(Recommended)* Pinned server host key — see section 4 | output of `ssh-keyscan` |
 | `SITEGROUND_PORT` | *(Optional)* SSH port | `18765` (SiteGround standard) |
 | `SITEGROUND_TARGET_PATH` | *(Optional)* Remote directory path | `/home/customer/www/grandstranddigital.com/public_html/` |
 
@@ -44,8 +46,39 @@ Add the following secrets:
 
 - **Automatic Trigger**: Any commit pushed to the `main` branch automatically triggers the sync.
 - **Manual Trigger**: You can also manually trigger a deployment at any time from GitHub by going to the **Actions** tab → **Deploy to SiteGround** → **Run workflow**.
-- **Excluded Files**: The workflow automatically excludes non-production assets and sensitive local files:
-  - `/.git/` and `/.github/`
-  - `/docs/`
-  - `/php_errorlog`
-  - `/api/config.php` (preserves your live server API credentials without overwriting)
+- **Excluded Files** (never uploaded, never deleted on the server): `/.git/`, `/.github/`, `/docs/`, `/api/config.php` (your live credentials), `/svg-logo-mockup-lab.html`, log files, `/.well-known/`, `/cgi-bin/`, `.user.ini`.
+- **Prune (manual only)**: *Run workflow* has a **prune** checkbox. When ticked, rsync runs with `--delete` and removes every server file in `public_html` that is not in the repo (old WordPress files, `wp-content`, etc.). **Download a backup of `public_html` (Site Tools → Security → Backups) before using it.** Normal pushes never delete anything.
+
+---
+
+## 4. Pin the server's SSH host key (recommended)
+
+Without a pinned key the workflow trusts whatever host answers on first connect. From your own computer run:
+
+```bash
+ssh-keyscan -p 18765 YOUR_SITEGROUND_HOST
+```
+
+Check the fingerprint matches SiteGround's (Site Tools → Devs → SSH Keys Manager), then paste the output into the `SITEGROUND_KNOWN_HOSTS` secret.
+
+---
+
+## 5. Server-side configuration (`api/config.php`)
+
+Copy `api/config.example.php` to `api/config.php` on the server (File Manager or SSH) and fill in:
+
+- `api_key` — OpenAI key. Also set a **monthly spend limit** in the OpenAI dashboard (Settings → Limits).
+- `turnstile_secret_key` and **`'require_turnstile' => true`** — makes the API refuse requests if the key is ever missing.
+- `notification_email` / `notification_from` — where leads are emailed. `notification_from` should be a mailbox on the domain so SPF/DKIM pass.
+- Contact-form leads are also appended to `gsd-leads.jsonl` one directory **above** `public_html` (override with `lead_log_path`), so a failed email never loses a lead.
+
+---
+
+## 6. Retiring the old WordPress install
+
+The root `.htaccess` already blocks `wp-admin`, `wp-login.php`, `xmlrpc.php`, `wp-content`, etc. To remove the files entirely:
+
+1. Take a full backup in Site Tools.
+2. Run the workflow manually with **prune** ticked (or delete the `wp-*` files, `xmlrpc.php`, `index.php`, `license.txt`, `readme.html` and `php_errorlog` in File Manager).
+3. Delete the WordPress database and its DB user in Site Tools → Site → MySQL.
+4. Change the old WordPress admin password anywhere it was reused.
