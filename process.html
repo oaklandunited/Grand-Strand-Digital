@@ -18,13 +18,14 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#0a1f3c">
 <script>document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="styles.css?v=20261120b">
+<script>/* theme: saved choice > OS preference > light. Runs before paint so there is no flash. */(function(){var t;try{t=localStorage.getItem('gsd-theme')}catch(e){}if(t!=='dark'&&t!=='light')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})();</script>
+<link rel="stylesheet" href="styles.css?v=20261120-theme">
 <style>
 .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
 .value-card{padding:2rem;text-align:center;border:1px solid var(--border);background:var(--bg);transition:all .4s}
 .value-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.06);border-color:var(--accent)}
 .value-card .v-icon{font-size:2rem;margin-bottom:1rem}
-.value-card h4{font-family:var(--heading);font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tertiary);margin-bottom:.5rem}
+.value-card h4{font-family:var(--heading);font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tertiary-ink);margin-bottom:.5rem}
 .value-card p{font-size:.875rem;color:var(--text-secondary);line-height:1.7}
 @media(max-width:1024px){.team-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){.values-grid{grid-template-columns:1fr}.team-grid{grid-template-columns:1fr 1fr}}
@@ -140,9 +141,9 @@
           <h3>Discovery & Strategy Call</h3>
           <p>A free 30-minute call about your business, your busiest weeks, and where time and leads are slipping. You'll leave with ideas you can use whether or not we work together.</p>
           <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Free consultation</span>
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">30 minutes</span>
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">No obligation</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Free consultation</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">30 minutes</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">No obligation</span>
           </div>
         </div>
       </div>
@@ -153,9 +154,9 @@
           <h3>Audit & Blueprint</h3>
           <p>We review your workflows and tools, then deliver a written plan with priorities, a timeline, and a fixed price.</p>
           <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Operations audit</span>
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Tech stack review</span>
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Fixed price</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Operations audit</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Tech stack review</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Fixed price</span>
           </div>
         </div>
       </div>
@@ -166,9 +167,9 @@
           <h3>Build & Iterate</h3>
           <p>Work happens in short sprints with a live demo each week. You give feedback on working software, not mockups.</p>
           <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Weekly demos</span>
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Agile sprints</span>
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Continuous feedback</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Weekly demos</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Agile sprints</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Continuous feedback</span>
           </div>
         </div>
       </div>
@@ -179,9 +180,9 @@
           <h3>Testing & Quality Assurance</h3>
           <p>Every workflow, integration, and edge case is tested before launch, including what happens when the AI doesn't know the answer.</p>
           <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Performance testing</span>
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Security review</span>
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">UAT sign-off</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Performance testing</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Security review</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">UAT sign-off</span>
           </div>
         </div>
       </div>
@@ -192,9 +193,9 @@
           <h3>Launch & Go Live</h3>
           <p>We schedule launch around your calendar, never in the middle of your busiest weekend, and train your team with written guides.</p>
           <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Scheduled around you</span>
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Team training</span>
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Documentation</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Scheduled around you</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Team training</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Documentation</span>
           </div>
         </div>
       </div>
@@ -205,9 +206,9 @@
           <h3>Evolve & Optimize</h3>
           <p>After launch we monitor results and adjust as your business and the seasons change. Monthly support plans are available.</p>
           <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Ongoing monitoring</span>
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Monthly reports</span>
-            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary)">Continuous evolution</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Ongoing monitoring</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Monthly reports</span>
+            <span style="font-family:var(--heading);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;background:var(--bg-ice);color:var(--secondary-ink)">Continuous evolution</span>
           </div>
         </div>
       </div>
@@ -245,7 +246,7 @@
       <div class="value-card reveal" style="padding:2rem 1.5rem">
         <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--bg-dark),var(--tertiary));display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:800;font-size:1.3rem;color:var(--gold);margin:0 auto 1.25rem">GM</div>
         <h4 style="margin-bottom:.25rem">Gregg Maynard</h4>
-        <div style="font-family:var(--body);font-size:.8rem;color:var(--accent);font-weight:600;margin-bottom:.75rem">Founder</div>
+        <div style="font-family:var(--body);font-size:.8rem;color:var(--accent-ink);font-weight:600;margin-bottom:.75rem">Founder</div>
         <p>Gregg brings 30 years in technology and the legal field to every project. He runs each strategy engagement himself and stays involved from the first call through launch, so you never get handed off.</p>
       </div>
     </div>
@@ -262,7 +263,7 @@
         <p class="section-desc reveal stagger-2" style="margin-bottom:2rem">Have a question that isn't here? Call or send us a note.</p>
         <a href="contact.html" class="btn-primary reveal stagger-3">Ask Us Anything</a>
         <div class="reveal stagger-4" style="margin-top:1rem">
-          <a href="tel:8439001976" style="font-family:var(--heading);font-size:.85rem;font-weight:700;color:var(--accent);letter-spacing:.05em">Or call: 843-900-1976</a>
+          <a href="tel:8439001976" style="font-family:var(--heading);font-size:.85rem;font-weight:700;color:var(--accent-ink);letter-spacing:.05em">Or call: 843-900-1976</a>
         </div>
       </div>
       <div class="reveal">
@@ -342,6 +343,6 @@
   </div>
 </footer>
 
-<script src="shared.js?v=20261120c"></script>
+<script src="shared.js?v=20261120-theme"></script>
 </body>
 </html>
