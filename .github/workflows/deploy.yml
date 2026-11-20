@@ -1,0 +1,30 @@
+name: Deploy to SiteGround
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  deploy:
+    name: Sync to SiteGround public_html
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Deploy via SSH/rsync to SiteGround
+        uses: easingthemes/ssh-deploy@v5.1.0
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SITEGROUND_SSH_KEY }}
+          ARGS: "-rlgoDzvc -i"
+          SOURCE: "/"
+          REMOTE_HOST: ${{ secrets.SITEGROUND_HOST }}
+          REMOTE_USER: ${{ secrets.SITEGROUND_USERNAME }}
+          REMOTE_PORT: ${{ secrets.SITEGROUND_PORT || '18765' }}
+          TARGET: ${{ secrets.SITEGROUND_TARGET_PATH || '/home/customer/www/grandstranddigital.com/public_html/' }}
+          EXCLUDE: "/.git/, /.github/, /docs/, /php_errorlog, /api/config.php, /Default.html, /svg-logo-mockup-lab.html"
