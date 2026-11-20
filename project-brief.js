@@ -302,15 +302,14 @@
               showToast('Project brief successfully generated!');
               return;
             } else if (event === 'error') {
-              try {
-                const parsed = JSON.parse(dataStr);
-                throw new Error(parsed.message || 'Stream error occurred.');
-              } catch (e) {
-                throw new Error(dataStr || 'Stream error occurred.');
-              }
+              let message = 'Stream error occurred.';
+              try { message = JSON.parse(dataStr).message || message; } catch (_) {}
+              throw new Error(message);
             }
           }
         }
+        // Stream closed without a "done" event
+        if (!rawMarkdownBuffer.trim()) throw new Error('');
         setState('complete');
       } else {
         // Fallback for direct JSON responses
@@ -427,7 +426,9 @@
     let html = md
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
 
     // Headings
     html = html.replace(/^### (.*$)/gim, '<h4>$1</h4>');
@@ -455,7 +456,14 @@
     html = html.replace(/<\/ol>\s*<ol class="brief-ol">/gim, '');
 
     // Links [text](url)
-    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2" target="_blank" rel="noopener" class="brief-link">$1</a>');
+    // Only allow safe link targets (blocks javascript:, data:, etc.)
+    html = html.replace(/\[([^\]]+)\]\(([^)\s]+)\)/gim, (m, text, url) => {
+      const decoded = url.replace(/&amp;/g, '&');
+      const safe = /^(https?:|mailto:|tel:)/i.test(decoded) || /^(\/(?!\/)|#|[a-z0-9][\w\-./]*\.html(#[\w-]*)?$)/i.test(decoded);
+      if (!safe) return text;
+      const external = /^https?:/i.test(decoded);
+      return '<a href="' + url + '"' + (external ? ' target="_blank" rel="noopener noreferrer"' : '') + ' class="brief-link">' + text + '</a>';
+    });
 
     // Paragraph line breaks
     html = html.replace(/\n\n/gim, '</p><p>');

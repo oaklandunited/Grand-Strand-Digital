@@ -1,0 +1,56 @@
+# Grand Strand Digital — site-wide Apache rules (SiteGround)
+
+DirectoryIndex index.html
+Options -Indexes
+ServerSignature Off
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Force HTTPS (also works behind Cloudflare / SiteGround CDN)
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # The site no longer runs WordPress: refuse the old attack surface
+    # (password guessing on wp-login/xmlrpc, plugin exploits) even if files linger on the server.
+    RewriteRule ^(xmlrpc\.php|wp-login\.php|wp-config\.php|wp-cron\.php|wp-signup\.php|wp-trackback\.php|wp-links-opml\.php|wp-blog-header\.php|wp-load\.php|wp-settings\.php|wp-mail\.php|wp-activate\.php|wp-comments-post\.php|index\.php|readme\.html|license\.txt|wp-admin(/.*)?|wp-includes(/.*)?|wp-content(/.*)?|wp-json(/.*)?)$ - [F,L,NC]
+</IfModule>
+
+# Hide dotfiles, logs, backups, docs and data files
+<FilesMatch "(^\.|^php_errorlog$|^error_log$|\.(log|sql|bak|old|orig|swp|ini|sh|md|jsonl|yml|yaml|lock)$)">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+    Header unset X-Powered-By
+
+    # HTML always revalidates so updates show up immediately
+    <FilesMatch "\.html$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+</IfModule>
+
+# Browser caching. CSS/JS are referenced with ?v=YYYYMMDD — bump it when you change them.
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css                  "access plus 30 days"
+    ExpiresByType application/javascript    "access plus 30 days"
+    ExpiresByType text/javascript           "access plus 30 days"
+    ExpiresByType image/png                 "access plus 30 days"
+    ExpiresByType image/webp                "access plus 30 days"
+    ExpiresByType image/svg+xml             "access plus 30 days"
+    ExpiresByType image/x-icon              "access plus 30 days"
+    ExpiresByType image/vnd.microsoft.icon  "access plus 30 days"
+</IfModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript text/javascript application/json image/svg+xml application/xml
+</IfModule>

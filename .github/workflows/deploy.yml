@@ -4,7 +4,19 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+  workflow_dispatch: # Manual run from the GitHub Actions tab
+    inputs:
+      prune:
+        description: "DELETE files on the server that are not in this repo (e.g. old WordPress). Back up public_html first!"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-siteground
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -15,7 +27,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 1
 
       - name: Prepare SSH key
         env:
@@ -23,6 +35,7 @@ jobs:
           SSH_PASSPHRASE: ${{ secrets.SITEGROUND_SSH_PASSPHRASE }}
           SSH_HOST: ${{ secrets.SITEGROUND_HOST }}
           SSH_PORT: ${{ secrets.SITEGROUND_PORT || '18765' }}
+          KNOWN_HOSTS: ${{ secrets.SITEGROUND_KNOWN_HOSTS }}
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
@@ -30,7 +43,14 @@ jobs:
           chmod 600 ~/.ssh/id_deploy
           # Remove the passphrase (SiteGround keys are always passphrase-protected)
           ssh-keygen -p -P "$SSH_PASSPHRASE" -N "" -f ~/.ssh/id_deploy
-          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
+          if [ -n "$KNOWN_HOSTS" ]; then
+            # Pinned host key: protects against a man-in-the-middle on the deploy connection
+            printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          else
+            echo "::warning::SITEGROUND_KNOWN_HOSTS secret is not set; trusting the host key on first use. See docs/siteground-deployment.md."
+            ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
+          fi
+          chmod 600 ~/.ssh/known_hosts
 
       - name: Deploy via rsync to SiteGround
         env:
@@ -38,10 +58,22 @@ jobs:
           SSH_USER: ${{ secrets.SITEGROUND_USERNAME }}
           SSH_PORT: ${{ secrets.SITEGROUND_PORT || '18765' }}
           TARGET: ${{ secrets.SITEGROUND_TARGET_PATH || '/home/customer/www/grandstranddigital.com/public_html/' }}
+          PRUNE: ${{ github.event_name == 'workflow_dispatch' && inputs.prune }}
         run: |
-          rsync -rlzvc \
-            --exclude '/.git/' --exclude '/.github/' --exclude '/docs/' \
-            --exclude '/php_errorlog' --exclude '/api/config.php' \
-            --exclude '/Default.html' --exclude '/svg-logo-mockup-lab.html' \
-            -e "ssh -i ~/.ssh/id_deploy -p $SSH_PORT" \
+          DELETE_FLAG=""
+          if [ "$PRUNE" = "true" ]; then
+            echo "::warning::Prune enabled: files on the server that are not in the repo will be deleted."
+            DELETE_FLAG="--delete"
+          fi
+          # Excluded paths are never uploaded, and (with --delete) never removed from the server.
+          rsync -rlzvc $DELETE_FLAG \
+            --exclude '/.git/' --exclude '/.github/' --exclude '/.gitignore' --exclude '/docs/' \
+            --exclude '/api/config.php' --exclude '/svg-logo-mockup-lab.html' \
+            --exclude 'php_errorlog' --exclude 'error_log' --exclude '*.log' \
+            --exclude '/.well-known/' --exclude '/cgi-bin/' --exclude '.user.ini' \
+            -e "ssh -i ~/.ssh/id_deploy -p $SSH_PORT -o StrictHostKeyChecking=yes" \
             ./ "$SSH_USER@$SSH_HOST:$TARGET"
+
+      - name: Remove SSH key
+        if: always()
+        run: rm -f ~/.ssh/id_deploy

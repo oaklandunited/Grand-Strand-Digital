@@ -1,0 +1,17 @@
+# Server-only secrets
+api/config.php
+.env
+.env.*
+
+# Logs and lead data (never commit)
+*.log
+php_errorlog
+error_log
+*.jsonl
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+node_modules/
