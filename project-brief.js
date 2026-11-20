@@ -326,11 +326,30 @@
     } catch (err) {
       if (err.name === 'AbortError') return;
 
-      console.warn('Backend stream unavailable or error:', err.message);
-      
-      // If endpoint is not found (e.g. static preview or local testing),
-      // simulate realistic streaming so user can test the UI immediately!
-      simulateClientGeneration(payload);
+      console.warn('Backend stream unavailable or error:', err && err.message);
+
+      // Only simulate a brief for local/offline previews. On the live site, show a real error.
+      const isLocalPreview = location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+      if (isLocalPreview) {
+        simulateClientGeneration(payload);
+        return;
+      }
+
+      let msg = (err && err.message) ? err.message : '';
+      if (!msg || /^Server responded with status|Failed to fetch|NetworkError|Load failed|Unexpected response/i.test(msg)) {
+        msg = 'We could not generate your brief right now. Please try again in a moment.';
+      }
+      if (msg.indexOf('843-900-2032') === -1) {
+        msg += ' If it keeps happening, call us at 843-900-2032.';
+      }
+      setState('error', 'Could not generate brief');
+      actionToolbar.style.display = 'none';
+      briefContent.innerHTML = '';
+      const errBox = document.createElement('div');
+      errBox.className = 'brief-placeholder';
+      errBox.textContent = msg;
+      briefContent.appendChild(errBox);
+      showToast('Brief could not be generated.');
     }
   });
 
